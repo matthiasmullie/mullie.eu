@@ -1,0 +1,27 @@
+# Dependencies
+markdown:         redcarpet
+pygments:         true
+
+# Permalinks
+permalink:        pretty
+
+# Setup
+title:            Matthias Mullie
+tagline:          'Software engineer'
+description:      ''
+url:              http://www.mullie.eu
+baseurl:          /
+
+author:
+  name:           'Matthias Mullie'
+  url:            https://twitter.com/matthiasmullie
+
+paginate:         5
+
+# Custom vars
+version:          1.0.0
+
+github:
+  repo:           https://github.com/matthiasmullie/matthiasmullie.github.io
+
+permalink:        /:title
