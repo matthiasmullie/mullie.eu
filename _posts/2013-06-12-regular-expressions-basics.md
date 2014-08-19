@@ -1,9 +1,12 @@
 ---
 layout: post
 title: Introduction to regular expressions
+image: public/posts/regex.png
+description: Regular expressions are under-valued and most developers tend to only know the basics. Having a thorough understanding of how regular expressions work, will be incredibly helpful when you need to parse structured data.
+tags: { php, regex }
 ---
 
-![Picture]({{ site.url }}/public/posts/regex.png)
+![Picture]({{ site.baseurl }}public/posts/regex.png)
 
 Regular expressions are under-valued and most developers tend to only know the basics. Having a thorough understanding of how regular expressions work, will be incredibly helpful when you need to parse structured data.
 

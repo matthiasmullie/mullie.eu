@@ -26,4 +26,37 @@
 
   <!-- RSS -->
   <link rel="alternate" type="application/rss+xml" title="RSS" href="/atom.xml">
+
+  <!-- SEO & social -->
+  <link rel="author" href="{{ site.author.gplus }}" />
+  {% if page.title == "Home" %}
+    <link rel="canonical" href="{{ site.url }}" />
+    <meta name="description" content="{{ site.tagline }}" />
+    <meta property="og:title" content="{{ site.title }}" />
+    <meta property="og:description" content="{{ site.tagline }}" />
+  {% else %}
+    <link rel="canonical" href="{{ site.url }}{{ page.url }}/" />
+    <meta name="description" content="{{ site.description | strip_html }}" />
+    <meta property="og:title" content="{{ page.title }}" />
+    <meta property="og:description" content="{{ site.description | strip_html }}" />
+  {% endif %}
+
+  <meta property="og:url" content="{{ site.url }}{{ page.url }}/" />
+  <meta property="og:image" content="{{ site.url }}/{{ site.image }}" />
+  <meta property="og:site_name" content="{{ site.title }}" />
+
+  {% if page.date %}
+    <meta property="og:type" content="article" />
+    <meta property="article:published_time" content="{{ page.date }}" />
+    <meta property="article:modified_time" content="{{ page.date }}" />
+    <meta property="article:author" content="{{ site.author.gplus }}" />
+    {% for tag in site.tags %}
+      <meta property="article:tag" content="{{ tag }}" />
+    {% endfor %}
+  {% else %}
+    <meta property="og:type" content="blog" />
+  {% endif %}
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:site" content="{{ site.author.twitter }}" />
 </head>

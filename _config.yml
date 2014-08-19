@@ -11,10 +11,12 @@ tagline:          'Software engineer'
 description:      ''
 url:              http://www.mullie.eu
 baseurl:          /
+image:            public/logo_300.png
 
 author:
   name:           'Matthias Mullie'
-  url:            https://twitter.com/matthiasmullie
+  gplus:          https://plus.google.com/u/0/114103174273569238978
+  twitter:        matthiasmullie
 
 paginate:         5
 
