@@ -11,6 +11,8 @@ Though you probably won't use any of the below on a daily basis, you should defi
 
 If you know all about the stuff in the [basics tutorial](http://blog.mullie.eu/regular-expressions-basics/) already, dive in!
 
+<!-- more -->
+
 # Back references
 [PHP Docs](http://www.php.net/manual/en/regexp.reference.back-references.php)
 

@@ -11,6 +11,8 @@ Latitude is the north-south axis with a minimum of -90 (south pole) and maximum 
 
 Longitude is the X-axis equivalent, running around the globe from east to west: from -180 to +180 degrees. The [Greenwich meridian](http://en.wikipedia.org/wiki/Prime_meridian) is 0 degrees longitude. Everything west and east from it is respectively negative and positive on the longitude scale, up until the middle of the Pacific Ocean, near the [International Date Line](http://en.wikipedia.org/wiki/International_Date_Line), where -180° longitude crosses over to 180°.
 
+<!-- more -->
+
 # Coordinates and kilometres/miles
 
 You've always been told that Greenland is not as large as it is depicted on your average 2D map. It's about the size of Congo, but in a [2D projection](http://en.wikipedia.org/wiki/Mercator_projection), the earth's edges appear larger than they actually are.

@@ -11,6 +11,8 @@ In essence, a regular expression – or regex – is an instruction set to parse
 
 Regular expressions are most commonly PCRE-based, an instruction set derived from the regular expression implementation in Perl. I'll be discussing the PCRE implementation in PHP in particular. While in other programming languages the specific implementation may differ, most modern languages have PCRE ( **P**erl **C**ompatible **R**egular **E**xpressions) support and the concepts should and will largely be the same in the language of your choice.
 
+<!-- more -->
+
 # Introduction
 
 Regular expressions are used to match pieces inside a string. A simple fictitious example would be to check if string "foo bar baz" contains the word "bar", or to replace every occurrence of "bar" by "qux".

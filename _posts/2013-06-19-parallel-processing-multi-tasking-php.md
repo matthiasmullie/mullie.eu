@@ -9,6 +9,8 @@ In PHP, there are multiple ways to process data in parallel, although not one wi
 
 Although both multithreading and multiprocessing can be used to process code in parallel, it probably makes sense to first distinguish between the two.
 
+<!-- more -->
+
 # Thread
 
 To speed up the execution of multiple tasks, it makes sense to split the work over multiple threads, each performing a smaller task. On a multi-core or on multiple processors, this will mean that multiple processors can do a part of the work that needs to be done, at the same time, rather than completing everything sequentially, in 1 single thread of execution.

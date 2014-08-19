@@ -9,6 +9,8 @@ In content-heavy websites, it becomes increasingly important to provide capable 
 
 This article will solely focus on the most common text-based search (as opposed to e.g. geography- or time-based)
 
+<!-- more -->
+
 # MySQL is not a search engine
 
 MySQL is a relational database, no search engine. While it does provide some tools to search inside the data it holds, you’re better of integrating a real search engine if you’re looking for a full-fledged solution. Some of the most popular (open source) search engines are:

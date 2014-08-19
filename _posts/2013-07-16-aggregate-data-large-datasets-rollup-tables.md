@@ -7,6 +7,8 @@ title: Using rollup tables to aggregate data in large datasets
 
 A myriad of features may prompt the need to aggregate your data, like showing an average score based on multiple values, or even simply showing the amount of entries that abide to a certain condition. Usually this is a trivial query, but this is often untrue when dealing with a huge dataset.
 
+<!-- more -->
+
 # What's the problem with a large dataset?
 
 In moderately sized datasets, you could just construct a query using [MySQL's aggregate functions](http://dev.mysql.com/doc/refman/5.7/en/group-by-functions.html), like:
