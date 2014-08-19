@@ -1,0 +1,24 @@
+/* Override font: simple sans-serif for regular text, fancy font for titles */
+@import url(http://fonts.googleapis.com/css?family=Josefin+Sans);
+
+html {
+	font-family: Arial, Helvetica, sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6,
+.sidebar-about h1 {
+	font-family: 'Josefin Sans', sans-serif;
+}
+
+.sidebar-about h1 {
+	font-size: 2rem;
+}
+
+/* Logo orange color: #fc7e3f */
+.theme-base-mullie .sidebar {
+	background-color: #444;
+}
+.theme-base-mullie .content a,
+.theme-base-mullie .related-posts li a:hover {
+	color: #f86831;
+}
