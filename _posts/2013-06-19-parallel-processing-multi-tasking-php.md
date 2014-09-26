@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Parallel processing or multitasking in PHP
+title: Asynchronous processing or multitasking in PHP
 image: public/posts/parallel-processing.png
 description: In PHP, there are multiple ways to process data in parallel, although not one will work in every single environment. There is no one true solution, and whichever suits you best will mostly come down to your specific task.
 tags: { php }
@@ -8,7 +8,7 @@ tags: { php }
 
 ![Picture]({{ site.baseurl }}public/posts/parallel-processing.png)
 
-In PHP, there are multiple ways to process data in parallel, although not one will work in every single environment. There is no one true solution, and whichever suits you best will mostly come down to your specific task.
+In PHP, there are multiple ways to process data asynchronously, although not one will work in every single environment. There is no one true solution, and whichever suits you best will mostly come down to your specific task.
 
 Although both multithreading and multiprocessing can be used to process code in parallel, it probably makes sense to first distinguish between the two.
 
@@ -23,37 +23,63 @@ Threads are part of the same process, and will usually share the same memory & f
 ## pthreads
 [PHP Docs](http://php.net/manual/en/book.pthreads.php)
 
-The only multithreading solution in PHP is the pthreads extension. In it's most simple form, you'd write code like this to perform work in parallel:
+The only multithreading solution in PHP is the pthreads extension. In it's most simple form, you'd write code like this to perform work asynchronously:
 
     class ChildThread extends Thread {
-      public $data;
+        public $data;
 
-      public function run() {
-    		/* Do some expensive work */
+        public function run() {
+          /* Do some expensive work */
 
-    		$this->data = 'result of expensive work';
-    	}
+          $this->data = 'result of expensive work';
+        }
     }
 
     $thread = new ChildThread();
 
     if ($thread->start()) {
-    	/*
-    	 * Do some expensive work, while already doing other
-    	 * work in the child thread.
-    	 */
+        /*
+         * Do some expensive work, while already doing other
+         * work in the child thread.
+         */
 
-    	// wait until thread is finished
-    	$thread->join();
+        // wait until thread is finished
+        $thread->join();
 
-    	// we can now even access $thread->data
+        // we can now even access $thread->data
     }
 
-Results achieved via parallel processing in threading's most basic form, like this, can also be obtained via multiprocessing. All we do here is just splitting the work over 2 threads, to eventually, upon completion, process the second thread's result in the original thread. Threading really gains an edge over multiprocessing if it's necessary to transfer data between threads or to keep the execution of several steps in both threads in sync, via synchronized(), notify() and wait().
+Results achieved via async processing in threading's most basic form, like this, can also be obtained via multiprocessing. All we do here is just splitting the work over 2 threads, to eventually, upon completion, process the second thread's result in the original thread. Threading really gains an edge over multiprocessing if it's necessary to transfer data between threads or to keep the execution of several steps in both threads in sync, via synchronized(), notify() and wait().
 
-**pthreads is a [PECL extension](http://pecl.php.net/package/pthreads), compatible with a ZTS (Zend Thread Safe) PHP 5.3 and up.** It's not a part of PHP core, so you'll have to `pecl install pthreads` it. *Actually, at the time of writing, there's no stable version yet, so you'll be prompted the last beta version, which you can then install. Since it's still considered beta, you might want to be slightly more careful before using this in production.*
+**pthreads is a [PECL extension](http://pecl.php.net/package/pthreads), compatible with a ZTS (Zend Thread Safe) PHP 5.3 and up.** It's not a part of PHP core, so you'll have to `pecl install pthreads` it.
 
 For some advanced examples on how to use threading, check out the [GitHub page](https://github.com/krakjoe/pthreads/tree/master/examples).
+
+### Amp\Thread
+[Docs](https://github.com/amphp/thread)
+
+Amp\Threads is a particularly interesting implementation of pthreads along with their [Amphp async multitasking framework](https://github.com/amphp/amp).
+
+The cool thing about this project is that it hides the complex asynchronous work behind a promises-based interface, like:
+
+    function expensiveWork() {
+        /* Do some expensive work */
+
+        return 'result of expensive work';
+    }
+
+    $dispatcher = new Amp\Thread\Dispatcher;
+
+    // call 2 expensive functions to be executed asynchronously
+    $promise1 = $dispatcher->call('expensiveWork');
+    $promise2 = $dispatcher->call('expensiveWork');
+
+    $comboPromise = Amp\all([$promise1, $promise2]);
+    list($result1, $result2) = $comboPromise->wait();
+
+    // $result1 & $result2 now contain the results of both threads
+
+**Amp/Thread is designed specifically for CLI applications. You'll need PHP5.5+ and pthreads installed.**
 
 # Process
 
@@ -81,31 +107,31 @@ Forking a process will result in the request being cloned into an exact replica,
      */
 
     if ($pid === -1) {
-    	exit; // failed to fork
+        exit; // failed to fork
     } elseif ($pid === 0) {
-    	// $pid = 0, this is the child thread
+        // $pid = 0, this is the child thread
 
-    	/*
-    	 * Existing variables will live in both processes,
-    	 * but changes will not affect other process.
-    	 */
-    	echo $var; // will output 'one'
-    	$var = 'two'; // will not affect parent process
+        /*
+         * Existing variables will live in both processes,
+         * but changes will not affect other process.
+         */
+        echo $var; // will output 'one'
+        $var = 'two'; // will not affect parent process
 
-    	/* Do some expensive work */
+        /* Do some expensive work */
     } else {
-    	// $pid != 0, this is the parent thread
+        // $pid != 0, this is the parent thread
 
-    	/*
-    	 * Do some expensive work, while already doing other
-    	 * work in the child process.
-    	 */
+        /*
+         * Do some expensive work, while already doing other
+         * work in the child process.
+         */
 
-    	echo $var; // will output 'one'
-    	$var = 'three'; // will not affect child process
+        echo $var; // will output 'one'
+        $var = 'three'; // will not affect child process
 
-    	// make sure the parent outlives the child process
-    	pcntl_wait($status);
+        // make sure the parent outlives the child process
+        pcntl_wait($status);
     }
 
 For processing data in parallel, multiprocessing can be a perfectly valid solution. It's no 1-on-1 substitute for multithreading though: it's a separate technique entirely, and both just happen to be useful for multitasking. And although multithreading makes it much easier to synchronize threads or swap data from parent to children, it can be accomplished in multiprocessing too, manually, via external resources (e.g. via files, databases, caches.). Beware of simultaneous requests though!
