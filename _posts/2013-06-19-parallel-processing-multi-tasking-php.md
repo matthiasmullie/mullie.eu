@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Asynchronous processing or multitasking in PHP
+title: Async processing or multitasking in PHP
 image: public/posts/parallel-processing.png
 description: In PHP, there are multiple ways to process data in parallel, although not one will work in every single environment. There is no one true solution, and whichever suits you best will mostly come down to your specific task.
 tags: { php }
