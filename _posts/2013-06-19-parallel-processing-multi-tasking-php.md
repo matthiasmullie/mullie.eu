@@ -58,9 +58,9 @@ For some advanced examples on how to use threading, check out the [GitHub page](
 ### Amp\Thread
 [Docs](https://github.com/amphp/thread)
 
-Amp\Threads is a particularly interesting implementation of pthreads along with their [Amphp async multitasking framework](https://github.com/amphp/amp).
+Amp\Thread is a particularly interesting implementation of pthreads along with their [Amphp async multitasking framework](https://github.com/amphp/amp).
 
-The cool thing about this project is that it hides the complex asynchronous work behind a promises-based interface, like:
+The cool thing about this project is that it hides the complex async work behind a promises-based interface, like:
 
     function expensiveWork() {
         /* Do some expensive work */
