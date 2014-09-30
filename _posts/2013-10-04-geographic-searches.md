@@ -16,6 +16,8 @@ Longitude is the X-axis equivalent, running around the globe from east to west: 
 
 <!-- more -->
 
+**Update**: I've created a small repository with all of the below code in a couple of neat little classes. If you're looking to calculate distance between multiple coordinates, or calculate a bounding box to find nearby coordinates in your database, it may make sense to [check it out](https://github.com/matthiasmullie/geo).
+
 # Coordinates and kilometres/miles
 
 You've always been told that Greenland is not as large as it is depicted on your average 2D map. It's about the size of Congo, but in a [2D projection](http://en.wikipedia.org/wiki/Mercator_projection), the earth's edges appear larger than they actually are.
@@ -26,19 +28,21 @@ To calculate bird's-eye distance between 2 coordinates, geometry finally comes i
 
 The earth's radius is approximately 6371 kilometres or 3959 miles. Said radius multiplied by the [great-circle distance](http://en.wikipedia.org/wiki/Great-circle_distance) calculated between the 2 coordinates mapped on a sphere, should yield the distance between both points.
 
-    // convert latitude/longitude degrees for both coordinates
-    // to radians: radian = degree * π / 180
-    $lat1 = deg2rad($lat1);
-    $lng1 = deg2rad($lng1);
-    $lat2 = deg2rad($lat2);
-    $lng2 = deg2rad($lng2);
+    function distance($lat1, $lng1, $lat2, $lng2) {
+        // convert latitude/longitude degrees for both coordinates
+        // to radians: radian = degree * π / 180
+        $lat1 = deg2rad($lat1);
+        $lng1 = deg2rad($lng1);
+        $lat2 = deg2rad($lat2);
+        $lng2 = deg2rad($lng2);
 
-    // calculate great-circle distance
-    $distance = acos(sin($lat1) * sin($lat2) + cos($lat1) * cos($lat2) * cos($lng1 - $lng2));
+        // calculate great-circle distance
+        $distance = acos(sin($lat1) * sin($lat2) + cos($lat1) * cos($lat2) * cos($lng1 - $lng2));
 
-    // distance in human-readable format:
-    // earth's radius in km = ~6371
-    $distance = 6371 * $distance;
+        // distance in human-readable format:
+        // earth's radius in km = ~6371
+        return 6371 * $distance;
+    }
 
 Please note that the earth is not exactly spherical: the earth's radius is slightly larger at the equator (~6378 km) than at the poles (~6356 km), so the exact distance we just calculated may be slightly off.
 
@@ -93,7 +97,8 @@ To weed out these results that did fall into our rough boundaries, but are not a
 
     // weed out all results that turn out to be too far
     foreach ($results as $i => $result) {
-        if (distance($lat, $lng, $result['lat'], $result['lng']) > $distance) {
+        $resultDistance = distance($lat, $lng, $result['lat'], $result['lng']);
+        if ($resultDistance > $distance) {
             unset($results[$i]);
         }
     }
