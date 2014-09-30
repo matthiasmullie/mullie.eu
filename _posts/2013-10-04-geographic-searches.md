@@ -80,7 +80,7 @@ Or using the SPATIAL extension (no point in keeping `lat` and `lng` floats here;
 
 We have maxed out the speedy retrieval of coordinates, but not all matching coordinates actually fall within the distance we wanted to match. Using these boundaries, we've queried for a 2D square-like area, but we actually want to find results in a circle-like area. Here's an image to simplify why we're not yet done:
 
-![Picture](http://www.mullie.eu/wp-content/uploads/2013/10/geographic-searches-circle.png)
+![Picture]({{ site.baseurl }}public/posts/geographic-searches-circle.png)
 
 The black box signifies the area we've just queried the database for. The orange circle represents what would actually be a real 10-kilometer boundary. Notice how both white coordinates are within the rough boundaries, but only the bottom one is actually within the requested distance.
 
