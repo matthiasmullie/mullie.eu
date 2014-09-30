@@ -56,45 +56,45 @@ A full list of the available operators:
 
 <table>
   <tr>
-		<th>Character</th>
-		<th>Usage</th>
-	</tr>
-	<tr>
-		<td>+</td>
-		<td>Indicates that this word MUST be present in the text.</td>
-	</tr>
-	<tr>
-		<td>-</td>
-		<td>Excludes matches that include this word, it MUST NOT be present in the text.</td>
-	</tr>
-	<tr>
-		<td>(nothing)</td>
-		<td>Optionally includes this word. Could still result in a match if not present (depending on other search term matches), but will yield a higher relevance score if matched.</td>
-	</tr>
-	<tr>
-		<td>@distance</td>
-		<td>Indicates the search terms should appear within distance words of each other. E.g.: word1, word2 & word3 should all appear within an 8-words range: MATCH(col1) AGAINST('"word1 word2 word3" @8' IN BOOLEAN MODE)</td>
-	</tr>
-	<tr>
-		<td>&gt; &lt;</td>
-		<td>Increases or decreases a word's importance in the relevance score.</td>
-	</tr>
-	<tr>
-		<td>( )</td>
-		<td>Groups words into a subexpression. Operators can be applied to subexpressions as a whole as well as to specific words.</td>
-	</tr>
-	<tr>
-		<td>~</td>
-		<td>Instead of adding to the relevance score, the word preceded by this operator (when matched) subtracts from it. Most commonly used to downgrade potential noise.</td>
-	</tr>
-	<tr>
-		<td>*</td>
-		<td>Wildcard character, matches anything that begins with the word.<br>Rather than leading the word (like other operators), this operator is appended.</td>
-	</tr>
-	<tr>
-		<td>"</td>
-		<td>Everything inside double quotes must be matched exactly (words only, not punctuation)</td>
-	</tr>
+        <th>Character</th>
+        <th>Usage</th>
+    </tr>
+    <tr>
+        <td>+</td>
+        <td>Indicates that this word MUST be present in the text.</td>
+    </tr>
+    <tr>
+        <td>-</td>
+        <td>Excludes matches that include this word, it MUST NOT be present in the text.</td>
+    </tr>
+    <tr>
+        <td>(nothing)</td>
+        <td>Optionally includes this word. Could still result in a match if not present (depending on other search term matches), but will yield a higher relevance score if matched.</td>
+    </tr>
+    <tr>
+        <td>@distance</td>
+        <td>Indicates the search terms should appear within distance words of each other. E.g.: word1, word2 & word3 should all appear within an 8-words range: MATCH(col1) AGAINST('"word1 word2 word3" @8' IN BOOLEAN MODE)</td>
+    </tr>
+    <tr>
+        <td>&gt; &lt;</td>
+        <td>Increases or decreases a word's importance in the relevance score.</td>
+    </tr>
+    <tr>
+        <td>( )</td>
+        <td>Groups words into a subexpression. Operators can be applied to subexpressions as a whole as well as to specific words.</td>
+    </tr>
+    <tr>
+        <td>~</td>
+        <td>Instead of adding to the relevance score, the word preceded by this operator (when matched) subtracts from it. Most commonly used to downgrade potential noise.</td>
+    </tr>
+    <tr>
+        <td>*</td>
+        <td>Wildcard character, matches anything that begins with the word.<br>Rather than leading the word (like other operators), this operator is appended.</td>
+    </tr>
+    <tr>
+        <td>"</td>
+        <td>Everything inside double quotes must be matched exactly (words only, not punctuation)</td>
+    </tr>
 </table>
 
 Note that *(nothing)* indicates words are optional. This does not mean that, if nothing at all is matched, a result will be included. A column will still have to match at least 1 valid search term. Likewise, only within a set of matches, are - matches excluded: a clause with only a negated word does not make sense and will never return results, it should only be used in conjunction with (an)other (words) that are supposed to be match, then making sure matches excluding a certain word are stripped.
@@ -137,8 +137,8 @@ Effectively searching data scattered throughout your database and then sorting t
     SELECT id, title, image, text
     FROM blog
     WHERE
-    	publish_date > '2013-06-19 00:00:00' AND
-    	MATCH(title, text) AGAINST('lorem' IN BOOLEAN MODE)
+        publish_date > '2013-06-19 00:00:00' AND
+        MATCH(title, text) AGAINST('lorem' IN BOOLEAN MODE)
     ORDER BY MATCH(title, text) AGAINST('lorem' IN BOOLEAN MODE)
     LIMIT 0, 10;
 
@@ -165,54 +165,55 @@ Make sure to also keep a reference to the original source of that data. If some 
 A simplified example table could look like this, where text has a `FULLTEXT` index:
 
 <table>
-	<tr>
-		<th>component</th>
-		<th>component_id</th>
-		<th>text</th>
-	</tr>
-	<tr>
-		<td>blog</td>
-		<td>1</td>
-		<td>This is the title of blog entry #1</td>
-	</tr>
-	<tr>
-		<td>blog</td>
-		<td>1</td>
-		<td>This is the text of blog entry #1</td>
-	</tr>
-	<tr>
-		<td>blog</td>
-		<td>2</td>
-		<td>This is the title of blog entry #2</td>
-	</tr>
-	<tr>
-		<td>blog</td>
-		<td>2</td>
-		<td>This is the text of blog entry #2</td>
-	</tr>
-	<tr>
-		<td>page</td>
-		<td>1</td>
-		<td>This is the title of page #1</td>
-	</tr>
-	<tr>
-		<td>page</td>
-		<td>1</td>
-		<td>This is the text of page #1</td>
-	</tr>
-	<tr>
-		<td>...</td>
-		<td>...</td>
-		<td>...</td>
-	</tr>
+    <tr>
+        <th>component</th>
+        <th>component_id</th>
+        <th>text</th>
+    </tr>
+    <tr>
+        <td>blog</td>
+        <td>1</td>
+        <td>This is the title of blog entry #1</td>
+    </tr>
+    <tr>
+        <td>blog</td>
+        <td>1</td>
+        <td>This is the text of blog entry #1</td>
+    </tr>
+    <tr>
+        <td>blog</td>
+        <td>2</td>
+        <td>This is the title of blog entry #2</td>
+    </tr>
+    <tr>
+        <td>blog</td>
+        <td>2</td>
+        <td>This is the text of blog entry #2</td>
+    </tr>
+    <tr>
+        <td>page</td>
+        <td>1</td>
+        <td>This is the title of page #1</td>
+    </tr>
+    <tr>
+        <td>page</td>
+        <td>1</td>
+        <td>This is the text of page #1</td>
+    </tr>
+    <tr>
+        <td>...</td>
+        <td>...</td>
+        <td>...</td>
+    </tr>
 </table>
 
 We had to write some more boilerplate code in our application (to make it insert, update and delete the data into `blog` and `page`, as well as in `search_index`), but scanning and sorting all data in our database is trivial now:
 
-    SELECT *
+    SELECT *, SUM(MATCH(text) AGAINST('lorem' IN BOOLEAN MODE)) as score
     FROM search_index
     WHERE MATCH(text) AGAINST('lorem' IN BOOLEAN MODE)
-    ORDER BY MATCH(text) AGAINST('lorem' IN BOOLEAN MODE)
+    GROUP BY component, component_id
+    ORDER BY score DESC
     LIMIT 0, 10;
 
 ## Callback
@@ -224,17 +225,17 @@ Let's say we've just execute our query to `search_index` and it returned 7 blog 
     $results = /* Search results returned by querying search_index */;
     $components = array();
     foreach($results as $result) {
-    	$component = $result['component'];
-    	$componentId = $result['component_id'];
+        $component = $result['component'];
+        $componentId = $result['component_id'];
 
-    	// build a per-component array of component ids
-    	$components[$component][] = $components[$componentId];
+        // build a per-component array of component ids
+        $components[$component][] = $components[$componentId];
     }
     /*
     $components may now look like:
     array(
-    	'blog' => array(1, 2, 5, 8, 12, 13, 17),
-    	'page' => array(1, 3, 4)
+        'blog' => array(1, 2, 5, 8, 12, 13, 17),
+        'page' => array(1, 3, 4)
     );
     */
 
@@ -243,28 +244,28 @@ Having grouped those together, we can now fire individual, high-performance requ
     // functions to return detailed information for both blog &
     // page components, weeding out results that are no longer valid
     function blog($ids) {
-    	return mysqli_query('
-    		SELECT id, title, image, text
-    		FROM blog
-    		WHERE
-    			publish_date > '2013-06-19 00:00:00' AND
-    			id IN ('. implode( ',', $ids ) .')
-    	');
+        return mysqli_query('
+            SELECT id, title, image, text
+            FROM blog
+            WHERE
+                publish_date > '2013-06-19 00:00:00' AND
+                id IN ('. implode( ',', $ids ) .')
+        ');
     }
     function page($ids) {
-    	return mysqli_query('
-    		SELECT id, title, image
-    		FROM page
-    		WHERE id IN ('. implode( ',', $ids ) .')
-    	');
+        return mysqli_query('
+            SELECT id, title, image
+            FROM page
+            WHERE id IN ('. implode( ',', $ids ) .')
+        ');
     }
 
     // pass the per-component grouped ids to the callback functions
     // fill $verified with the actual verified search results
     $verified = array();
     foreach($components as $component => $ids) {
-    	$componentResults = call_user_func($component, $ids);
-    	$verified = array_merge($verified, $componentResults);
+        $componentResults = call_user_func($component, $ids);
+        $verified = array_merge($verified, $componentResults);
     }
 
 We now end up with exactly the same result we originally had. We did so in a scalable way, with only 3 highly performant queries, which all used an index.
@@ -274,10 +275,11 @@ We're almost there, but have not yet completely covered all edge cases. What act
 
 Quite easy: you can just do exactly the same round again, starting from offset 10, asking for 1 more search result. Like this:
 
-    SELECT *
+    SELECT *, SUM(MATCH(text) AGAINST('lorem' IN BOOLEAN MODE)) as score
     FROM search_index
     WHERE MATCH(text) AGAINST('lorem' IN BOOLEAN MODE)
-    ORDER BY MATCH(text) AGAINST('lorem' IN BOOLEAN MODE)
+    GROUP BY component, component_id
+    ORDER BY score DESC
     LIMIT 10, 3;
 
 Then go verify those results again and repeat until the full 10 results have been matched.
