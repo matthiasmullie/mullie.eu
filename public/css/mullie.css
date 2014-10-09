@@ -80,3 +80,8 @@ form#contact input[type=submit] {
 form#contact input[type=submit]:hover {
 	box-shadow: 0 0 4px #fff inset;
 }
+
+/* Override images; they should be inline by default */
+.content img {
+	display: inline;
+}
