@@ -15,7 +15,6 @@ While working on [a CMS](http://www.fork-cms.com) we had started, we wanted to s
 <!-- more -->
 
 # Minify
-[GitHub repo](https://github.com/matthiasmullie/minify)
 
 [![Build status](https://api.travis-ci.org/matthiasmullie/minify.svg?branch=master)](https://travis-ci.org/matthiasmullie/minify)
 [![Latest version](http://img.shields.io/packagist/v/matthiasmullie/minify.svg)](https://packagist.org/packages/matthiasmullie/minify)
