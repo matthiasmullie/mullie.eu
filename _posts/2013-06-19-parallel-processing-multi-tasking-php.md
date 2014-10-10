@@ -25,29 +25,31 @@ Threads are part of the same process, and will usually share the same memory & f
 
 The only multithreading solution in PHP is the pthreads extension. In it's most simple form, you'd write code like this to perform work asynchronously:
 
-    class ChildThread extends Thread {
-        public $data;
+```php
+class ChildThread extends Thread {
+    public $data;
 
-        public function run() {
-          /* Do some expensive work */
+    public function run() {
+      /* Do some expensive work */
 
-          $this->data = 'result of expensive work';
-        }
+      $this->data = 'result of expensive work';
     }
+}
 
-    $thread = new ChildThread();
+$thread = new ChildThread();
 
-    if ($thread->start()) {
-        /*
-         * Do some expensive work, while already doing other
-         * work in the child thread.
-         */
+if ($thread->start()) {
+    /*
+     * Do some expensive work, while already doing other
+     * work in the child thread.
+     */
 
-        // wait until thread is finished
-        $thread->join();
+    // wait until thread is finished
+    $thread->join();
 
-        // we can now even access $thread->data
-    }
+    // we can now even access $thread->data
+}
+```
 
 Results achieved via async processing in threading's most basic form, like this, can also be obtained via multiprocessing. All we do here is just splitting the work over 2 threads, to eventually, upon completion, process the second thread's result in the original thread. Threading really gains an edge over multiprocessing if it's necessary to transfer data between threads or to keep the execution of several steps in both threads in sync, via synchronized(), notify() and wait().
 
@@ -62,22 +64,24 @@ Amp\Thread is a particularly interesting implementation of pthreads along with t
 
 The cool thing about this project is that it hides the complex async work behind a promises-based interface, like:
 
-    function expensiveWork() {
-        /* Do some expensive work */
+```php
+function expensiveWork() {
+    /* Do some expensive work */
 
-        return 'result of expensive work';
-    }
+    return 'result of expensive work';
+}
 
-    $dispatcher = new Amp\Thread\Dispatcher;
+$dispatcher = new Amp\Thread\Dispatcher;
 
-    // call 2 expensive functions to be executed asynchronously
-    $promise1 = $dispatcher->call('expensiveWork');
-    $promise2 = $dispatcher->call('expensiveWork');
+// call 2 expensive functions to be executed asynchronously
+$promise1 = $dispatcher->call('expensiveWork');
+$promise2 = $dispatcher->call('expensiveWork');
 
-    $comboPromise = Amp\all([$promise1, $promise2]);
-    list($result1, $result2) = $comboPromise->wait();
+$comboPromise = Amp\all([$promise1, $promise2]);
+list($result1, $result2) = $comboPromise->wait();
 
-    // $result1 & $result2 now contain the results of both threads
+// $result1 & $result2 now contain the results of both threads
+```
 
 **Amp/Thread is designed specifically for CLI applications. You'll need PHP5.5+ and pthreads installed.**
 
@@ -90,49 +94,51 @@ A process is 1 independent application run. While one PHP process can spawn a se
 
 Forking a process will result in the request being cloned into an exact replica, though with it's own address space. Both the parent and the child (forked) process will be exactly the same up until the moment of the fork, e.g.: any variables up to that point will be exactly the same in both processes. After forking, changing a variable's value in one process doesn't affect the other process though.
 
-    $var = 'one';
+```php
+$var = 'one';
 
-    $pid = pcntl_fork();
+$pid = pcntl_fork();
+
+/*
+ * From this point on, the process has been forked (or
+ * $pid will be -1 in case of failure.)
+ *
+ * $pid will be a different value in parent & child process:
+ * * in parent: $pid will be the process id of the child
+ * * in child: $pid will be 0 (zero)
+ *
+ * We can define 2 separate code paths for both processes,
+ * using $pid.
+ */
+
+if ($pid === -1) {
+    exit; // failed to fork
+} elseif ($pid === 0) {
+    // $pid = 0, this is the child thread
 
     /*
-     * From this point on, the process has been forked (or
-     * $pid will be -1 in case of failure.)
-     *
-     * $pid will be a different value in parent & child process:
-     * * in parent: $pid will be the process id of the child
-     * * in child: $pid will be 0 (zero)
-     *
-     * We can define 2 separate code paths for both processes,
-     * using $pid.
+     * Existing variables will live in both processes,
+     * but changes will not affect other process.
+     */
+    echo $var; // will output 'one'
+    $var = 'two'; // will not affect parent process
+
+    /* Do some expensive work */
+} else {
+    // $pid != 0, this is the parent thread
+
+    /*
+     * Do some expensive work, while already doing other
+     * work in the child process.
      */
 
-    if ($pid === -1) {
-        exit; // failed to fork
-    } elseif ($pid === 0) {
-        // $pid = 0, this is the child thread
+    echo $var; // will output 'one'
+    $var = 'three'; // will not affect child process
 
-        /*
-         * Existing variables will live in both processes,
-         * but changes will not affect other process.
-         */
-        echo $var; // will output 'one'
-        $var = 'two'; // will not affect parent process
-
-        /* Do some expensive work */
-    } else {
-        // $pid != 0, this is the parent thread
-
-        /*
-         * Do some expensive work, while already doing other
-         * work in the child process.
-         */
-
-        echo $var; // will output 'one'
-        $var = 'three'; // will not affect child process
-
-        // make sure the parent outlives the child process
-        pcntl_wait($status);
-    }
+    // make sure the parent outlives the child process
+    pcntl_wait($status);
+}
+```
 
 For processing data in parallel, multiprocessing can be a perfectly valid solution. It's no 1-on-1 substitute for multithreading though: it's a separate technique entirely, and both just happen to be useful for multitasking. And although multithreading makes it much easier to synchronize threads or swap data from parent to children, it can be accomplished in multiprocessing too, manually, via external resources (e.g. via files, databases, caches.). Beware of simultaneous requests though!
 
@@ -145,30 +151,34 @@ While we've seen 2 strategies to split one request into 2 different execution pa
 
 **child.php**
 
-    /*
-     * This is the child process, it'll be launched
-     * from the parent process.
-     */
+```php
+/*
+ * This is the child process, it'll be launched
+ * from the parent process.
+ */
 
-    /* Do some expensive work */
+/* Do some expensive work */
+```
 
 **parent.php**
 
-    /*
-     * This is the process being called by the user.
-     * From here, we'll launch child process child.php
-     */
+```php
+/*
+ * This is the process being called by the user.
+ * From here, we'll launch child process child.php
+ */
 
-    // open child process
-    $child = popen('php child.php', 'r');
+// open child process
+$child = popen('php child.php', 'r');
 
-    /*
-     * Do some expensive work, while already doing other
-     * work in the child process.
-     */
+/*
+ * Do some expensive work, while already doing other
+ * work in the child process.
+ */
 
-    // get response from child (if any) as soon at it's ready:
-    $response = stream_get_contents($child);
+// get response from child (if any) as soon at it's ready:
+$response = stream_get_contents($child);
+```
 
 This is an extremely simple example: the child process will be launched without any context whatsoever. You could however also pass along some parameters relevant to the child script. E.g. `popen('php child.php -f filename.txt', 'r');` would pass a filename to the child script, which could add some context for that script on what exactly it should process.
 
@@ -191,27 +201,31 @@ This approach looks very similar to the `popen` solution. For `fopen`, this woul
 
 **child.php**
 
-    /*
-     * This is the child process, it'll be launched
-     * from the parent process.
-     */
+```php
+/*
+ * This is the child process, it'll be launched
+ * from the parent process.
+ */
 
-    /* Do some expensive work */
+/* Do some expensive work */
+```
 
 **parent.php**
 
-    /*
-     * This is the process being called. From here,
-     * we'll launch child process child.php
-     */
+```php
+/*
+ * This is the process being called. From here,
+ * we'll launch child process child.php
+ */
 
-    // open child process
-    $child = fopen('http://'.$_SERVER['HTTP_HOST'].'/child.php', 'r');
+// open child process
+$child = fopen('http://'.$_SERVER['HTTP_HOST'].'/child.php', 'r');
 
-    /*
-     * Do some expensive work, while already doing other
-     * work in the child process.
-     */
+/*
+ * Do some expensive work, while already doing other
+ * work in the child process.
+ */
 
-    // get response from child (if any) as soon at it's ready:
-    $response = stream_get_contents($child);
+// get response from child (if any) as soon at it's ready:
+$response = stream_get_contents($child);
+```

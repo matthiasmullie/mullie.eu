@@ -53,13 +53,17 @@ One of the CSS minifier's features is that it will include all the content of `@
 
 **/css/parent.css**
 
-    @import 'subdir/child.css';
+```css
+@import 'subdir/child.css';
+```
 
 **/css/subdir/child.css**
 
-    body: {
-        background: url('../../images/my-fancy-background.gif');
-    }
+```css
+body: {
+    background: url('../../images/my-fancy-background.gif');
+}
+```
 
 If we just replace the `@import` line in parent.css with the content of *subdir/child.css*, you'd see that the path for the background image would now be incorrect. It would still reference *../../images/my-fancy-background.gif*, but would now use the location of *parent.css* (which is in a higher directory) to resolve that path against.
 
@@ -67,12 +71,14 @@ Not only was this potentially a problem for combining imports, it would also pro
 
 Anyway, that problem has been tackled. The rest of the CSS minifier is relatively straightforward, although some of the regular expressions are quite complex, mostly due to differences in syntax when referencing other files:
 
-    @import file.css;
-    @import 'file.css';
-    @import "file.css";
-    @import url(file.css);
-    @import url('file.css');
-    @import url("file.css");
+```css
+@import file.css;
+@import 'file.css';
+@import "file.css";
+@import url(file.css);
+@import url('file.css');
+@import url("file.css");
+```
 
 ## JS
 
@@ -86,21 +92,31 @@ Now on the the nasty parts.
 
 Imagine you want to strip all single-line comments from the JavaScript source code: Seems simple, right? All we need is something like:
 
-    $content = preg_replace('|//.*$|m', '', $content);
+```php
+$content = preg_replace('|//.*$|m', '', $content);
+```
 
 Right! However, what if this was our content?
 
-    alert("Here's a string that happens to have 2 // inside of it");
+```javascript
+alert("Here's a string that happens to have 2 // inside of it");
+```
 
 Or perhaps:
 
-    var a=/abc\/def\//.test("abc");
+```javascript
+var a=/abc\/def\//.test("abc");
+```
 
 Our source code would've been minified to either of these, which would've broken it:
 
-    alert("Here's a string that happens to have 2
+```javascript
+alert("Here's a string that happens to have 2
+```
 
-    var a=/abc\/def\
+```javascript
+var a=/abc\/def\
+```
 
 It's important to know the context you're operating in:
 
@@ -115,17 +131,25 @@ Another ball-buster: [automatic semicolon insertion](http://en.wikipedia.org/wik
 
 When minifying the source code, it's all about getting rid of as much redundant code as possible, including newlines. Because of ASI, though, we can't reliably strip newlines: if the semicolon was omitted, joining both lines can cause the code to stop making sense. E.g.:
 
-    var a = 1,
-        b = 2
+```javascript
+var a = 1,
+    b = 2
+```
 
-    var a = 1
-    var b = 2
+```javascript
+var a = 1
+var b = 2
+```
 
 If we were to strip newlines for both, we would get:
 
-    var a = 1,b = 2
+```javascript
+var a = 1,b = 2
+```
 
-    var a = 1var b = 2
+```javascript
+var a = 1var b = 2
+```
 
 Now that last one doesn't look good, does it?
 
@@ -137,23 +161,31 @@ I've worked around this particular problem by:
 
 This gets us most of the way there with respect to stripping newlines, but there's still some that can't yet reliably be removed without properly interpreting the code. Consider:
 
-    function test()
-    {
-       return 'test';
-    }
+```javascript
+function test()
+{
+   return 'test';
+}
+```
 
 and:
 
-    var string = test()
-    alert(string)
+```javascript
+var string = test()
+alert(string)
+```
 
 One of the characters after which I'm not stripping newlines is the closing parenthesis, because it can be used in multiple different contexts. In our first example, we'd be just fine:
 
-    function test(){return 'test'}
+```javascript
+function test(){return 'test'}
+```
 
 In our second example, though, not so much. This would, again, cause an error:
 
-    var string=test()alert(string)
+```javascript
+var string=test()alert(string)
+```
 
 I'm not particularly on a witch-hunt against newlines: they're only 1 character, just like a semicolon. But yes, some still survive that could be omitted entirely. Let's just say that I'll keep ignoring this for now.
 

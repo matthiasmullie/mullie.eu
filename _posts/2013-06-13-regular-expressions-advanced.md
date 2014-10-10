@@ -34,18 +34,22 @@ In the [basic tutorial](http://blog.mullie.eu/regular-expressions-basics/), we'v
 
 Subpatterns are really fun. They're like those tiny little "regular expressions inside a regular expression" and unlock so many neat features.
 
-    $text = '<p id="element">Hi, this is some text</p>';
-    $pattern = '/<([a-z][a-z0-9]*).*>(.*)<\/\\1>/is';
-    if(preg_match($pattern, $text, $match)) {
-        var_dump($match);
-    }
+```php
+$text = '<p id="element">Hi, this is some text</p>';
+$pattern = '/<([a-z][a-z0-9]*).*>(.*)<\/\\1>/is';
+if(preg_match($pattern, $text, $match)) {
+    var_dump($match);
+}
+```
 
 The output of this code will be:
 
-    array
-      0 => string '<p id="element">Hi, this is some text</p>' (length=41)
-      1 => string 'p' (length=1)
-      2 => string 'Hi, this is some text' (length=21)
+```
+array
+  0 => string '<p id="element">Hi, this is some text</p>' (length=41)
+  1 => string 'p' (length=1)
+  2 => string 'Hi, this is some text' (length=21)
+```
 
 The first value (index 0) is the result of the full regular expression, the other 2 values (index 1 & 2) are the result of the 2 subpatterns, making it really easy to grab specific data right from the results. This is also the index they're available at for back referencing.
 
@@ -57,17 +61,21 @@ The results can be fine-tuned even better though. Since subpatterns can be used 
 
 ## Example
 
-    $text = '<p id="element">Hi, this is some text</p>';
-    $pattern = '/<([a-z][a-z0-9]*).*>(?:.*)<\/\\1>/is';
-    if(preg_match($pattern, $text, $match)) {
-        var_dump($match);
-    }
+```php
+$text = '<p id="element">Hi, this is some text</p>';
+$pattern = '/<([a-z][a-z0-9]*).*>(?:.*)<\/\\1>/is';
+if(preg_match($pattern, $text, $match)) {
+    var_dump($match);
+}
+```
 
 The output of this code will be:
 
-    array
-      0 => string '<p id="element">Hi, this is some text</p>' (length=41)
-      1 => string 'p' (length=1)
+```
+array
+  0 => string '<p id="element">Hi, this is some text</p>' (length=41)
+  1 => string 'p' (length=1)
+```
 
 Notice how the second subpattern no longer shows up in our match!
 
@@ -77,20 +85,24 @@ But the manipulation of the subpatterns doesn't stop there. Not only can we cont
 
 ## Example
 
-    $text = '<p id="element">Hi, this is some text</p>';
-    $pattern = '/<(?P<tag>[a-z][a-z0-9]*).*>(?P<content>.*)<\/(?P=tag)>/is';
-    if(preg_match($pattern, $text, $match)) {
-        var_dump($match);
-    }
+```php
+$text = '<p id="element">Hi, this is some text</p>';
+$pattern = '/<(?P<tag>[a-z][a-z0-9]*).*>(?P<content>.*)<\/(?P=tag)>/is';
+if(preg_match($pattern, $text, $match)) {
+    var_dump($match);
+}
+```
 
 The output of this code will be:
 
-    array
-      0 => string '<p id="element">Hi, this is some text</p>' (length=41)
-      'tag' => string 'p' (length=1)
-      1 => string 'p' (length=1)
-      'content' => string 'Hi, this is some text' (length=21)
-      2 => string 'Hi, this is some text' (length=21)
+```
+array
+  0 => string '<p id="element">Hi, this is some text</p>' (length=41)
+  'tag' => string 'p' (length=1)
+  1 => string 'p' (length=1)
+  'content' => string 'Hi, this is some text' (length=21)
+  2 => string 'Hi, this is some text' (length=21)
+```
 
 Now that we have descriptive keys mapped to our values (instead of indices), your database abstraction layer or template engine may even accept your data-array as-is, without having to loop it over once more just to "pretty-format" it.
 
@@ -109,17 +121,20 @@ The condition can either be a back reference, where *condition* is the index of 
 
 The more complicated these concepts get, the harder it becomes to come up with a plausible example. Let's pretend we're trying to match CSS @import statements, which can come in both of the below forms:
 
-    $test = '
-    @import url("path/to/my/first/style.css");
-    @import "path/to/my/second/style.css");
-    ';
+```php
+$test = '
+@import url("path/to/my/first/style.css");
+@import "path/to/my/second/style.css");
+';
+```
 
 Both with and without `url()` enclosure constitute a valid @import statement, which makes is slightly harder to match the patch in a single regex. Let's try though:
 
-    if(preg_match_all('/@import (url\()?"(.*?)"(?(1)\))/', $test, $matches))
-    {
-      var_dump($matches);
-    }
+```php
+if(preg_match_all('/@import (url\()?"(.*?)"(?(1)\))/', $test, $matches)) {
+  var_dump($matches);
+}
+```
 
 What the above regex does is first start by matching the *@import* statement. After that, it'll search for an **optional** subpattern that will match *url(*.
 After that, we're looking for an opening double quote (ignoring that this may also be single quotes) and capturing the path to the imported CSS file, followed by a closing double quote.
@@ -127,19 +142,21 @@ Then the interesting stuff happens: the conditional subpattern will check for co
 
 The result of $matches will look like this, with index 2 holding the paths to both imports. Index 1 is the result of the optional subpattern that was used as a condition to check if we need to look for a closing parentheses.
 
+```
+array
+  0 =>
     array
-      0 =>
-        array
-          0 => string '@import url("path/to/my/first/style.css")' (length=41)
-          1 => string '@import "path/to/my/second/style.css"' (length=37)
-      1 =>
-        array
-          0 => string 'url(' (length=4)
-          1 => string '' (length=0)
-      2 =>
-        array
-          0 => string 'path/to/my/first/style.css' (length=26)
-          1 => string 'path/to/my/second/style.css' (length=27)
+      0 => string '@import url("path/to/my/first/style.css")' (length=41)
+      1 => string '@import "path/to/my/second/style.css"' (length=37)
+  1 =>
+    array
+      0 => string 'url(' (length=4)
+      1 => string '' (length=0)
+  2 =>
+    array
+      0 => string 'path/to/my/first/style.css' (length=26)
+      1 => string 'path/to/my/second/style.css' (length=27)
+```
 
 # Assertions
 [PHP Docs](http://www.php.net/manual/en/regexp.reference.assertions.php)
@@ -169,24 +186,29 @@ Fixed length means that you must avoid the use of non-fixed quantifiers, like `*
 
 ## Example
 
-    $test = 'I found a €5 note today.
-    $this, however is just a simple PHP variable.';
+```php
+$test = 'I found a €5 note today.
+$this, however is just a simple PHP variable.';
+```
 
 If we're looking to solve the aforementioned problem of finding all currencies in a text, we'll notice that in this text the € symbol is used as EUR currency, while the $ does not stand for USD here. We'll want to verify that the currency symbols are actually followed by a number:
 
-    if(preg_match_all('/[$€£¥](?=[0-9])/u', $test, $matches))
-    {
-    	var_dump($matches);
-    }
+```php
+if(preg_match_all('/[$€£¥](?=[0-9])/u', $test, $matches)) {
+    var_dump($matches);
+}
+```
 
 *Also note how pattern modifier PCRE_UTF8 is used to make the regular expression correctly interpret the multibyte UTF8 currency symbols.*
 
 The output of this solution will accurately only match the EUR symbol:
 
+```
+array
+  0 =>
     array
-      0 =>
-        array
-          0 => string '€' (length=3)
+      0 => string '€' (length=3)
+```
 
 # Comments
 [PHP Docs](http://www.php.net/manual/en/regexp.reference.comments.php)
@@ -195,14 +217,16 @@ I very much encourage you to write documentation for your regular expressions. R
 
 Comment them correctly though: there is no need to split them into several separate strings and concatenate them in PHP, only to be able to add PHP-style comments. Perl-style comments can be added inline, in a regular expression, via the use of the PCRE_EXTENDED pattern modifier. The use of this modifier will result in unescaped whitespace being ignored in your regex.
 
-    /
-    	# match currency symbols for USD, EUR, GBP & YEN
-    	[$€£¥]
-    	# currency symbols must be followed by number, to indicate price
-    	(?=[0-9])
-    # pattern modifiers: u for UTF-8 interpretation (currency symbols),
-    # x to ignore whitespace (for comments)
-    /ux
+```
+/
+    # match currency symbols for USD, EUR, GBP & YEN
+    [$€£¥]
+    # currency symbols must be followed by number, to indicate price
+    (?=[0-9])
+# pattern modifiers: u for UTF-8 interpretation (currency symbols),
+# x to ignore whitespace (for comments)
+/ux
+```
 
 Everything following the # will be regarded as a comment, up until the end of the line/regex. The x-modifier will ensure that the tabs before & newlines after the comments are also ignored.
 

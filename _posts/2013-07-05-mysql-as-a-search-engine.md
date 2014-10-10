@@ -36,16 +36,20 @@ Apart from not providing too much options, they don't accurately utilise indexes
 What you'll want to do is add a `FULLTEXT` index to the column you'll want to search, and build your query using `MATCH(column) AGAINST(word)`.
 In it's most simple form, this could look like:
 
-    SELECT *
-    FROM table
-    WHERE MATCH(column) AGAINST('word');
+```sql
+SELECT *
+FROM table
+WHERE MATCH(column) AGAINST('word');
+```
 
 MATCH even returns a score, so you can sort your results based on relevance (don't worry, the second MATCH won't cause additional overhead):
 
-    SELECT *
-    FROM table
-    WHERE MATCH(column) AGAINST('word')
-    ORDER BY MATCH(column) AGAINST('word') DESC;
+```sql
+SELECT *
+FROM table
+WHERE MATCH(column) AGAINST('word')
+ORDER BY MATCH(column) AGAINST('word') DESC;
+```
 
 ## In boolean mode
 [MySQL Docs](http://dev.mysql.com/doc/refman/5.7/en/fulltext-boolean.html)
@@ -104,19 +108,27 @@ Note that *(nothing)* indicates words are optional. This does not mean that, if 
 
 Rows MUST contain *lorem*. *Ipsum* is optional, but if *ipsum* too is found, the row should score higher than if it's not.
 
-    MATCH(column) AGAINST('+lorem ipsum' IN BOOLEAN MODE)
+```sql
+MATCH(column) AGAINST('+lorem ipsum' IN BOOLEAN MODE)
+```
 
 Rows MUST contain *lorem*, but MUST NOT contain *dolor*. *Ipsum* is optional.
 
-    MATCH(column) AGAINST('+lorem ipsum -dolor' IN BOOLEAN MODE)
+```sql
+MATCH(column) AGAINST('+lorem ipsum -dolor' IN BOOLEAN MODE)
+```
 
 Rows MUST contain both *lorem* and *ipsum*. If sequential, in exactly that order, it'll score higher than if both words are scattered around the text (because that'll satisfy both subexpressions, scoring twice)
 
-    MATCH(column) AGAINST('(+lorem +ipsum) ("lorem ipsum")' IN BOOLEAN MODE)
+```sql
+MATCH(column) AGAINST('(+lorem +ipsum) ("lorem ipsum")' IN BOOLEAN MODE)
+```
 
 Rows should contain either *lorem* or anything starting with *ips*. Matches with *lorem* should score higher than matches with words starting with *ips*.
 
-    MATCH(column) AGAINST('>lorem <ips*' IN BOOLEAN MODE)
+```sql
+MATCH(column) AGAINST('>lorem <ips*' IN BOOLEAN MODE)
+```
 
 ## Caveats
 
@@ -135,19 +147,23 @@ Now that we know how to accurately search in MySQL, you'll find it gets increasi
 
 Effectively searching data scattered throughout your database and then sorting them based on the search relevance score, it's quite impossible. You may be tempted to fire multiple queries per table, like:
 
-    SELECT id, title, image, text
-    FROM blog
-    WHERE
-        publish_date > '2013-06-19 00:00:00' AND
-        MATCH(title, text) AGAINST('lorem' IN BOOLEAN MODE)
-    ORDER BY MATCH(title, text) AGAINST('lorem' IN BOOLEAN MODE)
-    LIMIT 0, 10;
+```sql
+SELECT id, title, image, text
+FROM blog
+WHERE
+    publish_date > '2013-06-19 00:00:00' AND
+    MATCH(title, text) AGAINST('lorem' IN BOOLEAN MODE)
+ORDER BY MATCH(title, text) AGAINST('lorem' IN BOOLEAN MODE)
+LIMIT 0, 10;
+```
 
-    SELECT id, title, text
-    FROM pages
-    WHERE MATCH(title, text) AGAINST('lorem' IN BOOLEAN MODE)
-    ORDER BY MATCH(title, text) AGAINST('lorem' IN BOOLEAN MODE)
-    LIMIT 10, 0;
+```sql
+SELECT id, title, text
+FROM pages
+WHERE MATCH(title, text) AGAINST('lorem' IN BOOLEAN MODE)
+ORDER BY MATCH(title, text) AGAINST('lorem' IN BOOLEAN MODE)
+LIMIT 10, 0;
+```
 
 **Bad idea**! The queries are A-OK, but you're leaving it up to PHP (or your language of choice) to compile the data. Finding the first 10 result, over multiple tables, is not too hard: you just make every query return the first 10 results, puzzle the very top 10 together and discard the rest.
 
@@ -210,12 +226,14 @@ A simplified example table could look like this, where text has a `FULLTEXT` ind
 
 We had to write some more boilerplate code in our application (to make it insert, update and delete the data into `blog` and `page`, as well as in `search_index`), but scanning and sorting all data in our database is trivial now:
 
-    SELECT *, SUM(MATCH(text) AGAINST('lorem' IN BOOLEAN MODE)) as score
-    FROM search_index
-    WHERE MATCH(text) AGAINST('lorem' IN BOOLEAN MODE)
-    GROUP BY component, component_id
-    ORDER BY score DESC
-    LIMIT 0, 10;
+```sql
+SELECT *, SUM(MATCH(text) AGAINST('lorem' IN BOOLEAN MODE)) as score
+FROM search_index
+WHERE MATCH(text) AGAINST('lorem' IN BOOLEAN MODE)
+GROUP BY component, component_id
+ORDER BY score DESC
+LIMIT 0, 10;
+```
 
 ## Callback
 
@@ -223,51 +241,55 @@ You may not have noticed, but the original example for finding blog posts also i
 
 Let's say we've just execute our query to `search_index` and it returned 7 blog entries and 3 pages. We can group those together
 
-    $results = /* Search results returned by querying search_index */;
-    $components = array();
-    foreach($results as $result) {
-        $component = $result['component'];
-        $componentId = $result['component_id'];
+```php
+$results = /* Search results returned by querying search_index */;
+$components = array();
+foreach($results as $result) {
+    $component = $result['component'];
+    $componentId = $result['component_id'];
 
-        // build a per-component array of component ids
-        $components[$component][] = $components[$componentId];
-    }
-    /*
-    $components may now look like:
-    array(
-        'blog' => array(1, 2, 5, 8, 12, 13, 17),
-        'page' => array(1, 3, 4)
-    );
-    */
+    // build a per-component array of component ids
+    $components[$component][] = $components[$componentId];
+}
+/*
+$components may now look like:
+array(
+    'blog' => array(1, 2, 5, 8, 12, 13, 17),
+    'page' => array(1, 3, 4)
+);
+*/
+```
 
 Having grouped those together, we can now fire individual, high-performance requests to both specific tables, which can now weed out search results that, after all, should not be included.
 
-    // functions to return detailed information for both blog &
-    // page components, weeding out results that are no longer valid
-    function blog($ids) {
-        return mysqli_query('
-            SELECT id, title, image, text
-            FROM blog
-            WHERE
-                publish_date > '2013-06-19 00:00:00' AND
-                id IN ('. implode( ',', $ids ) .')
-        ');
-    }
-    function page($ids) {
-        return mysqli_query('
-            SELECT id, title, image
-            FROM page
-            WHERE id IN ('. implode( ',', $ids ) .')
-        ');
-    }
+```php
+// functions to return detailed information for both blog &
+// page components, weeding out results that are no longer valid
+function blog($ids) {
+    return mysqli_query('
+        SELECT id, title, image, text
+        FROM blog
+        WHERE
+            publish_date > '2013-06-19 00:00:00' AND
+            id IN ('. implode( ',', $ids ) .')
+    ');
+}
+function page($ids) {
+    return mysqli_query('
+        SELECT id, title, image
+        FROM page
+        WHERE id IN ('. implode( ',', $ids ) .')
+    ');
+}
 
-    // pass the per-component grouped ids to the callback functions
-    // fill $verified with the actual verified search results
-    $verified = array();
-    foreach($components as $component => $ids) {
-        $componentResults = call_user_func($component, $ids);
-        $verified = array_merge($verified, $componentResults);
-    }
+// pass the per-component grouped ids to the callback functions
+// fill $verified with the actual verified search results
+$verified = array();
+foreach($components as $component => $ids) {
+    $componentResults = call_user_func($component, $ids);
+    $verified = array_merge($verified, $componentResults);
+}
+```
 
 We now end up with exactly the same result we originally had. We did so in a scalable way, with only 3 highly performant queries, which all used an index.
 To fetch 10 entries, the worst possible case is that we end up with 11 different queries: 1 to `search_index`, which utilises the `FULLTEXT` index, and potentially 10 queries to 10 different tables to verify the results, where the query utilised the indexed primary key column.
@@ -276,12 +298,14 @@ We're almost there, but have not yet completely covered all edge cases. What act
 
 Quite easy: you can just do exactly the same round again, starting from offset 10, asking for 1 more search result. Like this:
 
-    SELECT *, SUM(MATCH(text) AGAINST('lorem' IN BOOLEAN MODE)) as score
-    FROM search_index
-    WHERE MATCH(text) AGAINST('lorem' IN BOOLEAN MODE)
-    GROUP BY component, component_id
-    ORDER BY score DESC
-    LIMIT 10, 3;
+```sql
+SELECT *, SUM(MATCH(text) AGAINST('lorem' IN BOOLEAN MODE)) as score
+FROM search_index
+WHERE MATCH(text) AGAINST('lorem' IN BOOLEAN MODE)
+GROUP BY component, component_id
+ORDER BY score DESC
+LIMIT 10, 3;
+```
 
 Then go verify those results again and repeat until the full 10 results have been matched.
 

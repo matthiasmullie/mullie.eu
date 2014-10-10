@@ -16,11 +16,13 @@ A myriad of features may prompt the need to aggregate your data, like showing an
 
 In moderately sized datasets, you could just construct a query using [MySQL's aggregate functions](http://dev.mysql.com/doc/refman/5.7/en/group-by-functions.html), like:
 
-    SELECT COUNT(*)
-    FROM products
-    WHERE
-        category = 'accessories' AND
-        color = 'green'
+```sql
+SELECT COUNT(*)
+FROM products
+WHERE
+    category = 'accessories' AND
+    color = 'green'
+```
 
 Obviously, the above query would return all entries that, for columns `category` and `color`, have the values 'accessories' and 'green'. It would do so by looping all entries in this table, comparing the values for `category` and `color` to those respective values.
 
@@ -37,65 +39,67 @@ If your data table has millions of entries, you can imagine it makes more sense 
 An example rollup table could look like this:
 
 <table>
-  <tr>
-		<th>category</th>
-		<th>color</th>
-		<th>total</th>
-	</tr>
-	<tr>
-		<td>shirts</td>
-		<td>red</td>
-		<td>23578347</td>
-	</tr>
-	<tr>
-		<td>shirts</td>
-		<td>green</td>
-		<td>14364323</td>
-	</tr>
-	<tr>
-		<td>shirts</td>
-		<td>blue</td>
-		<td>46723343</td>
-	</tr>
-	<tr>
-		<td>accessories</td>
-		<td>red</td>
-		<td>3452465</td>
-	</tr>
-	<tr>
-		<td>accessories</td>
-		<td>green</td>
-		<td>867665</td>
-	</tr>
-	<tr>
-		<td>accessories</td>
-		<td>blue</td>
-		<td>7609852</td>
-	</tr>
-	<tr>
-		<td>pants</td>
-		<td>red</td>
-		<td>56878766</td>
-	</tr>
-	<tr>
-		<td>pants</td>
-		<td>green</td>
-		<td>87067876</td>
-	</tr>
-	<tr>
-		<td>pants</td>
-		<td>blue</td>
-		<td>759457363</td>
-	</tr>
+    <tr>
+        <th>category</th>
+        <th>color</th>
+        <th>total</th>
+    </tr>
+    <tr>
+        <td>shirts</td>
+        <td>red</td>
+        <td>23578347</td>
+    </tr>
+    <tr>
+        <td>shirts</td>
+        <td>green</td>
+        <td>14364323</td>
+    </tr>
+    <tr>
+        <td>shirts</td>
+        <td>blue</td>
+        <td>46723343</td>
+    </tr>
+    <tr>
+        <td>accessories</td>
+        <td>red</td>
+        <td>3452465</td>
+    </tr>
+    <tr>
+        <td>accessories</td>
+        <td>green</td>
+        <td>867665</td>
+    </tr>
+    <tr>
+        <td>accessories</td>
+        <td>blue</td>
+        <td>7609852</td>
+    </tr>
+    <tr>
+        <td>pants</td>
+        <td>red</td>
+        <td>56878766</td>
+    </tr>
+    <tr>
+        <td>pants</td>
+        <td>green</td>
+        <td>87067876</td>
+    </tr>
+    <tr>
+        <td>pants</td>
+        <td>blue</td>
+        <td>759457363</td>
+    </tr>
 </table>
 
 Assuming you accurately keep these totals in sync with the atomic source data in `products`, you'd be much better of executing this query:
 
-    SELECT total
-    FROM products_rollup
-    WHERE
-        category = 'accessories' AND
-        color = 'green'
+```sql
+SELECT total
+FROM products_rollup
+WHERE
+    category = 'accessories' AND
+    color = 'green'
+```
 
 # Keeping rollup data in sync
 
@@ -105,10 +109,12 @@ You'll always want the rollup table's totals to accurately reflect the data in t
 
 In it's most basic form, you could recalculate all rollup values immediately after updating data in the source table. What you'd do is query the source table (in our example, `products`) and `GROUP BY` the rollup columns. MySQL will loop all source records and respond with up-to-date rollup values, which you can immediately write to your rollup table:
 
-    REPLACE INTO products_rollup
-    SELECT category, color, COUNT(*)
-    FROM products
-    GROUP BY category, color
+```sql
+REPLACE INTO products_rollup
+SELECT category, color, COUNT(*)
+FROM products
+GROUP BY category, color
+```
 
 This is the easiest approach to keep your data in sync where, no matter what you change to your source table's data, all rollup data will accurately be updated.
 
@@ -124,58 +130,68 @@ Although it's slightly more work to implement than the full recalc, this too can
 
 For starters, we would query the source table this entry's columns relevant to the rollup table: `category` and `color`:
 
-    SELECT category, color
-    FROM products
-    WHERE id = 1
+```sql
+SELECT category, color
+FROM products
+WHERE id = 1
+```
 
 This could, for example, return:
 
 <table>
-	<tr>
-		<th>category</th>
-		<th>color</th>
-	</tr>
-	<tr>
-		<td>shirts</td>
-		<td>green</td>
-	</tr>
+    <tr>
+        <th>category</th>
+        <th>color</th>
+    </tr>
+    <tr>
+        <td>shirts</td>
+        <td>green</td>
+    </tr>
 </table>
 
 After this, we update an entry, e.g.:
 
-    UPDATE products
-    SET
-        category = 'shirts',
-        color = 'blue'
-    WHERE id = 1
+```sql
+UPDATE products
+SET
+    category = 'shirts',
+    color = 'blue'
+WHERE id = 1
+```
 
 And now, again, we issue another read-query for this entry, to identify which to the rollup table relevant values have changed:
 
-    SELECT category, color
-    FROM products
-    WHERE id = 1
+```sql
+SELECT category, color
+FROM products
+WHERE id = 1
+```
 
 This would now return:
 
 <table>
-	<tr>
-		<th>category</th>
-		<th>color</th>
-	</tr>
-	<tr>
-		<td>shirts</td>
-		<td>blue</td>
-	</tr>
+    <tr>
+        <th>category</th>
+        <th>color</th>
+    </tr>
+    <tr>
+        <td>shirts</td>
+        <td>blue</td>
+    </tr>
 </table>
 
 Now we know exactly what rollups should change. The entry was originally shirts/green. It is not anymore, so we should deduct this one entry from that total for shirts/green. Since the entry is now shirts/blue, we should increase that rollup:
 
-    UPDATE products_rollup
-    SET value = value - 1
-    WHERE category = 'shirts' AND color = 'green'
+```sql
+UPDATE products_rollup
+SET value = value - 1
+WHERE category = 'shirts' AND color = 'green'
+```
 
-    UPDATE products_rollup
-    SET value = value + 1
-    WHERE category = 'shirts' AND color = 'blue'
+```sql
+UPDATE products_rollup
+SET value = value + 1
+WHERE category = 'shirts' AND color = 'blue'
+```
 
 You'll probably have noticed that this approach results in a couple of additional queries, none of which is expensive to execute, though. The 2 read queries can efficiently use the (primary key) index on the source table's id column, and both update queries are better than replacing all values in the rollup table.

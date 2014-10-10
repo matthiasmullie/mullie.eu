@@ -28,21 +28,23 @@ To calculate bird's-eye distance between 2 coordinates, geometry finally comes i
 
 The earth's radius is approximately 6371 kilometres or 3959 miles. Said radius multiplied by the [great-circle distance](http://en.wikipedia.org/wiki/Great-circle_distance) calculated between the 2 coordinates mapped on a sphere, should yield the distance between both points.
 
-    function distance($lat1, $lng1, $lat2, $lng2) {
-        // convert latitude/longitude degrees for both coordinates
-        // to radians: radian = degree * π / 180
-        $lat1 = deg2rad($lat1);
-        $lng1 = deg2rad($lng1);
-        $lat2 = deg2rad($lat2);
-        $lng2 = deg2rad($lng2);
+```php
+function distance($lat1, $lng1, $lat2, $lng2) {
+    // convert latitude/longitude degrees for both coordinates
+    // to radians: radian = degree * π / 180
+    $lat1 = deg2rad($lat1);
+    $lng1 = deg2rad($lng1);
+    $lat2 = deg2rad($lat2);
+    $lng2 = deg2rad($lng2);
 
-        // calculate great-circle distance
-        $distance = acos(sin($lat1) * sin($lat2) + cos($lat1) * cos($lat2) * cos($lng1 - $lng2));
+    // calculate great-circle distance
+    $distance = acos(sin($lat1) * sin($lat2) + cos($lat1) * cos($lat2) * cos($lng1 - $lng2));
 
-        // distance in human-readable format:
-        // earth's radius in km = ~6371
-        return 6371 * $distance;
-    }
+    // distance in human-readable format:
+    // earth's radius in km = ~6371
+    return 6371 * $distance;
+}
+```
 
 Please note that the earth is not exactly spherical: the earth's radius is slightly larger at the equator (~6378 km) than at the poles (~6356 km), so the exact distance we just calculated may be slightly off.
 
@@ -56,31 +58,37 @@ A common location- & distance-based search is a "find everything within a radius
 
 Instead, we'll want to find a rough subset of results within certain fixed boundaries. These boundaries are the maximum and minimum latitude & longitude values of your coordinate plus/minus the distance. We can calculate them like:
 
-    // we'll want everything within, say, 10km distance
-    $distance = 10;
+```php
+// we'll want everything within, say, 10km distance
+$distance = 10;
 
-    // earth's radius in km = ~6371
-    $radius = 6371;
+// earth's radius in km = ~6371
+$radius = 6371;
 
-    // latitude boundaries
-    $maxlat = $lat + rad2deg($distance / $radius);
-    $minlat = $lat - rad2deg($distance / $radius);
+// latitude boundaries
+$maxlat = $lat + rad2deg($distance / $radius);
+$minlat = $lat - rad2deg($distance / $radius);
 
-    // longitude boundaries (longitude gets smaller when latitude increases)
-    $maxlng = $lng + rad2deg($distance / $radius / cos(deg2rad($lat)));
-    $minlng = $lng - rad2deg($distance / $radius / cos(deg2rad($lat)));
+// longitude boundaries (longitude gets smaller when latitude increases)
+$maxlng = $lng + rad2deg($distance / $radius / cos(deg2rad($lat)));
+$minlng = $lng - rad2deg($distance / $radius / cos(deg2rad($lat)));
+```
 
 Now that we have these outer bounds, we can fetch results in our database like this (notice how an index can now be used to retrieve matching values for latitude/longitude):
 
-    SELECT *
-    FROM coordinates
-    WHERE
-        lat BETWEEN :minlat AND :maxlat
-        lng BETWEEN :minlng AND :maxlng
+```sql
+SELECT *
+FROM coordinates
+WHERE
+    lat BETWEEN :minlat AND :maxlat
+    lng BETWEEN :minlng AND :maxlng
+```
 
 Or using the SPATIAL extension (no point in keeping `lat` and `lng` floats here; `coordinate` is a `Point`: `GeomFromText(CONCAT("Point(", :lat, " ", :lng, ")"))`):
 
-    WHERE MBRWithin(coordinate, GeomFromText(CONCAT("Polygon((", :maxlat, " ", :maxlng, ",", :maxlat, " ", :minlng, ",", :minlat, " ", :minlng, ",", :minlat, " ", :maxlng, ",", :maxlat, " ", :maxlng, "))")))
+```sql
+WHERE MBRWithin(coordinate, GeomFromText(CONCAT("Polygon((", :maxlat, " ", :maxlng, ",", :maxlat, " ", :minlng, ",", :minlat, " ", :minlng, ",", :minlat, " ", :maxlng, ",", :maxlat, " ", :maxlng, "))")))
+```
 
 We have maxed out the speedy retrieval of coordinates, but not all matching coordinates actually fall within the distance we wanted to match. Using these boundaries, we've queried for a 2D square-like area, but we actually want to find results in a circle-like area. Here's an image to simplify why we're not yet done:
 
@@ -90,17 +98,19 @@ The black box signifies the area we've just queried the database for. The orange
 
 To weed out these results that did fall into our rough boundaries, but are not actually within the desired area distance, let's just loop all of these entries and calculate the distance there. Because our resultset will now be pretty small, this shouldn't really hurt us:
 
-    // our own location & distance we want to search
-    $lat = 50.52;
-    $lng = 4.22;
-    $distance = 10;
+```php
+// our own location & distance we want to search
+$lat = 50.52;
+$lng = 4.22;
+$distance = 10;
 
-    // weed out all results that turn out to be too far
-    foreach ($results as $i => $result) {
-        $resultDistance = distance($lat, $lng, $result['lat'], $result['lng']);
-        if ($resultDistance > $distance) {
-            unset($results[$i]);
-        }
+// weed out all results that turn out to be too far
+foreach ($results as $i => $result) {
+    $resultDistance = distance($lat, $lng, $result['lat'], $result['lng']);
+    if ($resultDistance > $distance) {
+        unset($results[$i]);
     }
+}
+```
 
 Tadaa! All coordinates within a given distance!
