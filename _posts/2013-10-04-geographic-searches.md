@@ -6,7 +6,7 @@ description: A 2-dimensional location on our earth can be represented via a coor
 tags: { php, mysql }
 ---
 
-![Picture]({{ site.baseurl }}public/posts/geographic-searches.png)
+![]({{ site.baseurl }}public/posts/geographic-searches.png)
 
 A 2-dimensional location on our earth can be represented via a coordinate system similar to an X & Y-axis. These axes are called latitude (lat) & longitude (lng).
 
@@ -92,7 +92,7 @@ WHERE MBRWithin(coordinate, GeomFromText(CONCAT("Polygon((", :maxlat, " ", :maxl
 
 We have maxed out the speedy retrieval of coordinates, but not all matching coordinates actually fall within the distance we wanted to match. Using these boundaries, we've queried for a 2D square-like area, but we actually want to find results in a circle-like area. Here's an image to simplify why we're not yet done:
 
-![Picture]({{ site.baseurl }}public/posts/geographic-searches-circle.png)
+![Image showing how a point can fit the bounding box, but still be outside the radius]({{ site.baseurl }}public/posts/geographic-searches-circle.png)
 
 The black box signifies the area we've just queried the database for. The orange circle represents what would actually be a real 10-kilometer boundary. Notice how both white coordinates are within the rough boundaries, but only the bottom one is actually within the requested distance.
 

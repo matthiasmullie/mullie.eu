@@ -6,7 +6,7 @@ description: In PHP, there are multiple ways to process data in parallel, althou
 tags: { php }
 ---
 
-![Picture]({{ site.baseurl }}public/posts/parallel-processing.png)
+![]({{ site.baseurl }}public/posts/parallel-processing.png)
 
 In PHP, there are multiple ways to process data asynchronously, although not one will work in every single environment. There is no one true solution, and whichever suits you best will mostly come down to your specific task.
 

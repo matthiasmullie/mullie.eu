@@ -6,7 +6,7 @@ description: A myriad of features may prompt the need to aggregate your data, li
 tags: { mysql }
 ---
 
-![Picture]({{ site.baseurl }}public/posts/aggregate-data.png)
+![]({{ site.baseurl }}public/posts/aggregate-data.png)
 
 A myriad of features may prompt the need to aggregate your data, like showing an average score based on multiple values, or even simply showing the amount of entries that abide to a certain condition. Usually this is a trivial query, but this is often untrue when dealing with a huge dataset.
 

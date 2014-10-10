@@ -6,7 +6,7 @@ description: Every developer has likely at least considered writing their own fr
 tags: { php, js, css }
 ---
 
-![Picture]({{ site.baseurl }}public/posts/minifier.png)
+![]({{ site.baseurl }}public/posts/minifier.png)
 
 Every developer has likely at least considered writing their own framework or CMS. Until you start to realize just how much work it is and how much of your problems have actually been solved by someone else already. Then you throw in the towel and start using (and hopefully, contributing) to existing open source projects that suit your needs. Writing a minifier is very much alike.
 

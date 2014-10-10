@@ -6,7 +6,7 @@ description: Regular expressions are under-valued and most developers tend to on
 tags: { regex, php }
 ---
 
-![Picture]({{ site.baseurl }}public/posts/regex.png)
+![]({{ site.baseurl }}public/posts/regex.png)
 
 Regular expressions are under-valued and most developers tend to only know the basics. Having a thorough understanding of how regular expressions work, will be incredibly helpful when you need to parse structured data.
 
