@@ -321,10 +321,10 @@ echo preg_replace('/<p>.*?<\/p>/', '', $html);
 
 This regex matches `<p>` first, followed by *any character*, followed by `</p>`, after which it replaces the entire match with an empty string.
 
-Contrary to what you may think though, only the first paragraph will be replaced, this because PCRE evaluates strings on a line-basis: it'll try to match 1 line to the regular expression, and if a result could not be found, it'll try to match the next line. The very first line will match both an opening <p> tag, "a bunch of characters" and a closing </p> tag. The second line however, does not match that, neither does the 3rd line, the 4th, the 5th nor the 6th. However, using the PCRE_DOTALL modifier, the dot will also match a newline and will span over lines 2 to 6.
-The regular expression, when applied the PCRE_DOTALL modifier, looks like this: `preg_replace('/<p>.*?<\/p>/s', '', $html);`
+Contrary to what you may think though, only the first paragraph will be replaced, this because PCRE evaluates strings on a line-basis: it'll try to match 1 line to the regular expression, and if a result could not be found, it'll try to match the next line. The very first line will match both an opening `<p>` tag, "a bunch of characters" and a closing `</p>` tag. The second line however, does not match that, neither does the 3rd line, the 4th, the 5th nor the 6th. However, using the `PCRE_DOTALL` modifier, the dot will also match a newline and will span over lines 2 to 6.
+The regular expression, when applied the `PCRE_DOTALL` modifier, looks like this: `preg_replace('/<p>.*?<\/p>/s', '', $html);`
 
-Suppose we also want to be able to match the uppercase HTML paragraph tag <P>, we could also apply the PCRE_CASELESS modifier, which would cause the compiler to ignore the case mismatch between our regex "p" and the string P. This would turn our regular expression into: `preg_replace('/<p>.*?<\/p>/si', '', $html);`
+Suppose we also want to be able to match the uppercase HTML paragraph tag `<P>`, we could also apply the `PCRE_CASELESS` modifier, which would cause the compiler to ignore the case mismatch between our regex "p" and the string P. This would turn our regular expression into: `preg_replace('/<p>.*?<\/p>/si', '', $html);`
 
 # Character classes
 [PHP Docs](http://www.php.net/manual/en/regexp.reference.character-classes.php)
@@ -368,7 +368,7 @@ Important in such an isolated pattern is that it also enables alternation. Such 
 
 ## Example
 
-Assume we want to capture all link URLs inside an HTML source. A good regex could look like: `/href="(.*?)"/is`. We've here created a subpattern for the part that ought to match to the URL and the captured subpatterns will be exposed via PHP's preg_match_all function:
+Assume we want to capture all link URLs inside an HTML source. A good regex could look like: `/href="(.*?)"/is`. We've here created a subpattern for the part that ought to match to the URL and the captured subpatterns will be exposed via PHP's `preg_match_all` function:
 
 ```php
 $test = '

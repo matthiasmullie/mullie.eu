@@ -119,7 +119,7 @@ The condition can either be a back reference, where *condition* is the index of 
 
 ## Example
 
-The more complicated these concepts get, the harder it becomes to come up with a plausible example. Let's pretend we're trying to match CSS @import statements, which can come in both of the below forms:
+The more complicated these concepts get, the harder it becomes to come up with a plausible example. Let's pretend we're trying to match CSS `@import` statements, which can come in both of the below forms:
 
 ```php
 $test = '
@@ -128,7 +128,7 @@ $test = '
 ';
 ```
 
-Both with and without `url()` enclosure constitute a valid @import statement, which makes is slightly harder to match the patch in a single regex. Let's try though:
+Both with and without `url()` enclosure constitute a valid `@import` statement, which makes is slightly harder to match the patch in a single regex. Let's try though:
 
 ```php
 if(preg_match_all('/@import (url\()?"(.*?)"(?(1)\))/', $test, $matches)) {
@@ -136,11 +136,11 @@ if(preg_match_all('/@import (url\()?"(.*?)"(?(1)\))/', $test, $matches)) {
 }
 ```
 
-What the above regex does is first start by matching the *@import* statement. After that, it'll search for an **optional** subpattern that will match *url(*.
+What the above regex does is first start by matching the `@import` statement. After that, it'll search for an **optional** subpattern that will match `url(`.
 After that, we're looking for an opening double quote (ignoring that this may also be single quotes) and capturing the path to the imported CSS file, followed by a closing double quote.
-Then the interesting stuff happens: the conditional subpattern will check for condition **(1)** (back reference to first subpattern, which was the optional *url(* – note that this back reference does not need to be escaped): if that was matched, we'll require a closing parentheses. There is no else-statement in this example.
+Then the interesting stuff happens: the conditional subpattern will check for condition `(1)` (back reference to first subpattern, which was the optional `url(` – note that this back reference does not need to be escaped): if that was matched, we'll require a closing parentheses. There is no else-statement in this example.
 
-The result of $matches will look like this, with index 2 holding the paths to both imports. Index 1 is the result of the optional subpattern that was used as a condition to check if we need to look for a closing parentheses.
+The result of `$matches` will look like this, with index 2 holding the paths to both imports. Index 1 is the result of the optional subpattern that was used as a condition to check if we need to look for a closing parentheses.
 
 ```
 array
@@ -215,7 +215,7 @@ array
 
 I very much encourage you to write documentation for your regular expressions. Regular expressions are sufficiently hard to create already, but they're even much harder to decipher without sufficient context.
 
-Comment them correctly though: there is no need to split them into several separate strings and concatenate them in PHP, only to be able to add PHP-style comments. Perl-style comments can be added inline, in a regular expression, via the use of the PCRE_EXTENDED pattern modifier. The use of this modifier will result in unescaped whitespace being ignored in your regex.
+Comment them correctly though: there is no need to split them into several separate strings and concatenate them in PHP, only to be able to add PHP-style comments. Perl-style comments can be added inline, in a regular expression, via the use of the `PCRE_EXTENDED` pattern modifier. The use of this modifier will result in unescaped whitespace being ignored in your regex.
 
 ```
 /
@@ -236,4 +236,4 @@ If you just can't get enough, you might want to check out this presentation I up
 
 I guess by now you've learned to appreciate the power that regular expressions harness. You'll now always have your enhanced regex-knowledge to save your ass when dealing with complex structured data, but don't be blind for other solutions. Though the possibilities are endless, depending on your specific task, other solutions may be far superior, like a DOM/SAX-based parser for XML.
 
-*Please note that the code examples were centered around accurately explaining a specific subject, and may not cover all edge cases. For the sake of clarity, the @import-regex is ignorant of whitespace and single quote delimiters, and the XML nodes ignores self-closing tags.*
+*Please note that the code examples were centered around accurately explaining a specific subject, and may not cover all edge cases. For the sake of clarity, the `@import`-regex is ignorant of whitespace and single quote delimiters, and the XML nodes ignores self-closing tags.*
