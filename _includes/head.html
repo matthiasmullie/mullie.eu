@@ -30,6 +30,10 @@
 
   <!-- SEO & social -->
   <link rel="author" href="{{ site.author.gplus }}" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:site" content="{{ site.author.twitter }}" />
+
   {% if page.title == "Home" %}
     <link rel="canonical" href="{{ site.url }}" />
     <meta name="description" content="{{ site.tagline }}" />
@@ -37,9 +41,10 @@
     <meta property="og:description" content="{{ site.tagline }}" />
   {% else %}
     <link rel="canonical" href="{{ site.url }}{{ page.url }}/" />
-    <meta name="description" content="{{ site.description | strip_html }}" />
+    <meta name="description" content="{{ page.description | strip_html }}" />
     <meta property="og:title" content="{{ page.title }}" />
-    <meta property="og:description" content="{{ site.description | strip_html }}" />
+    <meta property="og:description" content="{{ page.description | strip_html }}" />
+    <meta name="twitter:description" content="{{ page.description | strip_html }}" />
   {% endif %}
 
   <meta property="og:url" content="{{ site.url }}{{ page.url }}/" />
@@ -57,7 +62,4 @@
   {% else %}
     <meta property="og:type" content="blog" />
   {% endif %}
-
-  <meta name="twitter:card" content="summary" />
-  <meta name="twitter:site" content="{{ site.author.twitter }}" />
 </head>
