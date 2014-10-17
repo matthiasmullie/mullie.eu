@@ -25,6 +25,8 @@ While working on [a CMS](http://www.fork-cms.com) we had started, we wanted to s
 
 As you can see (look at the shiny buttons!), this PHP-based minifier is still around. Active, even: I've only recently given it some major updates.
 
+**You can try it out online on <http://www.minifier.org>.**
+
 ## Features
 
 **CSS**
