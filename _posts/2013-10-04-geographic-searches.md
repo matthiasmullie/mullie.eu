@@ -3,7 +3,7 @@ layout: post
 title: Geographic searches within a certain distance
 image: public/posts/geographic-searches.png
 description: A 2-dimensional location on our earth can be represented via a coordinate system similar to an X &amp; Y-axis. These axes are called latitude (lat) &amp; longitude (lng).
-tags: { php, mysql }
+tags: [ php, mysql ]
 ---
 
 ![]({{ site.baseurl }}public/posts/geographic-searches.png)
