@@ -103,3 +103,10 @@
 	margin-top: 10px!important;
 	margin-bottom: 20px;
 }
+
+/*
+ * Have some padding between table columns.
+ */
+td, th {
+	padding: 0 5px;
+}
