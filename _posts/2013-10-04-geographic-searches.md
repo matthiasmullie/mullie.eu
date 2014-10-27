@@ -6,8 +6,6 @@ description: A 2-dimensional location on our earth can be represented via a coor
 tags: [ php, mysql ]
 ---
 
-![]({{ site.baseurl }}public/posts/geographic-searches.png)
-
 A 2-dimensional location on our earth can be represented via a coordinate system similar to an X & Y-axis. These axes are called latitude (lat) & longitude (lng).
 
 Latitude is the north-south axis with a minimum of -90 (south pole) and maximum of 90 degrees (north pole). The equator is zero degrees latitude.

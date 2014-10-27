@@ -6,8 +6,6 @@ description: Regular expressions are powerful string-manipulation tools, though 
 tags: [ regex, php ]
 ---
 
-![]({{ site.baseurl }}public/posts/regex-2.png)
-
 Regular expressions are powerful string-manipulation tools, though chances are you probably don't even know half of what is possible with them. Before touching some of the PCRE awesomeness, make sure you're quite familiar with regular expressions already.
 
 Though you probably won't use any of the below on a daily basis, you should definitely be aware of their existence. The exact syntax might've slipped your mind by the time you get to use some of these, but I guess you can always come back to refresh your memory once you need it, right?

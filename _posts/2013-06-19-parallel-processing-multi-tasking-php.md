@@ -6,8 +6,6 @@ description: In PHP, there are multiple ways to process data in parallel, althou
 tags: [ php ]
 ---
 
-![]({{ site.baseurl }}public/posts/parallel-processing.png)
-
 In PHP, there are multiple ways to process data asynchronously, although not one will work in every single environment. There is no one true solution, and whichever suits you best will mostly come down to your specific task.
 
 Although both multithreading and multiprocessing can be used to process code in parallel, it probably makes sense to first distinguish between the two.

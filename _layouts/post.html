@@ -2,24 +2,41 @@
 layout: default
 ---
 
-<div class="post">
-  <h1 class="post-title">{{ page.title }}</h1>
-  <span class="post-date">{{ page.date | date_to_string }}</span>
-  {{ content }}
+<div class="entry-item detail">
+  <div class="entry-header">
+    <img class="img-responsive" src="{{ site.baseurl }}{{ page.image }}" alt="">
+  </div>
+  <div class="entry-detail">
+    <div class="entry-icon">
+      <div class="hexagon"></div>
+    </div>
+
+    <h4 class="entry-title large thin bottom-0">{{ page.title }}</h4>
+
+    <div class="entry-info">
+      <span><i class="fa fa-calendar"></i>{{ page.date | date_to_string }}</span>
+      <span><i class="fa fa-tags"></i>{{ page.tags | array_to_sentence_string }}</span>
+    </div>
+
+    <div class="entry-content">
+      {{ content }}
+    </div>
+  </div>
 </div>
 
-<div class="related">
-  <h2>Related Posts</h2>
-  <ul class="related-posts">
-    {% for post in site.related_posts limit:3 %}
-      <li>
-        <h3>
-          <a href="{{ post.url }}">
-            {{ post.title }}
-            <small>{{ post.date | date_to_string }}</small>
-          </a>
-        </h3>
-      </li>
-    {% endfor %}
-  </ul>
+<div class="relatepost">
+  <div class="row">
+    <div class="col-md-6">
+      {% if page.previous %}
+      <span>Previous Post</span>
+      <h4><a href="{{ page.previous.url }}">{{ page.previous.title }}</a></h4>
+      {% endif %}
+    </div>
+    <div class="col-md-6">
+      {% if page.next %}
+      <span>Next Post</span>
+      <h4><a href="{{ page.next.url }}">{{ page.next.title }}</a></h4>
+      {% endif %}
+    </div>
+  </div>
 </div>

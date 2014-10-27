@@ -6,8 +6,6 @@ description: In content-heavy websites, it becomes increasingly important to pro
 tags: [ mysql, php ]
 ---
 
-![]({{ site.baseurl }}public/posts/search.png)
-
 In content-heavy websites, it becomes increasingly important to provide capable search possibilities to help your users find exactly what they're looking for. The most obvious solution is searching your MySQL database directly, but implementing a generic MySQL search is not at all trivial. Here's how to avoid those pitfalls and build a robust MySQL-powered search engine for you website.
 
 This article will solely focus on the most common text-based search (as opposed to e.g. geography- or time-based)

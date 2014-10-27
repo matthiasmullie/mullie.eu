@@ -1,0 +1,24 @@
+<nav>
+  <ul class="sf-menu clearfix">
+
+    <li>
+      <a href="{{ site.baseurl }}"{% if page.url == site.baseurl %} class="active"{% endif %}>Home</a>
+    </li>
+
+    {% comment %}
+    The code below dynamically generates a sidebar nav of pages with
+    `layout: page` in the front-matter. See readme for usage.
+    {% endcomment %}
+
+    {% assign pages_list = site.pages %}
+    {% for node in pages_list %}
+      {% if node.title != null %}
+        {% if node.layout == "page" %}
+          <li>
+            <a href="{{ node.url }}"{% if page.url == node.url %} class="active"{% endif %}>{{ node.title }}</a>
+          </li>
+        {% endif %}
+      {% endif %}
+    {% endfor %}
+  </ul>
+</nav>

@@ -6,8 +6,6 @@ description: Every developer has likely at least considered writing their own fr
 tags: [ php, js, css ]
 ---
 
-![]({{ site.baseurl }}public/posts/minifier.png)
-
 Every developer has likely at least considered writing their own framework or CMS. Until you start to realize just how much work it is and how much of your problems have actually been solved by someone else already. Then you throw in the towel and start using (and hopefully, contributing) to existing open source projects that suit your needs. Writing a minifier is very much alike.
 
 While working on [a CMS](http://www.fork-cms.com) we had started, we wanted to serve our CSS and JavaScript minified, automatically. We threw some regular expressions at those static files. Eventually, it became more complex, it grew into a project of its own.

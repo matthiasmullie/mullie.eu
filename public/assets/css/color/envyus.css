@@ -1,0 +1,85 @@
+h1 a:hover,
+h2 a:hover,
+h3 a:hover,
+h4 a:hover,
+h5 a:hover,
+h6 a:hover,
+a:hover,
+.iconbox .icon,
+.alert.error,
+.entry-item .entry-info span i,
+.entry-item.detail .entry-tags i,
+.widget.twitter li .tweets_txt a:hover,
+.sliderbox .sliderbox-title span,
+.iconbox.top .iconbox-content .desc,
+.product-item .product-link a:hover,
+.iconbox.faq .icon,
+.button.stroke,
+#header .header-left-menu ul li.sfHover > a,
+#header .header-left-menu ul li a:hover,
+.pricing-item.featured .pricing-heading h4,
+.pricing-item.featured .pricing-detail .price,
+.pricing-item.featured .pricing-action a {
+	color: #fc7e3f;
+}
+#header .header-left-menu ul ul,
+.header-search.header-search-open .header-icon-search,
+.heading-action:hover,
+.pagenavi ul li span,
+.entry-item:hover .entry-icon .hexagon,
+#sidebar .widget.top-post ul li .img-wrap .entry-info,
+.small-icon-block:hover .small-icon,
+.bgclor,
+.iconbox.alt .icon,
+.product-item .product-link .sale,
+.servicesbox .services-icon,
+.button,
+.member-item.active .member-content,
+.member-item.active .member-content:before,
+.servicesbox-alt.featured .services-icon,
+.blog-small-item .blog-small-content h4,
+.tabs.main .tabNavigation li a:hover:after,
+.tabs.main .tabNavigation li.active a:after,
+.tabs.center .tabNavigation li a:hover:after,
+.tabs.center .tabNavigation li.active a:after,
+.top-chart .top-chart-percent,
+.button.hover:hover,
+.portfolio-item .portfolio-link a:hover,
+.portfolio-info-inner.tags a:hover,
+.custom-portfolio-filter,
+.timeline.quick-point .hexagon-container .hexagon,
+button,
+input[type="submit"],
+input[type="button"],
+input[type="reset"] {
+	background-color: #fc7e3f;
+}
+#header .header-left-menu ul ul:before,
+#header .header-left-menu li.megamenu a.sf-with-ul:after,
+.top-triangle:before {
+	border-bottom-color: #fc7e3f;
+}
+table
+.servicesbox .services-icon:after,
+.section.bgclor.bottom-triangle-solid:after,
+#header .header-left-menu .sf-mega-content,
+.custom-portfolio-filter ul li a.selected:after,
+.custom-portfolio-filter ul li a:hover:after,
+.timeline.quick-point .timeline-point {
+	border-top-color: #fc7e3f;
+}
+.button.stroke,
+.alert.error,
+.small-icon-block:hover .small-icon,
+.iconbox .icon,
+#header .header-left-menu ul li.sfHover > a,
+#header .header-left-menu ul li a:hover,
+.pricing-item.featured .pricing-heading h4,
+.pricing-item.featured .pricing-detail .price,
+.pricing-item.featured .pricing-action a {
+	border-color: #fc7e3f;
+}
+.smallquotes,
+.small-icon-block:hover .small-icon:after {
+	border-left-color: #fc7e3f;
+}

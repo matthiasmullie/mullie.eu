@@ -27,3 +27,6 @@ github:
   repo:           https://github.com/matthiasmullie/matthiasmullie.github.io
 
 permalink:        /:title
+
+# Titles of posts to be displayed in "top posts" widget
+top_posts:       ["Regular expressions for pros", "Async processing or multitasking in PHP", "How to build a MySQL-powered search engine"]

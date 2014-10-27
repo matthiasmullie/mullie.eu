@@ -1,0 +1,105 @@
+/*
+ * Original template logo was 34px high; current logo 54px.
+ * This takes away 10px of the padding around the logo, but adds it back to all
+ * other elements in the header, so they're centered with the new logo.
+ */
+#header .main-header {
+	padding: 20px 0;
+}
+.header-left-menu,
+.header-social-link,
+.mobile-menu-trigger {
+	padding: 10px 0;
+}
+
+/*
+ * Stack Overflow color is not known in template CSS.
+ */
+.social.bg.color .stackoverflow a,
+.social.bg .stackoverflow a:hover {
+	background: #FF7A00 !important
+}
+.social.textcolor .stackoverflow.active i,
+.social.text-hover .stackoverflow a,
+.social.textcolor .stackoverflow a:hover {
+	color: #FF7A00 !important
+}
+
+/*
+ * Make the hexagon only half as big.
+ */
+.hexagon {
+	width: 35px;
+	height: 20.205px;
+}
+.hexagon:before,
+.hexagon:after {
+	width: 24.75px;
+	height: 24.75px;
+	left: 0;
+}
+.hexagon:before {
+	top: -12.37435px;
+}
+.hexagon:after {
+	bottom: -12.37435px;
+}
+
+.entry-item .entry-icon {
+	margin-top: -40px;
+}
+
+/*
+ * Force blog header images to take up full width.
+ */
+.entry-header img {
+	width: 100%;
+}
+
+/*
+ * Add inactive state to buttons, to gray out next/previous when not needed.
+ */
+.pagenavi ul li a.inactive,
+.pagenavi ul li span.inactive {
+	background-color: transparent;
+	color: inherit;
+}
+
+/*
+ * Override butt ugly highlight style.
+ */
+.highlight {
+	background: none;
+	display: block;
+}
+
+/*
+ * Spread out tweets over full footer length.
+ */
+#last-tweet-footer ul li {
+	display: inline-block;
+	width: 33.33%;
+	vertical-align: top;
+	padding-top: 0;
+}
+
+#last-tweet-footer ul li:before {
+	top: 5px;
+}
+
+#last-tweet-footer ul li .tweets_txt {
+	padding-right: 20px;
+}
+
+/*
+ * Top posts widget: make entry-info band less pronounced, shrink it a bit in
+ * height. Also make for a bit more room between post title & next post image.
+ */
+#sidebar .widget.top-post ul li .img-wrap .entry-info {
+	padding: 5px 20px;
+}
+
+.top-20 {
+	margin-top: 10px!important;
+	margin-bottom: 20px;
+}

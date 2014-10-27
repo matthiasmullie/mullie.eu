@@ -1,0 +1,21 @@
+<ul>
+	{% for post in site.posts %}
+		{% if site.top_posts contains post.title %}
+			<li>
+				<div class="top-post-item">
+					<div class="img-wrap">
+						<a href="{{ post.url }}">
+							<img class="img-responsive" src="{{ site.baseurl }}{{ post.image }}" alt="">
+						</a>
+						<div class="img-wrap-mask"></div>
+						<div class="entry-info">
+							<span><i class="fa fa-calendar"></i>{{ post.date | date_to_string }}</span>
+							<span><i class="fa fa-tags"></i>{{ post.tags | array_to_sentence_string }}</span>
+						</div>
+					</div>
+					<h4 class="top-20"><a href="{{ post.url }}">{{ post.title }}</a></h4>
+				</div>
+			</li>
+		{% endif %}
+	{% endfor %}
+</ul>

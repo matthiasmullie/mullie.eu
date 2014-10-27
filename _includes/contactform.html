@@ -1,8 +1,22 @@
-# Ask me anything
+<div class="comment-form top-30">
+  <div class="heading-area bottom-30">
+    <h4 class="heading">Ask me anything</h4>
+  </div>
 
-<form id="contact" action="http://getsimpleform.com/messages?form_api_token=c900d9cf0042dbe6481faecc23e514fd" method="post">
-  <input type="text" name="name" placeholder="Name*" required="required" />
-  <input type="email" name="email" placeholder="Email address*" required="required" />
-  <textarea name="message" rows="8" placeholder="Message*" required="required"></textarea>
-  <input type="submit" value="Submit" />
-</form>
+  <form action="http://getsimpleform.com/messages?form_api_token=c900d9cf0042dbe6481faecc23e514fd" method="post" class="form">
+    <div class="row form-input">
+      <div class="col-md-4 col-lg-6 field icon-field">
+        <span class="icon"><i class="fa fa-user"></i></span>
+        <input class="input" type="text" name="name" placeholder="Your name" required="required">
+      </div>
+
+      <div class="col-md-4 col-lg-6 field icon-field">
+        <span class="icon"><i class="fa fa-envelope"></i></span>
+        <input type="email" name="email" placeholder="Your email" required="required">
+      </div>
+    </div>
+
+    <textarea class="bottom-20" name="message" id="comment-text" cols="30" rows="5" required="required"></textarea>
+    <button class="button color"><span>Submit</span></button>
+  </form>
+</div>
