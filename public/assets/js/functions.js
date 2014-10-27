@@ -31,4 +31,7 @@ jQuery(document).ready(function($){
     // adding back to top button
     jQuery('body').append('<a class="back-to-top"><i class="fa fa-angle-up"></i></a>');
     jQuery('.back-to-top').backToTop();
+
+    // make documentation links appear immediately after the title
+    jQuery('h1 + p:has(> a:only-child), h2 + p:has(> a:only-child), h3 + p:has(> a:only-child)').prev().addBack().css('display', 'inline-block');
 });
