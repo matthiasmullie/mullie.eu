@@ -107,6 +107,15 @@
                         limit: 3,
                         profile_image: false
                       });
+
+                      {{! Add col-md-4 class to li elements being added by tweecool }}
+                      var interval = setInterval(function() {
+                        var $li = jQuery('#last-tweet-footer li');
+                        if ($li.length) {
+                          clearInterval(interval);
+                          $li.addClass('col-md-4');
+                        }
+                      }, 50);
                     });
                   </script>
                 </div>

@@ -77,9 +77,6 @@
  * Spread out tweets over full footer length.
  */
 #last-tweet-footer ul li {
-	display: inline-block;
-	width: 33.33%;
-	vertical-align: top;
 	padding-top: 0;
 }
 
