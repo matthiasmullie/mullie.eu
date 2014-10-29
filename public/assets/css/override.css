@@ -71,6 +71,14 @@
 .highlight {
 	background: none;
 	display: block;
+	margin: 0 -30px;
+	padding: 0;
+}
+
+.highlight pre {
+	padding: 10px 30px;
+	border: none;
+	border-radius: 0;
 }
 
 /*
