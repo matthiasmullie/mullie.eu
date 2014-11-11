@@ -29,7 +29,7 @@ title: Home
         <span><i class="fa fa-tags"></i>{{ post.tags | array_to_sentence_string }}</span>
       </div>
 
-      <div class="entry-summry">
+      <div class="entry-summary text-left">
         {% if post.content contains "<!-- more -->" %}
           {{ post.content | split:"<!-- more -->" | first % }}
         {% else %}
