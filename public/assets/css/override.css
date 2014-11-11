@@ -1,15 +1,23 @@
 /*
- * Original template logo was 34px high; current logo 54px.
- * This takes away 10px of the padding around the logo, but adds it back to all
+ * Original template logo was 34px high; current logo 74px.
+ * This takes away 20px of the padding around the logo, but adds it back to all
  * other elements in the header, so they're centered with the new logo.
  */
 #header .main-header {
-	padding: 20px 0;
+	padding: 10px 0;
 }
 .header-left-menu,
 .header-social-link,
 .mobile-menu-trigger {
-	padding: 10px 0;
+	padding: 20px 0;
+}
+
+/*
+ * Set logo dimensions so the logo itself can be bigger (retina stuff)
+ */
+.logo-area img {
+	width: 74px;
+	height: 74px;
 }
 
 /*
