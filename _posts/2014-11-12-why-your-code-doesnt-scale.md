@@ -110,7 +110,7 @@ LIMIT 1;
 
 Regardless of the amount of rows (5 or 5 billion), We'll always just get the max id from the database, generate 1 random number lower or equal to that, and get 1 record (which MySQL will easily fetch via the PK index). This scales! No matter how many rows we grow to, this feature will never ever be harder to compute.
 
-*Note how I do >= instead of =, and have a LIMIT 1: that's just to ignore potential gaps in ids. We could generate a random id "32434" that no longer exists in the DB - this query will also settle for 32434 in that case."
+*Note how I do >= instead of =, and have a LIMIT 1: that's just to ignore potential gaps in ids. We could generate a random id "32434" that no longer exists in the DB - this query will also settle for 32435 in that case.*
 
 
 # Storage
