@@ -1,9 +1,9 @@
 ---
 layout: post
-title: Why your code doesn't scale
+title: How to make your code scale
 image: public/posts/scalability.png
 description: Building scalable software means that you are prepared to accommodate growth. There are basically 2 things you need to consider as your data grows. Will requests be handled at a faster rate than they come in, and will my hardware be able to store all the data?
-tags: [ scalability, php, mysql ]
+tags: [ scaling, php, mysql ]
 ---
 
 Building scalable software means that you are prepared to accommodate growth. There are basically 2 things you need to consider as your data grows:
@@ -77,44 +77,38 @@ You can usually limit memory usage by processing data in smaller batches of a kn
 
 ## Example
 
-Let's say we're building some sort of social network. We want to display a random user.
+Let's say we're want to retrieve a random row from the database:
 
 **BAD**
 
-```php
-$random = 'SELECT *
-           FROM users
-           ORDER BY RAND()
-           LIMIT 1';
+```sql
+SELECT *
+FROM table
+ORDER BY RAND()
+LIMIT 1;
 ```
 
 This is mostly a CPU-intensive task: MySQL will iterate all rows and calculate a random number per row. As the amount of rows grows, this operation takes longer to complete. As it takes the machine longer to respond, it will process requests at a slower rate.
 
-Actually, as this grows even larger, MySQL will also no longer be able to keep the random numbers in memory & will save them in a temporary table on your hard disk. This will be much slower to access than data in memory, so that too will ultimately drastically affect the response time.
+Actually, as this grows even larger, MySQL will also no longer be able to keep the random numbers in memory & will save them in a temporary table on your hard disk. This will be much slower to access than data in memory, so that too will at a certain point start affecting the response time drastically.
 
 **WORSE**
 
-```php
-$users = 'SELECT *
-          FROM users';
-$random = array_rand($users);
-```
-
-This is a memory-intensive task. We let MySQL feed PHP an array of all users and let PHP pick one at random. If, some day, we get around 500,000 users, each with about 10KB of data, this means we're trying to stuff around 5GB of data into this poor machine's memory, just to pick 1 random user.
+Even worse would be fetching all rows from the database, passing it to your application and calling `array_rand` or similar on it. This would not scale because of memory: once the size of your table outgrows the available memory, you'll crash.
 
 **BETTER**
 
-```php
-$max = 'SELECT MAX(id)
-        FROM users';
-$randomId = rand(1, $max);
-$random = "SELECT *
-           FROM users
-           WHERE id >= $randomId
-           LIMIT 1";
+```sql
+SELECT @rand := ROUND((RAND() * MAX(id)))
+FROM table;
+
+SELECT *
+FROM table
+WHERE id >= @rand
+LIMIT 1;
 ```
 
-Regardless of the amount of users (5 or 5 billion), We'll always get the last id from the database, generate 1 random number lower or equal to that, and get 1 record (which MySQL will easily fetch via the PK index). This scales! No matter how many users we grow to, this feature will never ever be harder to compute.
+Regardless of the amount of rows (5 or 5 billion), We'll always just get the max id from the database, generate 1 random number lower or equal to that, and get 1 record (which MySQL will easily fetch via the PK index). This scales! No matter how many rows we grow to, this feature will never ever be harder to compute.
 
 *Note how I do >= instead of =, and have a LIMIT 1: that's just to ignore potential gaps in ids. We could generate a random id "32434" that no longer exists in the DB - this query will also settle for 32434 in that case."
 
@@ -140,7 +134,7 @@ A more complex example could be a social network. Lots of users, lots of data pe
 
 We'll have to be more considerate about how to distribute the data though. When viewing a single person's status updates, we're requesting data from only one machine. However, when we want to see a stream of status updates from all of our friends, that could be located on 20 different machines. Not a thing you'd want to do.
 
-Let's not get ahead of ourselves here: sharding your database can be incredibly complex and be a really big deal to implement and maintain. Moore's law may have machines growing at a faster rate than your needs ever will, so you likely won't even have to bother with it.
+Let's not get ahead of ourselves here: sharding your database can be incredibly complex and be a really big deal to implement and maintain. Moore's law may have machines growing at a faster rate than your needs ever will, so you likely [won't even have to bother with it](https://signalvnoise.com/posts/1509-mr-moore-gets-to-punt-on-sharding).
 
 For more technical details about sharding: Jurriaan Persyn wrote an [excellent article](http://www.jurriaanpersyn.com/archives/2009/02/12/database-sharding-at-netlog-with-mysql-and-php/) on how they sharded Netlog's database.
 
@@ -156,11 +150,13 @@ Sharding will likely be the solution for write-heavy applications, replication f
 
 # Cache
 
-The magic bullet! Well, not really, but it can be incredibly helpful. Caching is storing the result of an expensive operation where it is known that the result will again be the same the next time.
+The magic bullet! Well, not really, but it can be incredibly helpful. Caching is storing the result of an expensive operation where it is known that the result will again be the same the next time. Like storing the result of a call to an external API into your database. Or storing the result of some expensive query or computation to memcached.
 
-If you have a social network & store all friend connections in the database, there's no point in querying the database for someone's friends every single time. That list won't change at any given time, so you can store a static copy of it in cache & serve it from there the next time. Once a user gains a new friend, you can invalidate his cached friends list so that we then have to get the new version from the database next. Which can then again be cached...
+If you have a CNS & store all pages in the database, there's no point in getting that navigation from your database on every single page request. It won't just change at any given time, so you can simply store a static copy of it in cache. Once a new page it added to the navigation, we can just purge/invalidate that cache so that the next time, we'll be fetching the updated navigation from storage. Which can then again be cached...
 
 Cache can come in many forms: a memcached or redis server, disk cache, temporary cache in memory... All that matters is that reading the result from it is faster than executing it again.
+
+Not that introducing caching will increase the complexity of your codebase. Not only do you now have to read & write data from & to multiple places, you also need to make sure they're in sync and data in your cache gets updated or invalidated when data in your storage changes.
 
 
 # Network
@@ -170,46 +166,3 @@ Network requests are usually not really considered but can slow down your applic
 Although probably very little, connecting to other servers takes time. Try to make as few database & cache requests as possible. That's especially important for cache requests, as they are often thought of as very cheap. Your cache server will be very quick to respond, but if you ask for hundreds of cached values, the time spent connecting to the cache server accumulates.
 
 If possible, you could attempt to request your data in batch. This means fetching multiple cache keys in once. Or fetching all columns from a table at once if you know you'll be querying for a particular column in function A and another in function B.
-
-
-# Practical example
-
-To increase the usage of our social network, we want to build a "friends of my friends" list, where people will likely find some more people to become friends with.
-
-**BAD**
-
-```php
-$suggestions = "SELECT DISTINCT u.*
-                FROM users_friends AS f
-                INNER JOIN users_friends AS fof
-                    ON fof.user_id = f.friend_id
-                INNER JOIN users AS u
-                    ON u.id = fof.friend_id
-                WHERE f.user_id = $userId";
-
-foreach($suggestions AS $suggestion) {
-    echo $suggestion->name . "/n";
-}
-```
-
-Disregarding even that fact that this is already a non-trivial query against the database if there's a lot of data, this is terrible idea because the returned dataset can be huge.
-
-Initially, if your social network is just starting out, you might have 10 friends who each, in turn, have 10 other friends. The maximum returned dataset would consist of 10 * 10 = 100 entries.
-
-As our social network gets popular, many people have friendships in the hundreds. Let's say the average amount of friendships is around 500, then we'd get 500 * 500 = 250000 results. If all of these results have about 10kb of data, we're looking at 250000 * 10GB = ~2.5GB. All of which is kept in memory to be iterated through. And as our social network grows, this too keeps growing.
-
-**BETTER**
-
-To reduce the amount of entries stored in memory, we could implement some infinite scrolling: we request only the first 100 "friends of friends" and display those. Once the user has scrolled trough 90 of those, we request the next 100.
-
-This way, we'd always be certain we don't strain our memory too much: around 100 * 10KB = 1MB per request. Quite a difference. And as our social network grows, a request will never grow larger.
-
-**BEST**
-
-The best way to go about this would be to actually denormalize the data and process it asynchronously. We could set up a database (or other storage mechanism) dedicated to this specific task, and have a completely separate script that prepares that data.
-
-The expensive part would be taken care of by the separate script, which we have total control of. Only if our servers are not stressed too much, we re-generate the "friends of a friend" list. Displaying the list when requested is then only a matter of issuing 1 simple query to this dedicated database.
-
-The downside is that we increased complexity by denormalizing this data into its separate database and, throughout your application, you should not forget to update this data in a timely manner, to keep your suggestions accurate.
-
-Some features are quite hard or even plain impossible to scale well. Take your time to think about how you'll approach the problem and be aware of the consequences. This, sometimes, may mean not implementing a feature at all.
