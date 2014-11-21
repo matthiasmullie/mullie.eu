@@ -83,7 +83,7 @@ Let's say we're want to retrieve a random row from the database:
 
 ```sql
 SELECT *
-FROM table
+FROM tablename
 ORDER BY RAND()
 LIMIT 1;
 ```
@@ -100,10 +100,10 @@ Even worse would be fetching all rows from the database, passing it to your appl
 
 ```sql
 SELECT @rand := ROUND((RAND() * MAX(id)))
-FROM table;
+FROM tablename;
 
 SELECT *
-FROM table
+FROM tablename
 WHERE id >= @rand
 LIMIT 1;
 ```
