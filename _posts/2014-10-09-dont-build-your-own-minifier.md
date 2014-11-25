@@ -34,6 +34,7 @@ As you can see (look at the shiny buttons!), this PHP-based minifier is still ar
 * Imports `@import`-ed CSS files
 * Includes small static files into the minified file (base64-encoded)
 * Shortens hexadecimal color codes
+* Shortens zero values (e.g. -0px)
 
 **JS**
 
