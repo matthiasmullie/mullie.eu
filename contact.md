@@ -1,6 +1,7 @@
 ---
 layout: page
 title: Me/Contact
+weight: 9
 ---
 
 I'm a software engineer with a passion for web development.
