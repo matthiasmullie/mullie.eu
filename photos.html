@@ -1,0 +1,67 @@
+---
+layout: portfolio
+title: Images
+weight: 1
+images: [ {
+  title: "California Street, SF",
+  filename: "california_street.jpg",
+}, {
+  title: "Las Vegas",
+  filename: "vegas_day.jpg",
+}, {
+  title: "Las Vegas by night",
+  filename: "vegas_night.jpg",
+}, {
+  title: "Monaco",
+  filename: "monaco.jpg",
+}, {
+  title: "Brooklyn Bridge & downtown NYC",
+  filename: "brooklyn_bridge_downtown_ny.jpg",
+}, {
+  title: "Downtown NYC from Empire State",
+  filename: "downtown_ny_from_empire_state.jpg",
+}, {
+  title: "NYC skyline",
+  filename: "nyc_skyline.jpg",
+}, {
+  title: "Lombard Street, SF",
+  filename: "lombard_street.jpg",
+}, {
+  title: "Twin Peaks, SF",
+  filename: "twin_peaks.jpg",
+}, {
+  title: "Painted Ladies, SF",
+  filename: "painted_ladies.jpg",
+}, {
+  title: "Noordbrug, Kortrijk",
+  filename: "kortrijk_2.jpg",
+}, {
+  title: "Noordbrug, Kortrijk",
+  filename: "kortrijk.jpg",
+}, {
+  title: "Cyprus beach",
+  filename: "cyprus_beach.jpg",
+}, {
+  title: "Golden Gate Bridge, 75th anniversary",
+  filename: "golden_gate_bridge.jpg",
+}, {
+  title: "Eiffel Tower, Paris",
+  filename: "eiffel_tower.jpg",
+} ]
+---
+
+{% for image in page.images %}
+<div class="col-md-3 col-xs-12 col-sm-6 bottom-30 element">
+  <div class="portfolio-item white clearfix">
+    <div class="portfolio-info">
+      <h4><a title="{{ image.title }}" class="image-popup" href="{{ site.baseurl }}public/photos/original/{{ image.filename }}">{{ image.title }}</a></h4>
+    </div>
+    <div class="portfolio-image">
+      <img src="{{ site.baseurl }}public/photos/thumb/{{ image.filename }}" alt="{{ image.title }}">
+    </div>
+    <div class="portfolio-link">
+      <a title="{{ image.title }}" class="image-popup" href="{{ site.baseurl }}public/photos/original/{{ image.filename }}"><i class="fa fa-search-plus"></i>Enlarge</a>
+    </div>
+  </div>
+</div>
+{% endfor %}

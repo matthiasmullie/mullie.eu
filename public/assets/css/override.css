@@ -123,3 +123,14 @@
 td, th {
 	padding: 0 5px;
 }
+
+/*
+ * Minor changes to portfolio CSS, I'm using it to display photos.
+ */
+.portfolio-item:hover .portfolio-info {
+	background: rgba(0, 0, 0, 0.3);
+}
+
+.portfolio-item .portfolio-link a {
+	width: 100%;
+}
