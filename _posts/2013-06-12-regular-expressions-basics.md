@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Introduction to regular expressions
-image: public/posts/regex.png
+image: regex.png
 description: Regular expressions are under-valued and most developers tend to only know the basics. Having a thorough understanding of how regular expressions work, will be incredibly helpful when you need to parse structured data.
 tags: [ regex, php ]
 ---

@@ -1,7 +1,7 @@
 ---
 layout: post
 title: How to make your code scale
-image: public/posts/scalability.png
+image: scalability.png
 description: Building scalable software means that you are prepared to accommodate growth. There are basically 2 things you need to consider as your data grows. Will requests be handled at a faster rate than they come in, and will my hardware be able to store all the data?
 tags: [ scaling, php, mysql ]
 ---
