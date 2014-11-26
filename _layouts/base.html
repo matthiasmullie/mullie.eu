@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	{{! Bootstrap core CSS }}
+	<link href="{{ site.baseurl }}public/assets/css/bootstrap.css" rel="stylesheet">
+
+	{{! Custom styles for this template }}
+	<link href="{{ site.baseurl }}public/assets/css/font-awesome.min.css" rel="stylesheet">
+	<link href="{{ site.baseurl }}public/assets/css/plugins.css" rel="stylesheet">
+	<link href="{{ site.baseurl }}public/assets/css/animate.css" rel="stylesheet">
+	<link href="{{ site.baseurl }}public/assets/css/style.css" rel="stylesheet">
+	<link href="{{ site.baseurl }}public/assets/css/override.css" rel="stylesheet">
+	<link href="{{ site.baseurl }}public/assets/css/color/envyus.css" rel="stylesheet">
+	<link href="{{ site.baseurl }}public/assets/css/syntax.css" rel="stylesheet">
+
+	{{! jQuery load }}
+	<script src="{{ site.baseurl }}public/assets/js/jquery.min.js"></script>
+
+	{{! HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries }}
+	<!--[if lt IE 9]>
+	<script src="{{ site.baseurl }}public/assets/js/html5shiv.min.js"></script>
+	<script src="{{ site.baseurl }}public/assets/js/respond.min.js"></script>
+	<![endif]-->
+
+	{% include head_meta.html %}
+</head>
+
+<body class="theme-base-mullie">
+{% include ga.html %}
+
+<div id="wrap">
+	<div class="main-inner-content">
+		<header id="header">
+			<div class="main-header">
+				<div class="container">
+					<div class="row">
+						<div class="col-md-2 col-sm-12 col-xs-10 text-sm-center bottom-sm-20 bottom-xs-0">
+							<div class="logo-area">
+								<h1 class="site-title">
+									<a href="{{ site.baseurl }}">
+										<img src="{{ site.baseurl }}public/assets/images/logo.png" alt="">
+									</a>
+								</h1>
+								<p class="site-descriptions">{{ site.title }}</p>
+							</div>
+						</div>
+
+						<div class="col-md-8 col-sm-12 text-sm-center hidden-xs">
+							<div class="header-left-menu">
+								<div class="site-menu">
+									{% include menu.html %}
+								</div>
+							</div>
+						</div>
+
+						<div class="col-md-2 col-sm-12 top-sm-20 hidden-xs">
+							<div class="header-social-link">
+								<ul class="list-unstyled social hover bg text-sm-center">
+									{% include social.html %}
+								</ul>
+							</div>
+						</div>
+
+						<div class="col-xs-2 visible-xs">
+							<div class="mobile-menu-trigger">
+								<span class="mobile-menu-action sb-toggle-right navbar-right"><i class="fa fa-bars"></i></span>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</header>
+
+		{{ content }}
+
+		<footer id="footer">
+			<div class="footer-widgets">
+				<div class="container">
+					<div class="row">
+						<div class="col-md-9">
+							<div class="widget twitter border">
+								<h4 class="widget-title">Twitter</h4>
+								<div id="last-tweet-footer"></div>
+								<script src="{{ site.baseurl }}public/assets/js/tweet.js"></script>
+								<script>
+									jQuery(document).ready(function() {
+										jQuery('#last-tweet-footer').tweecool({
+											username: 'matthiasmullie',
+											limit: 3,
+											profile_image: false
+										});
+
+										{{! Add col-md-4 class to li elements being added by tweecool }}
+										var interval = setInterval(function() {
+											var $li = jQuery('#last-tweet-footer li');
+											if ($li.length) {
+												clearInterval(interval);
+												$li.addClass('col-md-4');
+											}
+										}, 50);
+									});
+								</script>
+							</div>
+						</div>
+
+						<div class="col-md-3">
+							<div class="widget footer-social">
+								<h4 class="widget-title">Connect</h4>
+								<ul class="list-unstyled social color bg text-sm-center">
+									{% include social.html %}
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</footer>
+	</div>
+
+	<div class="sb-slidebar sb-right">
+		<div class="sb-menu-trigger"></div>
+	</div>
+</div>
+
+<script src="{{ site.baseurl }}public/assets/js/bootstrap.min.js"></script>
+<script src="{{ site.baseurl }}public/assets/js/slidebar.js"></script>
+<script src="{{ site.baseurl }}public/assets/js/functions.js"></script>
+</body>
+</html>
