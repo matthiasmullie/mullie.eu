@@ -1,5 +1,5 @@
 ---
-layout: page
+layout: contact
 title: Me/Contact
 weight: 9
 ---
@@ -21,7 +21,5 @@ Good times!
 
 A quest for an extra-ordinary technical challenge ultimately sparked my interest in Wikipedia, coincidentally also built atop open source software: [MediaWiki](http://www.mediawiki.org/).
 Working with world-class colleagues on a top-tier website in an incredible environment (yay American culture!) – does it get any better?
-
-More details on [LinkedIn](http://www.linkedin.com/in/matthiasmullie) or my [résumé]({{ site.url }}/public/cv/matthias-mullie.pdf).
 
 {% include contactform.html %}
