@@ -134,3 +134,14 @@ td, th {
 .portfolio-item .portfolio-link a {
 	width: 100%;
 }
+
+/*
+ * In photos page, I'm doing a bit of a hack by combining class="alert" with
+ * id="content" (to get it white and stuff). This just finetunes it to exactly
+ * how I want it ;)
+ */
+.page #content.alert {
+	margin-left: 15px;
+	margin-right: 15px;
+	padding: 15px 20px;
+}
