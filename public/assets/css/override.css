@@ -145,3 +145,32 @@ td, th {
 	margin-right: 15px;
 	padding: 15px 20px;
 }
+
+/*
+ * Title have a default & a "large" style in style.css. There's a huge
+ * difference between both, though - I want something in between!
+ */
+h1.medium {
+	font-size: 28px;
+	line-height: 36px;
+}
+h2.medium {
+	font-size: 25px;
+	line-height: 33px;
+}
+h3.medium {
+	font-size: 23px;
+	line-height: 30px;
+}
+h4.medium {
+	font-size: 20px;
+	line-height: 28px;
+}
+h5.medium {
+	font-size: 18px;
+	line-height: 24px;
+}
+h6.medium {
+	font-size: 15px;
+	line-height: 18px;
+}
