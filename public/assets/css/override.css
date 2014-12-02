@@ -174,3 +174,10 @@ h6.medium {
 	font-size: 15px;
 	line-height: 18px;
 }
+
+/*
+ * Slightly increase footer social buttons' icon size.
+ */
+.widget.footer-social li a {
+	font-size: 20px;
+}
