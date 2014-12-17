@@ -2,14 +2,13 @@
 layout: post
 title: 5 things remote working taught me about productivity
 image: productivity.png
-description: Since I started working remotely, now almost 3 years ago, I've learned a thing or two about my productivity. While not necessarily a direct result of working remotely, it sure helped me realize how to work more efficiently.
-tags: [productivity, remote]
+description: Since I started working remotely, now almost 3 years ago, I've learned a thing or two about my productivity. The remote aspect forced us to rethink how we deal with time & communication
 ---
 
-
 Since I started working remotely, now almost 3 years ago, I've learned a thing
-or two about my productivity. While not necessarily a direct result of working
-remotely, it sure helped me realize how to work more efficiently.
+or two about my productivity. These lessons are not necessarily tied to working
+remotely per se, they'll also apply in a traditional working environment. The
+remote aspect just forced us to rethink how we deal with time & communication.
 
 <!-- more -->
 
@@ -39,36 +38,21 @@ colleagues, you'll notice how seldom an interruption of their concentration (and
 yours) is warranted.
 
 
-# 3. Work when you work best
-
-I used to get up early to go to work. Since I started working remotely & find
-myself in another timezone, that changed. The daily standup call is in my evenings so
-that's where my schedule started drifting to.
-
-I'm not a morning person: afternoon & evenings is when I get my work done. I
-still work the same amount of time, but I can now wake up full of energy, ready
-to tackle today's big challenges.
-
-And sometimes, I have one of those days where I'm really on a roll and don't
-stop before finally wrapping things up at night. Furthermore, being able to run
-personal errands during business hours also makes organising life a lot easier.
-
-
-# 4. Find time to focus
+# 3. Find time to focus
 
 Instead of scrambling for little bits of time in between meetings and other
 interruptions, I can now focus for longer periods of time - the rest of my team
 is sleeping anyway!
 
-Since I somewhat resemble a zombie in the morning, that's when I do tedious
-tasks like triaging email, following up on projects & reviewing trivial patches.
-Afternoons are dedicated to coding, for hours on end, perfect to get [in the zone](http://en.wikipedia.org/wiki/Flow_%28psychology%29)!
+Since I'm not a morning person, that's when I do tedious tasks like triaging
+email, following up on projects & reviewing trivial patches. Afternoons are
+dedicated to coding, for hours on end, perfect to get [in the zone](http://en.wikipedia.org/wiki/Flow_%28psychology%29)!
 
 
-# 5. Focus on work, not hours
+# 4. Focus on work, not hours
 
 In a creative endeavor like programming, there's no real tangible, measurable
-*unit of work*, so quantifying it is quite hard. There's little direct
+*unit of work*, so quantifying it is pretty hard. There's little direct
 correlation between hours and amount of work done. Usually, you just know when
 you've done well: you'll feel intense self-satisfaction about your work.
 
@@ -81,3 +65,20 @@ hand. Then too, focusing on the passing time is not the most productive
 solution. Unless you like that feeling after an entire day of getting nowhere,
 take a break (not from work per se, but from that task), clear your
 head & come back with renewed ideas & motivation.
+
+
+# 5. Work when you work best
+
+I used to get up early to go to work. Since I started working remotely & find
+myself in another timezone, that changed. The daily standup call is in my
+evenings so that's where my schedule started drifting to.
+
+I somewhat resemble a zombie in the morning: afternoon & evenings is when I get
+my work done. I still work the same amount of time, but I can now wake up full
+of energy, ready to tackle today's big challenges.
+
+And sometimes, I have one of those days where I'm really on a roll and don't
+stop before finally wrapping things up at night.
+
+Moreover, that flexibility works both ways: I'm also able to run personal
+errands during business hours!
