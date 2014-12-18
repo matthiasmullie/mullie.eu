@@ -3,6 +3,7 @@ layout: post
 title: 5 things remote working taught me about productivity
 image: productivity.png
 description: Since I started working remotely, now almost 3 years ago, I've learned a thing or two about my productivity. The remote aspect forced us to rethink how we deal with time & communication
+tags: [ productivity, remote ]
 ---
 
 Since I started working remotely, now almost 3 years ago, I've learned a thing
