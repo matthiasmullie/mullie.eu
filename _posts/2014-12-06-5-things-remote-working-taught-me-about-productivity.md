@@ -13,7 +13,7 @@ remote aspect just forced us to rethink how we deal with time & communication.
 <!-- more -->
 
 
-# 1. Communication != meetings
+# 1. Meetings != communication
 
 A 9 hour timezone difference means having no convenient overlap to have
 meetings. We're flexible and still have some - usually in their early mornings,
