@@ -8,7 +8,7 @@ tags: [ regex, php ]
 
 Regular expressions are under-valued and most developers tend to only know the basics. Having a thorough understanding of how regular expressions work, will be incredibly helpful when you need to parse structured data.
 
-In essence, a regular expression – or regex – is an instruction set to parse "certain data" in a "certain string". A simple example of such regex is `/[o-9]+/`: instructions to find numeric occurrences in a string.
+In essence, a regular expression – or regex – is an instruction set to parse "certain data" in a "certain string". A simple example of such regex is `/[0-9]+/`: instructions to find numeric occurrences in a string.
 
 Regular expressions are most commonly PCRE-based, an instruction set derived from the regular expression implementation in Perl. I'll be discussing the PCRE implementation in PHP in particular. While in other programming languages the specific implementation may differ, most modern languages have PCRE ( **P**erl **C**ompatible **R**egular **E**xpressions) support and the concepts should and will largely be the same in the language of your choice.
 
@@ -156,7 +156,7 @@ Meta characters are the actual instructions: the toolset allowing you to build r
     </tr>
 </table>
 
-Don't worry if not all of the above makes sense right away, we'll touch most of these in more detail later in this post. While you could probably easily develop your own algorithm equivalent to e.g. `/[o-9]{2}/` to find a 2-digit number in a target string, you'll find that more complex parsing will soon get a lot harder if you were to do it without **regular expressions**. Generally, these meta-characters are the building blocks that make up a regular expression: a meta-language which – behind your back – compiles into real instructions that will be applied to your subject string to find exactly what you need in an as-performant-as-possible way.
+Don't worry if not all of the above makes sense right away, we'll touch most of these in more detail later in this post. While you could probably easily develop your own algorithm equivalent to e.g. `/[0-9]{2}/` to find a 2-digit number in a target string, you'll find that more complex parsing will soon get a lot harder if you were to do it without **regular expressions**. Generally, these meta-characters are the building blocks that make up a regular expression: a meta-language which – behind your back – compiles into real instructions that will be applied to your subject string to find exactly what you need in an as-performant-as-possible way.
 
 ## Example
 
