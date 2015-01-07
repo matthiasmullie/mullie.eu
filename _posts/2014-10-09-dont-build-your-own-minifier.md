@@ -40,6 +40,7 @@ As you can see (look at the shiny buttons!), this PHP-based minifier is still ar
 
 * Strips comments
 * Strips whitespace
+* Replace `array['key']` by `array.key`
 
 # Lessons learned
 
