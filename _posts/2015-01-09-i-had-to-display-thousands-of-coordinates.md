@@ -88,7 +88,7 @@ But what's there to cache? Every request is different, it'll be for wildly
 varying viewports. Yep!
 
 I decided to round the viewports before requesting the coordinates and clusters
-from the API. Suppose I'm was viewing Kortrijk, BE, with a viewport of roughly
+from the API. Suppose I'm viewing Kortrijk, BE, with a viewport of roughly
 these coordinates:
 
 `(northeast: lat 50.853644, lng 3.298559) to
