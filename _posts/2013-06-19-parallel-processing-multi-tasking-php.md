@@ -24,6 +24,8 @@ Threads are part of the same process, and will usually share the same memory & f
 The only multithreading solution in PHP is the pthreads extension. In it's most simple form, you'd write code like this to perform work asynchronously:
 
 ```php
+<?php
+
 class ChildThread extends Thread {
     public $data;
 
@@ -63,6 +65,8 @@ Amp\Thread is a particularly interesting implementation of pthreads along with t
 The cool thing about this project is that it hides the complex async work behind a promises-based interface, like:
 
 ```php
+<?php
+
 function expensiveWork() {
     /* Do some expensive work */
 
@@ -83,6 +87,35 @@ list($result1, $result2) = $comboPromise->wait();
 
 **Amp/Thread is designed specifically for CLI applications. You'll need PHP5.5+ and pthreads installed.**
 
+### hack's async
+[Docs](http://docs.hhvm.com/manual/en/hack.async.php)
+
+If you're running [Facebook's HHVM](http://hhvm.com/), you can run [Hack](http://docs.hhvm.com/manual/en/hacklangref.php) code. Hack is an addition to plain old PHP: existing PHP will still run fine, but you can use additional Hack-specific features.
+
+One of those features is `async`. While it's not exactly multithreading, it still allows you to launch separate "threads" for code that is not blocked on CPU (like waiting for an API response to come back):
+
+```hack
+<?hh
+
+async function expensiveWork(): Awaitable<string> {
+    /* Do some work */
+
+    return 'result of expensive work';
+}
+
+$thread = expensiveWork();
+
+/*
+ * Do some expensive work, while already doing other
+ * work in the child thread.
+ */
+
+// wait until thread is finished & get the result
+$data = $thread->getWaitHandle()->join();
+```
+
+**Note that you have to be running HHVM instead of the Zend engine.**
+
 # Process
 
 A process is 1 independent application run. While one PHP process can spawn a second process, both processes will be completely isolated and won't share any memory or handles, making it much harder to actually sync data between them (although, e.g. using external resources, not completely impossible.)
@@ -93,6 +126,8 @@ A process is 1 independent application run. While one PHP process can spawn a se
 Forking a process will result in the request being cloned into an exact replica, though with it's own address space. Both the parent and the child (forked) process will be exactly the same up until the moment of the fork, e.g.: any variables up to that point will be exactly the same in both processes. After forking, changing a variable's value in one process doesn't affect the other process though.
 
 ```php
+<?php
+
 $var = 'one';
 
 $pid = pcntl_fork();
@@ -150,6 +185,8 @@ While we've seen 2 strategies to split one request into 2 different execution pa
 **child.php**
 
 ```php
+<?php
+
 /*
  * This is the child process, it'll be launched
  * from the parent process.
@@ -161,6 +198,8 @@ While we've seen 2 strategies to split one request into 2 different execution pa
 **parent.php**
 
 ```php
+<?php
+
 /*
  * This is the process being called by the user.
  * From here, we'll launch child process child.php
@@ -200,6 +239,8 @@ This approach looks very similar to the `popen` solution. For `fopen`, this woul
 **child.php**
 
 ```php
+<?php
+
 /*
  * This is the child process, it'll be launched
  * from the parent process.
@@ -211,6 +252,8 @@ This approach looks very similar to the `popen` solution. For `fopen`, this woul
 **parent.php**
 
 ```php
+<?php
+
 /*
  * This is the process being called. From here,
  * we'll launch child process child.php
