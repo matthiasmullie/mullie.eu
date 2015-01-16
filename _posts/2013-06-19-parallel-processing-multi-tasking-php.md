@@ -30,9 +30,9 @@ class ChildThread extends Thread {
     public $data;
 
     public function run() {
-      /* Do some expensive work */
+      /* Do some work */
 
-      $this->data = 'result of expensive work';
+      $this->data = 'result';
     }
 }
 
@@ -40,7 +40,7 @@ $thread = new ChildThread();
 
 if ($thread->start()) {
     /*
-     * Do some expensive work, while already doing other
+     * Do some work here, while already doing other
      * work in the child thread.
      */
 
@@ -67,17 +67,17 @@ The cool thing about this project is that it hides the complex async work behind
 ```php
 <?php
 
-function expensiveWork() {
-    /* Do some expensive work */
+function work() {
+    /* Do some work */
 
-    return 'result of expensive work';
+    return 'result';
 }
 
 $dispatcher = new Amp\Thread\Dispatcher;
 
-// call 2 expensive functions to be executed asynchronously
-$promise1 = $dispatcher->call('expensiveWork');
-$promise2 = $dispatcher->call('expensiveWork');
+// call 2 functions to be executed asynchronously
+$promise1 = $dispatcher->call('work');
+$promise2 = $dispatcher->call('work');
 
 $comboPromise = Amp\all([$promise1, $promise2]);
 list($result1, $result2) = $comboPromise->wait();
@@ -97,22 +97,28 @@ One of those features is `async`. While it's not exactly multithreading, it stil
 ```hack
 <?hh
 
-async function expensiveWork(): Awaitable<string> {
-    /* Do some work */
+async function work(): Awaitable<string> {
+    /*
+     * Do some work here. This could e.g. be an API call.
+     * (while that's being done, CPU will be free to execute
+     * code elsewhere)
+     */
+    await SleepWaitHandle::create(1000);
 
-    return 'result of expensive work';
+    return 'result';
 }
 
-$thread = expensiveWork();
+$thread = work();
 
 /*
- * Do some expensive work, while already doing other
- * work in the child thread.
+ * Do some work here - will be executed while work() is blocked.
  */
 
-// wait until thread is finished & get the result
+// wait until "thread" is finished & get the result
 $data = $thread->getWaitHandle()->join();
 ```
+
+See [the blog post on async](http://hhvm.com/blog/7091/async-cooperative-multitasking-for-hack) for more elaborate info & examples of `async`.
 
 **Note that you have to be running HHVM instead of the Zend engine.**
 
@@ -156,12 +162,12 @@ if ($pid === -1) {
     echo $var; // will output 'one'
     $var = 'two'; // will not affect parent process
 
-    /* Do some expensive work */
+    /* Do some work */
 } else {
     // $pid != 0, this is the parent thread
 
     /*
-     * Do some expensive work, while already doing other
+     * Do some work, while already doing other
      * work in the child process.
      */
 
@@ -192,7 +198,7 @@ While we've seen 2 strategies to split one request into 2 different execution pa
  * from the parent process.
  */
 
-/* Do some expensive work */
+/* Do some work */
 ```
 
 **parent.php**
@@ -209,7 +215,7 @@ While we've seen 2 strategies to split one request into 2 different execution pa
 $child = popen('php child.php', 'r');
 
 /*
- * Do some expensive work, while already doing other
+ * Do some work, while already doing other
  * work in the child process.
  */
 
@@ -246,7 +252,7 @@ This approach looks very similar to the `popen` solution. For `fopen`, this woul
  * from the parent process.
  */
 
-/* Do some expensive work */
+/* Do some work */
 ```
 
 **parent.php**
@@ -263,7 +269,7 @@ This approach looks very similar to the `popen` solution. For `fopen`, this woul
 $child = fopen('http://'.$_SERVER['HTTP_HOST'].'/child.php', 'r');
 
 /*
- * Do some expensive work, while already doing other
+ * Do some work, while already doing other
  * work in the child process.
  */
 
