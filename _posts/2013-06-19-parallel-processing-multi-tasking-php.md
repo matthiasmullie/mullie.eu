@@ -92,30 +92,54 @@ list($result1, $result2) = $comboPromise->wait();
 
 If you're running [Facebook's HHVM](http://hhvm.com/), you can run [Hack](http://docs.hhvm.com/manual/en/hacklangref.php) code. Hack is an addition to plain old PHP: existing PHP will still run fine, but you can use additional Hack-specific features.
 
-One of those features is `async`. While it's not exactly multithreading, it still allows you to launch separate "threads" for code that is not blocked on CPU (like waiting for an API response to come back):
+One of those features is `async`. While it's not exactly multitasking, it still allows you to run separate blocks of code in parallel: while one is waiting on something that is not blocked on CPU (e.g. for an API response to come back), the other be executed already.
 
 ```hack
 <?hh
 
-async function work(): Awaitable<string> {
+async function api(): Awaitable<string> {
     /*
-     * Do some work here. This could e.g. be an API call.
-     * (while that's being done, CPU will be free to execute
-     * code elsewhere)
+     * Let's pretend we've just executed an API call
+     * and are now waiting for it to come back with
+     * a response. While that's being done, CPU should
+     * be free to execute code elsewhere.
      */
-    await SleepWaitHandle::create(1000);
+    await SleepWaitHandle::create(1000); // 1ms
 
-    return 'result';
+    return 'api result';
 }
 
-$thread = work();
+async function cpu(): Awaitable<string> {
+    /*
+     * Let's pretend we're doing some CPU-heavy stuff.
+     */
+    usleep(500); // 0.5ms
+
+    return 'cpu result';
+}
+
+$time = microtime(true);
 
 /*
- * Do some work here - will be executed while work() is blocked.
+ * Execute both code blocks - while api() is waiting
+ * for the response, CPU-bound code will already be
+ * executed (thus losing less time idling until we
+ * hear back from the API call.)
+ * After that, wait until both async blocks are done
+ * and get their results.
  */
+$asyncApi = api();
+$asyncCpu = cpu();
+$resultApi = $asyncApi->getWaitHandle()->join();
+$resultCpu = $asyncCpu->getWaitHandle()->join();
 
-// wait until "thread" is finished & get the result
-$data = $thread->getWaitHandle()->join();
+/*
+ * Time elapsed will only be slightly over 1ms,
+ * instead of the expected 1ms (API) + 0.5ms (CPU)
+ * because we were able to execute the CPU-intensive
+ * code while we were waiting on the API response.
+ */
+echo microtime(true) - $time;
 ```
 
 See [the blog post on async](http://hhvm.com/blog/7091/async-cooperative-multitasking-for-hack) for more elaborate info & examples of `async`.
