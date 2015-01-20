@@ -3,7 +3,7 @@ layout: post
 title: You don't want to build your own minifier
 image: minifier.png
 description: Every developer has likely at least considered writing their own framework or CMS. Until you start to realize just how much work it is and how much of your problems have actually been solved by someone else already. Then you throw in the towel and start using (and hopefully, contributing) to existing open source projects that suit your needs. Writing a minifier is very much alike.
-tags: [ php, js, css ]
+tags: [ minify, php, js, css ]
 ---
 
 Every developer has likely at least considered writing their own framework or CMS. Until you start to realize just how much work it is and how much of your problems have actually been solved by someone else already. Then you throw in the towel and start using (and hopefully, contributing) to existing open source projects that suit your needs. Writing a minifier is very much alike.

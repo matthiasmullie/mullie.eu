@@ -3,7 +3,7 @@ layout: post
 title: I had to display thousands of coordinates
 image: clustering.png
 description: I recently pushed some PHP code to cluster coordinates that helped me cope with hundreds of thousands of geographic locations. Turns out drawing all of those on a map isn't that trivial...
-tags: [ php, javascript, geography, scaling ]
+tags: [ scaling, geography, php, javascript ]
 ---
 
 I recently pushed some PHP [code to cluster coordinates](https://github.com/matthiasmullie/geo)
