@@ -24,26 +24,31 @@ layout: default
   </div>
 </div>
 
-<div class="comment top-30">
-  <p class="comment-text">
-    This post is <a href="https://github.com/matthiasmullie/matthiasmullie.github.io/blob/master/{{ page.path }}" title="{{ page.title }} on GitHub">on GitHub</a>.
-    If you spot any errors, please send me a <a href="https://github.com/matthiasmullie/matthiasmullie.github.io/edit/master/{{ page.path }}" title="Edit {{ page.title }} on GitHub">pull request</a> (&amp; credit yourself!)
-  </p>
-</div>
+{{! Show contribute link only for real blog posts (a page can also use post template) }}
+{% if page.id %}
+  <div class="comment top-30">
+    <p class="comment-text">
+      This post is <a href="https://github.com/matthiasmullie/matthiasmullie.github.io/blob/master/{{ page.path }}" title="{{ page.title }} on GitHub">on GitHub</a>.
+      If you spot any errors, please send me a <a href="https://github.com/matthiasmullie/matthiasmullie.github.io/edit/master/{{ page.path }}" title="Edit {{ page.title }} on GitHub">pull request</a> (&amp; credit yourself!)
+    </p>
+  </div>
+{% endif %}
 
-<div class="relatepost">
-  <div class="row">
-    <div class="col-md-6">
-      {% if page.previous %}
-      <span>Previous Post</span>
-      <h4><a href="{{ page.previous.url }}">{{ page.previous.title }}</a></h4>
-      {% endif %}
-    </div>
-    <div class="col-md-6">
-      {% if page.next %}
-      <span>Next Post</span>
-      <h4><a href="{{ page.next.url }}">{{ page.next.title }}</a></h4>
-      {% endif %}
+{% if page.previous or page.next %}
+  <div class="relatepost">
+    <div class="row">
+      <div class="col-md-6">
+        {% if page.previous %}
+        <span>Previous Post</span>
+        <h4><a href="{{ page.previous.url }}">{{ page.previous.title }}</a></h4>
+        {% endif %}
+      </div>
+      <div class="col-md-6">
+        {% if page.next %}
+        <span>Next Post</span>
+        <h4><a href="{{ page.next.url }}">{{ page.next.title }}</a></h4>
+        {% endif %}
+      </div>
     </div>
   </div>
-</div>
+{% endif %}
