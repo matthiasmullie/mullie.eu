@@ -94,7 +94,7 @@ If you're running [Facebook's HHVM](http://hhvm.com/), you can run [Hack](http:/
 
 One of those features is `async`. While it's not exactly multitasking, it still allows you to run separate blocks of code in parallel: while one is waiting on something that is not blocked on CPU (e.g. for an API response to come back), the other be executed already.
 
-```hack
+```php
 <?hh
 
 async function api(): Awaitable<string> {
