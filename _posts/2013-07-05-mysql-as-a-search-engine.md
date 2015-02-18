@@ -135,7 +135,7 @@ You should be aware that some words are simply ignored by MySQL's full-text sear
 For starters, there's the `ft_min_word_len` and `ft_max_word_len` configuration directives, which indicate the minimum and maximum length a word may have to be indexed.
 By default, `ft_min_word_len` is 4, so words with less than 4 characters, can not be searched for, unless you change this configuration directive (and rebuild the index after you did so.) Note that this is a server-wide setting that will affect all databases and can not be configured on a per-database level.
 
-*In Fork CMS, we circumvented this by padding all words in our search index with 3 characters, then also padding the search terms with those same characters. I don't encourage this work-around: if lower-character words are of importance, you should lower `ft_min_word_len`. We did so because the CMS will often run on shared hosting, where changing the config may not be possible.*
+*You can circumvent this by padding all words in the search index with (`ft_min_word_len` - 1) characters, then also padding the search terms with those same characters. I don't encourage this work-around: if lower-character words are of importance, you should lower `ft_min_word_len`! But you may not have that option on shared hosting...*
 
 Another common reason for words not being found is because they're on [MySQL's stopword list](http://dev.mysql.com/doc/refman/5.7/en/fulltext-stopwords.html). Common words like “the” or “and” are never indexed, much like Google does too.
 
