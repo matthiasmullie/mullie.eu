@@ -65,7 +65,7 @@ If your CPU-intensive work is not critical for the response (you don't need to i
 
 ## Memory
 
-The problem with memory-intensive applications is two-fold:
+The problem with memory-intensive applications is twofold:
 
 * Your processor may be idling until it can access occupied memory, thus delaying your response time (same problem as with CPU-intensive applications)
 * You may be trying to fit more into the memory than is possible, and the request will fail.
@@ -77,7 +77,7 @@ You can usually limit memory usage by processing data in smaller batches of a kn
 
 ## Example
 
-Let's say we're want to retrieve a random row from the database:
+Let's say we want to retrieve a random row from the database:
 
 **BAD**
 
