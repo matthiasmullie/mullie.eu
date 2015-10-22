@@ -156,7 +156,7 @@ If you have a CNS & store all pages in the database, there's no point in getting
 
 Cache can come in many forms: a memcached or redis server, disk cache, temporary cache in memory... All that matters is that reading the result from it is faster than executing it again.
 
-Not that introducing caching will increase the complexity of your codebase. Not only do you now have to read & write data from & to multiple places, you also need to make sure they're in sync and data in your cache gets updated or invalidated when data in your storage changes.
+Note that introducing caching will increase the complexity of your codebase. Not only do you now have to read & write data from & to multiple places, you also need to make sure they're in sync and data in your cache gets updated or invalidated when data in your storage changes.
 
 
 # Network
