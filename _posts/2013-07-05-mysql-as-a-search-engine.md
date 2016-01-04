@@ -14,7 +14,7 @@ This article will solely focus on the most common text-based search (as opposed 
 
 # MySQL is not a search engine
 
-MySQL is a relational database, no search engine. While it does provide some tools to search inside the data it holds, you're better of integrating a real search engine if you're looking for a full-fledged solution. Some of the most popular (open source) search engines are:
+MySQL is a relational database, not a search engine. While it does provide some tools to search inside the data it holds, you're better of integrating a real search engine if you're looking for a full-fledged solution. Some of the most popular (open source) search engines are:
 
 * [Lucene](http://lucene.apache.org/core)
 * [Sphinx](http://sphinxsearch.com/)
