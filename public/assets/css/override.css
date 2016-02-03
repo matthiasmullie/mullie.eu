@@ -74,19 +74,23 @@
 }
 
 /*
- * Override butt ugly highlight style.
+ * Override butt ugly highlight style. & make big code blocks should take full
+ * content width.
  */
-.highlight {
-	background: none;
-	display: block;
+div.highlighter-rouge pre {
 	margin: 0 -30px;
-	padding: 0;
-}
-
-.highlight pre {
 	padding: 10px 30px;
+	background: #f5f5f5;
 	border: none;
 	border-radius: 0;
+	display: block;
+}
+
+/*
+ * Default color for elements not styled in syntax.css
+ */
+div.highlighter-rouge code {
+	color: #000;
 }
 
 /*
