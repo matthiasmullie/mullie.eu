@@ -118,7 +118,7 @@ Version: 1.0
 -------------------------------------------------------------- */
 
 /* Import Fonts */
-@import url(http://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic);
+@import url(//fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic);
 
 body {
 	font-family: 'Open Sans', Helvetica, Arial;
@@ -1223,7 +1223,7 @@ ul.features-list li i {
 .entry-item .entry-header .image-mark {
 	position: absolute;
 	display: block;
-	background: url(assets/images/plus.png) no-repeat scroll center center / 100% 100% #222222;
+	background: url(../images/plus.png) no-repeat scroll center center / 100% 100% #222222;
 	width: 100%;
 	height: 100%;
 	z-index: 1;

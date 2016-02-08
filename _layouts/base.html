@@ -4,6 +4,8 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+	<link rel="canonical" href="{{ site.url }}{{ page.url }}">
+
 	{{! Bootstrap core CSS }}
 	<link href="{{ site.baseurl }}public/assets/css/bootstrap.css" rel="stylesheet">
 
@@ -84,7 +86,7 @@
 							<div class="widget twitter border">
 								<h4 class="widget-title">Twitter</h4>
 								<div id="last-tweet-footer"></div>
-								<script src="{{ site.baseurl }}public/assets/js/tweet.js"></script>
+								<script src="//api.tweecool.com/js/tweecool.min.js"></script>
 								<script>
 									jQuery(document).ready(function() {
 										jQuery('#last-tweet-footer').tweecool({

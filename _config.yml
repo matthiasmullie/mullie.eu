@@ -5,9 +5,10 @@ permalink:        pretty
 title:            Matthias Mullie
 tagline:          'Software engineer'
 description:      'Matthias Mullie, software engineer'
-url:              http://www.mullie.eu
+url:              https://www.mullie.eu
 baseurl:          /
 image:            public/logo_300.png
+enforce_ssl:      www.mullie.eu
 
 author:
   name:           'Matthias Mullie'
