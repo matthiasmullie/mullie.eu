@@ -1,6 +1,3 @@
-# Permalinks
-permalink:        pretty
-
 # Setup
 title:            Matthias Mullie
 tagline:          'Software engineer'
@@ -23,7 +20,7 @@ version:          1.0.0
 github:
   repo:           https://github.com/matthiasmullie/matthiasmullie.github.io
 
-permalink:        /:title
+permalink:        /:title/
 
 gems:
   # Generate sitemap
