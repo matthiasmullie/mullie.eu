@@ -21,8 +21,8 @@ the internet a better place. We open-sourced our CMS software as
 Good times!
 
 Being all excited about open-source, but craving an technical challenge,
-[Wikipedia](http://www.wikipedia.org/) was my next adventure. And boy, was I not
-disappointed to work with world-class colleagues on this top-tier website!
+[Wikipedia](http://www.wikipedia.org/) bacame my next adventure. And boy, was I
+not disappointed to work with world-class colleagues on this top-tier website!
 An application of this size & traffic sure it something else.
 
 I care about code architecture. I love hard challenges, clean code & learning
