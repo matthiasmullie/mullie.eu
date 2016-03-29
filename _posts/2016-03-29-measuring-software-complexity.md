@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Making software complexity measurable
+title: Measuring software complexity
 image: complexity.png
 description: When asked for an estimate, you usually don't have much more than your gut feeling to go on. You just know that this one thing is going to take a lot more time because it's much more fragile than that other thing. But why is that?
 tags: [ metrics, php ]
