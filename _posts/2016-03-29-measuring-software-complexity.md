@@ -108,8 +108,10 @@ On the other hand, a function with a huge `switch` statement could have little
 intelligent content, but a very big cyclomatic complexity.
 
 The maintainability index is a combination of the amount of lines of code and
-these 2 complexity metrics. As soon as any of those metrics start to look
-alarming, the maintainability index will drop.
+these 2 complexity metrics in an attempt to predict how hard software is to
+maintain. The [exact formula](https://www.cauditor.org/help/metrics#mi) seems
+arbitrary: it was engineered to match ratings of manual analysis of software in
+the 80s.
 
 A low maintainability index is a clear indicator of worrisome code. If you're
 going to build something that touches that code, it's likely going to take
