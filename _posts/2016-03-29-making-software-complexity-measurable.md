@@ -37,7 +37,7 @@ and complexity can be measured in a few different ways.
 
 Complex code usually means either the problem it's solving is complicated, or
 that the code is of poor quality. We're likely to see bugs in both cases. And
-complex code harder to reason about, so it'll be harder to maintain.
+complex code is harder to reason about, so it'll be harder to maintain.
 
 # Cyclomatic complexity
 
@@ -55,7 +55,7 @@ if ($user->isLoggedIn()) {
 
 In the above code example, there are 2 possible code paths: either `$user` is
 logged in (in which case a personalized text is displayed), or isn't (and a
-generic message is shown.) It has a cyclomatic complexity of **2**.
+generic message is shown). It has a cyclomatic complexity of **2**.
 
 The more decision paths there are, the harder it becomes to reason about the
 logic & test it.
@@ -64,7 +64,7 @@ logic & test it.
 
 Instead of decision paths, Halstead's metrics are based on the vocabulary of
 your software: all operators (`+`, `-`, `=`, `&&`, ... and all reserved words,
-like `if` and `for`) and operands (values, variables & function names.)
+like `if` and `for`) and operands (values, variables & function names).
 
 The [exact formula](https://www.cauditor.org/help/metrics#hi) to calculate
 this metric is quite complex because it tries to be programming language
@@ -100,7 +100,7 @@ flawed, it can affect everything that follows.
 
 Just look at these metrics for [Minify](http://www.minifier.org). Even though in
 terms of cyclomatic complexity, `stripWhitespace` (circled) scores low, it's
-still a pretty complex beast (just [look at the code](https://github.com/matthiasmullie/minify/blob/c17eb048daa44b43fa98bfa405147e77a040df76/src/JS.php#L245)!)
+still a pretty complex beast (just [look at the code](https://github.com/matthiasmullie/minify/blob/c17eb048daa44b43fa98bfa405147e77a040df76/src/JS.php#L245)!).
 
 [![Minify complexity metrics]({{ site.baseurl }}public/posts/complexity-metrics.png)](https://www.cauditor.org/matthiasmullie/minify/c17eb048daa44b43fa98bfa405147e77a040df76/metrics)
 
@@ -108,7 +108,7 @@ On the other hand, a function with a huge `switch` statement could have little
 intelligent content, but a very big cyclomatic complexity.
 
 The maintainability index is a combination of the amount of lines of code and
-these 2 complexity metrics, and as soon as any of those metrics start to look
+these 2 complexity metrics. As soon as any of those metrics start to look
 alarming, the maintainability index will drop.
 
 A low maintainability index is a clear indicator of worrisome code. If you're
