@@ -23,7 +23,7 @@ Good times!
 Being all excited about open-source, but craving an technical challenge,
 [Wikipedia](http://www.wikipedia.org/) became my next adventure. And boy, was I
 not disappointed to work with world-class colleagues on this top-tier website!
-An application of this size & traffic sure it something else.
+An application of this size & traffic sure is something else.
 
 I care about code architecture. I love hard challenges, clean code & learning
 new things. Bonus points for open source projects. I play soccer & like to
