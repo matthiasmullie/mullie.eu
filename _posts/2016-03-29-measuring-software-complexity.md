@@ -120,3 +120,6 @@ If you're interested in finding the complexity hotspots in your projects, head
 on to [Cauditor](https://www.cauditor.org), a code metrics visualization
 project I've been working on. Or run the [PDepend](https://pdepend.org) suite
 if you're only interested in the raw metrics.
+
+Just note that complex code doesn't necessarily mean bad code! It could also be
+solving a very hard problem that you might not even be able to simplify.
