@@ -39,7 +39,7 @@ when it changes.**
 
 # Efferent coupling
 
-Efferent coupling is about how many classes this class depends on, the maount of
+Efferent coupling is about how many classes this class depends on, the amount of
 outgoing dependencies.
 
 In a sense, it's good to use other classes instead of duplicating that code, but
