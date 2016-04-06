@@ -62,7 +62,7 @@ logic & test it.
 
 # Halstead intelligent content
 
-Instead of decision paths, Halstead's metrics are based on the vocabulary of
+Instead of decision paths, Halstead's measures are based on the vocabulary of
 your software: all operators (`+`, `-`, `=`, `&&`, ... and all reserved words,
 like `if` and `for`) and operands (values, variables & function names).
 
