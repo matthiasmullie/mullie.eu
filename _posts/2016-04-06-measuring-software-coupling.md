@@ -75,6 +75,10 @@ Stability or instability is about technical difficulty to change things, which
 may be at odds with the need or desire to change it. High stability is good, as
 long as you don't need to change the implementation often.
 
+A class should either be as stable as possible, or as unstable as possible.
+Those can always be refactored later, and having the instability in a few places
+is better than spreading it out across the entire system.
+
 **A class should depend only on classes that are more stable that itself.**
 
 If you want to look into coupling in your projects, head on to
