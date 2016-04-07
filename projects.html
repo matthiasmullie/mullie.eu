@@ -1,0 +1,239 @@
+---
+layout: projects
+title: Projects
+weight: 1
+---
+
+<h1 class="thin bottom-20">
+    Own projects
+</h1>
+
+<div class="row bottom-30">
+    <div class="col-xs-12 bottom-20 entry-item detail">
+        <div class="entry-header">
+            <img src="/public/projects/cauditor.png" alt="" class="img-responsive" />
+        </div>
+
+        <div class="entry-detail">
+            <div class="entry-content">
+                <h3 class="entry-title thin bottom-20">
+                    <a href="https://www.cauditor.org">Cauditor: code analyzer</a>
+                </h3>
+
+                <p>
+                    Set up this AWS-hosted SaaS to extract/visualize metrics for PHP projects.
+                </p>
+                <p>
+                    Link GitHub repos & send to 2 SQS queues (1 priority for last commit, other for history) where metrics are generated and submitted back to website.
+                <p>
+                    Site is Python, analyzer is PHP (and open source)
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row bottom-30">
+    <div class="col-xs-12 bottom-20 entry-item detail">
+        <div class="entry-detail">
+            <div class="entry-content">
+                <img src="/public/projects/scrapbook.png" style="float:left; height: 110px; padding-right: 25px" alt="">
+
+                <h3 class="entry-title thin bottom-10">
+                    <a href="http://www.scrapbook.cash">Scrapbook: cache environment</a>
+                </h3>
+
+                <p>
+                    <a href="https://travis-ci.org/matthiasmullie/scrapbook"><img alt="Build status" src="https://api.travis-ci.org/matthiasmullie/scrapbook.svg?branch=master"></a>
+                    <a href="https://codecov.io/github/matthiasmullie/scrapbook"><img alt="Code coverage" src="http://img.shields.io/codecov/c/github/matthiasmullie/scrapbook.svg"></a>
+                    <a href="https://scrutinizer-ci.com/g/matthiasmullie/scrapbook"><img alt="Code quality" src="http://img.shields.io/scrutinizer/g/matthiasmullie/scrapbook.svg"></a>
+                    <a href="https://packagist.org/packages/matthiasmullie/scrapbook"><img alt="Latest version" src="http://img.shields.io/packagist/v/matthiasmullie/scrapbook.svg"></a>
+                    <a href="https://packagist.org/packages/matthiasmullie/scrapbook"><img alt="Downloads total" src="http://img.shields.io/packagist/dt/matthiasmullie/scrapbook.svg"></a>
+                </p>
+
+                <p>
+                    I implemented a Memcached-like API for multiple cache backends, with stampede protection & transactions(!) etc. on top.
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row bottom-30">
+    <div class="col-xs-12 bottom-20 entry-item detail">
+        <div class="entry-detail">
+            <div class="entry-content">
+                <img src="/public/projects/minify.png" style="float:left; height: 110px; padding-right: 25px" alt="">
+
+                <h3 class="entry-title thin bottom-10">
+                    <a href="http://www.minifier.org">CSS & JS minifier</a>
+                </h3>
+
+                <p>
+                    <a href="https://travis-ci.org/matthiasmullie/minify"><img alt="Build status" src="https://api.travis-ci.org/matthiasmullie/minify.svg?branch=master"></a>
+                    <a href="https://codecov.io/github/matthiasmullie/minify"><img alt="Code coverage" src="http://img.shields.io/codecov/c/github/matthiasmullie/minify.svg"></a>
+                    <a href="https://scrutinizer-ci.com/g/matthiasmullie/minify"><img alt="Code quality" src="http://img.shields.io/scrutinizer/g/matthiasmullie/minify.svg"></a>
+                    <a href="https://packagist.org/packages/matthiasmullie/minify"><img alt="Latest version" src="http://img.shields.io/packagist/v/matthiasmullie/minify.svg"></a>
+                    <a href="https://packagist.org/packages/matthiasmullie/minify"><img alt="Downloads total" src="http://img.shields.io/packagist/dt/matthiasmullie/minify.svg"></a>
+                </p>
+
+                <p>
+                    How did a few regular expressions for a CMS grow into this thing with 100k+ installs?<br />
+                    I'm still convinced these regexes beat an AST approach!
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row bottom-30">
+    <div class="col-xs-12 col-sm-6 bottom-20 entry-item detail">
+        <div class="entry-detail">
+            <div class="entry-content">
+                <h3 class="entry-title thin bottom-10">
+                    <a href="https://github.com/matthiasmullie/ci-sniffer/">ci-sniffer</a>
+                </h3>
+
+                <p>
+                    <a href="https://scrutinizer-ci.com/g/matthiasmullie/ci-sniffer"><img alt="Code quality" src="http://img.shields.io/scrutinizer/g/matthiasmullie/ci-sniffer.svg"></a>
+                    <a href="https://packagist.org/packages/matthiasmullie/ci-sniffer"><img alt="Latest version" src="http://img.shields.io/packagist/v/matthiasmullie/ci-sniffer.svg"></a>
+                    <a href="https://packagist.org/packages/matthiasmullie/ci-sniffer"><img alt="Downloads total" src="http://img.shields.io/packagist/dt/matthiasmullie/ci-sniffer.svg"></a>
+                </p>
+
+                <p>
+                    Extract build & environment details from just about any CI server:
+                </p>
+
+                <table style="border: none">
+                    <tbody>
+                        <tr>
+                            <td>Appveyor</td><td><a href="https://ci.appveyor.com/project/matthiasmullie/ci-sniffer"><img alt="" src="https://ci.appveyor.com/api/projects/status/w770kc3jqcnhl0jt?svg=true" /></a></td>
+                        </tr>
+                        <tr>
+                            <td>Circle CI</td><td><a href="https://circleci.com/gh/matthiasmullie/ci-sniffer"><img alt="" src="https://circleci.com/gh/matthiasmullie/ci-sniffer.svg?style=svg" /></a></td>
+                        </tr>
+                        <tr>
+                            <td>Codeship</td><td><a href="https://codeship.com/projects/133591"><img alt="" src="https://codeship.com/projects/d65fa110-b318-0133-2330-0e52fcdb9711/status?branch=master" /></a></td>
+                        </tr>
+                        <tr>
+                            <td>Drone</td><td><a href="https://drone.io/github.com/matthiasmullie/ci-sniffer"><img alt="" src="https://drone.io/github.com/matthiasmullie/ci-sniffer/status.png" /></a></td>
+                        </tr>
+                        <tr>
+                            <td>Jenkins</td><td>Supported!</td>
+                        </tr>
+                        <tr>
+                            <td>Shippable</td><td><a href="https://app.shippable.com/projects/56bdaae41895ca447473e35d"><img alt="" src="https://api.shippable.com/projects/56bdaae41895ca447473e35d/badge?branch=master" /></a></td>
+                        </tr>
+                        <tr>
+                            <td>Snap CI</td><td><a href="https://snap-ci.com/matthiasmullie/ci-sniffer"><img alt="" src="https://snap-ci.com/matthiasmullie/ci-sniffer/branch/master/build_image" /></a></td>
+                        </tr>
+                        <tr>
+                            <td>Travis CI</td><td><a href="https://travis-ci.org/matthiasmullie/ci-sniffer"><img alt="" src="https://api.travis-ci.org/matthiasmullie/ci-sniffer.svg?branch=master" /></a></td>
+                        </tr>
+                        <tr>
+                            <td>Wercker</td><td><a href="https://app.wercker.com/project/bykey/59efbc6ee4e16b13df426432000ad86a"><img alt="" src="https://app.wercker.com/status/59efbc6ee4e16b13df426432000ad86a/s" /></a></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-xs-12 col-sm-6 bottom-20 entry-item detail">
+        <div class="entry-detail">
+            <div class="entry-content">
+                <h3 class="entry-title thin bottom-10">
+                    <a href="https://github.com/matthiasmullie/path-converter/">path-converter</a>
+                </h3>
+
+                <p>
+                    <a href="https://travis-ci.org/matthiasmullie/path-converter"><img alt="Build status" src="https://api.travis-ci.org/matthiasmullie/path-converter.svg?branch=master"></a>
+                    <a href="https://codecov.io/github/matthiasmullie/path-converter"><img alt="Code coverage" src="http://img.shields.io/codecov/c/github/matthiasmullie/path-converter.svg"></a>
+                    <a href="https://scrutinizer-ci.com/g/matthiasmullie/path-converter"><img alt="Code quality" src="http://img.shields.io/scrutinizer/g/matthiasmullie/path-converter.svg"></a>
+                    <a href="https://packagist.org/packages/matthiasmullie/path-converter"><img alt="Latest version" src="http://img.shields.io/packagist/v/matthiasmullie/path-converter.svg"></a>
+                    <a href="https://packagist.org/packages/matthiasmullie/path-converter"><img alt="Downloads total" src="http://img.shields.io/packagist/dt/matthiasmullie/path-converter.svg"></a>
+                </p>
+
+                <p>
+                    Converts paths relative to one path to another.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-xs-12 col-sm-6 bottom-20 entry-item detail">
+        <div class="entry-detail">
+            <div class="entry-content">
+                <h3 class="entry-title thin bottom-10">
+                    <a href="https://github.com/matthiasmullie/geo/">geo</a>
+                </h3>
+
+                <p>
+                    <a href="https://travis-ci.org/matthiasmullie/geo"><img alt="Build status" src="https://api.travis-ci.org/matthiasmullie/geo.svg?branch=master"></a>
+                    <a href="https://codecov.io/github/matthiasmullie/geo"><img alt="Code coverage" src="http://img.shields.io/codecov/c/github/matthiasmullie/geo.svg"></a>
+                    <a href="https://scrutinizer-ci.com/g/matthiasmullie/geo"><img alt="Code quality" src="http://img.shields.io/scrutinizer/g/matthiasmullie/geo.svg"></a>
+                    <a href="https://packagist.org/packages/matthiasmullie/geo"><img alt="Latest version" src="http://img.shields.io/packagist/v/matthiasmullie/geo.svg"></a>
+                    <a href="https://packagist.org/packages/matthiasmullie/geo"><img alt="Downloads total" src="http://img.shields.io/packagist/dt/matthiasmullie/geo.svg"></a>
+                </p>
+
+                <p>
+                    Helper for geographic searches & clustering of coordinates.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-xs-12 col-sm-6 bottom-20 entry-item detail">
+        <div class="entry-detail">
+            <div class="entry-content">
+                <h3 class="entry-title thin bottom-10">
+                    <a href="https://github.com/matthiasmullie/jquery-autoexpand/">jquery-autoexpand</a>
+                </h3>
+
+                <p>
+                    <a href="https://www.npmjs.com/package/jquery-autoexpand"><img alt="Latest version" src="https://img.shields.io/npm/dt/jquery-autoexpand.svg"></a>
+                    <a href="https://www.npmjs.com/package/jquery-autoexpand"><img alt="Downloads total" src="https://img.shields.io/npm/v/jquery-autoexpand.svg"></a>
+                </p>
+
+                <p>
+                    Auto-expands textareas so they grow as you type.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-xs-12 col-sm-6 bottom-20 entry-item detail">
+        <div class="entry-detail">
+            <div class="entry-content">
+                <h3 class="entry-title thin bottom-10">
+                    <a href="https://github.com/matthiasmullie/jquery-simple-slideshow/">jquery-simple-slideshow</a>
+                </h3>
+
+                <p>
+                    <a href="https://www.npmjs.com/package/jquery-simple-slideshow"><img alt="Latest version" src="https://img.shields.io/npm/dt/jquery-simple-slideshow.svg"></a>
+                    <a href="https://www.npmjs.com/package/jquery-simple-slideshow"><img alt="Downloads total" src="https://img.shields.io/npm/v/jquery-simple-slideshow.svg"></a>
+                </p>
+
+                <p>
+                    A simple, low-config, jQuery-based slideshow.
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<h1 class="thin bottom-20">
+    Significant contributions
+</h1>
+
+<div class="row">
+    <div class="col-xs-12 col-xs-4">
+        <a href="https://www.mediawiki.org"><img alt="MediaWiki" src="/public/projects/mediawiki.png" class="img-responsive" /></a>
+    </div>
+    <div class="col-xs-12 col-xs-4">
+        <a href="http://www.fork-cms.com"><img alt="Fork CMS" src="/public/projects/forkcms.png" class="img-responsive" /></a>
+    </div>
+    <div class="col-xs-12 col-xs-4">
+        <a href="https://pdepend.org/"><img alt="PDepend" src="/public/projects/pdepend.png" class="img-responsive" /></a>
+    </div>
+</div>
