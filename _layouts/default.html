@@ -10,6 +10,21 @@ layout: base
 			</div>
 
 			<div class="col-md-4" id="sidebar">
+				{% if page.name != 'projects.html' %}
+					<div class="widget projects">
+						<h4 class="widget-title">Projects</h4>
+						{% include projects.html %}
+
+						{% for page in site.pages %}
+							{% if page.name == 'projects.html' %}
+								<div class="col-xs-12 text-center">
+									<a href="{{ page.url }}">More projects&hellip;</a>
+								</div>
+							{% endif %}
+						{% endfor %}
+					</div>
+				{% endif %}
+
 				<div class="widget top-post">
 					<h4 class="widget-title">Top Posts</h4>
 					{% include top_posts.html %}

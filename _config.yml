@@ -27,4 +27,4 @@ gems:
   - jekyll-sitemap
 
 # Titles of posts to be displayed in "top posts" widget
-top_posts:       ["How to build a MySQL-powered search engine", "Regular expressions for pros", "Cache! A-ah. Saviour of the Universe", "Async processing or multitasking in PHP", "Measuring software complexity"]
+top_posts:       ["Regular expressions for pros", "Geographic searches within a certain distance", "Measuring software complexity"]
