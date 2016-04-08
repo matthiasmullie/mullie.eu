@@ -19,7 +19,8 @@ layout: default
     </div>
 
     <div class="entry-content">
-      {{ content }}
+      {% capture adsense %}{% include adsense.html %}{% endcapture %}
+      {{ content | replace: "<!-- more -->", adsense }}
     </div>
   </div>
 </div>
