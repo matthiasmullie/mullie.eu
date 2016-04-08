@@ -97,7 +97,7 @@ The black box signifies the area we've just queried the database for. The orange
 To weed out these results that did fall into our rough boundaries, but are not actually within the desired area distance, let's just loop all of these entries and calculate the distance there. Because our resultset will now be pretty small, this shouldn't really hurt us:
 
 ```php
-// our own location & distance we want to search
+// our own location &amp; distance we want to search
 $lat = 50.52;
 $lng = 4.22;
 $distance = 10;
