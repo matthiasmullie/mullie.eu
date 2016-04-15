@@ -194,3 +194,20 @@ h6.medium {
 	padding: 15px 30px;
 	background-color: #f9f9f9;
 }
+
+
+/* Make text colors a bit darker, for more contrast */
+a, h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
+	color: #000;
+	font-weight: 400;
+}
+body {
+	color: #222;
+}
+input, textarea,
+input:focus, textarea:focus {
+	color: #222;
+}
+*::-moz-placeholder {
+	color: #444;
+}
