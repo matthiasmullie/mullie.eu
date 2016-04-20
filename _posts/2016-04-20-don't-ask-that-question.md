@@ -15,7 +15,7 @@ You should do the same!
 
 # Don't ask how
 
-When I get stuck, I'll often turn to [Google](https://www.google.com) or
+When I get stuck, I'll first turn to [Google](https://www.google.com) or
 [StackOverflow](https://stackoverflow.com) to seek some guidance. Or try to find
 something similar in the project and see how it's done there. Asking "how" is
 often just laziness. Whatever the problem, someone somewhere has likely also
@@ -43,7 +43,7 @@ You don't want to disturb your coworkers, but staring at the problem and coming
 up blank after exhausting every possibility is no good use of your time either.
 
 Try explaining the problem to someone else in great detail, without actually
-doing so. I often start drafting an email to a colleague to explain my problem.
+doing so. I start to draft an email to a colleague to explain my problem.
 I usually outline the problem, and every possible solution I've considered and
 attempted to resolve it, and why it failed. Quite often, this exercise will
 result in never having to send that email at all. Going over everything again,
