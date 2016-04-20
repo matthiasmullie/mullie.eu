@@ -211,3 +211,6 @@ input:focus, textarea:focus {
 *::-moz-placeholder {
 	color: #444;
 }
+#footer {
+	color: #ccc;
+}
