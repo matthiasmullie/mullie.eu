@@ -2,6 +2,8 @@
 layout: default
 ---
 
+{% include adsense_pagelevel.html %}
+
 <div class="entry-item detail">
   <div class="entry-header">
     <img class="img-responsive" src="{{ site.baseurl }}public/posts/{{ page.image }}" alt="">
@@ -19,12 +21,12 @@ layout: default
     </div>
 
     <div class="entry-content">
-      {% capture adsense %}{% include adsense.html %}{% endcapture %}
+      {% capture adsense %}{% include adsense_responsive.html %}{% endcapture %}
       {{ content | replace: "<!-- more -->", adsense }}
     </div>
   </div>
 
-  {% include adsense2.html %}
+  {% include adsense_leaderboard.html %}
 </div>
 
 {{! Show contribute link only for real blog posts (a page can also use post template) }}
