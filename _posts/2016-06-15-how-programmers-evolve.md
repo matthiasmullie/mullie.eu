@@ -3,7 +3,6 @@ layout: post
 title: Programmers don't evolve
 image: evolve.png
 description: I recently worked on a software metrics tool, which taught me a lot about the architecture of some of my work. Then I calculated the difference in metrics between mine and previous commits, plotted the results, and looked at my personal progress. Nothing!
-disqus: 1
 tags: [ metrics ]
 ---
 
