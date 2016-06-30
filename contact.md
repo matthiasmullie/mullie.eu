@@ -4,29 +4,22 @@ title: Me/Contact
 weight: 9
 ---
 
+# Matthias Mullie
 
 I'm a senior software engineer with an appetite for complex problems. I'm easy
-going & take responsibility for my work. Most of my expertise is with PHP,
-Python, MySQL, JavaScript & related tech, but I'll fiddle with anything when I
-get the chance.
+going & take responsibility for my work. I care about code architecture. I love
+hard challenges, clean code & learning new things. Bonus points for open source.
 
-I rolled into software development when online gaming was more fun than
-homework: I built a hack for the game and ended up spending more time on that,
-than actually playing the game. I'm sorry for ruining the game!
+I rolled into software development with video games: I found hacking them a lot
+of fun. I'm sorry for ruining the game!
 
-My first programming job landed me in a terrific team of both software engineers
-and designers. Every single one of them, like me, very passionate about making
-the internet a better place. We open-sourced our CMS software as
-[Fork CMS](http://www.fork-cms.com/), a project I eventually ended up leading.
-Good times!
+My first job landed me in an agency with a team of terrific software engineers
+and designers, all very passionate about making the internet a better place.
+We open-sourced [Fork CMS](http://www.fork-cms.com/). Good times!
 
-Being all excited about open-source, but craving an technical challenge,
-[Wikipedia](http://www.wikipedia.org/) became my next adventure. And boy, was I
-not disappointed to work with world-class colleagues on this top-tier website!
-An application of this size & traffic sure is something else.
-
-I care about code architecture. I love hard challenges, clean code & learning
-new things. Bonus points for open source projects. I play soccer & like to
-travel. I hate writing things like this about myself :)
+I was very happy to join [Wikipedia](https://www.wikipedia.org/) next. Not only
+did I learn a lot about scaling a big application, I also became part of one of
+the best initiatives on the internet. Wikipedia means a lot to the world,
+[don't forget to donate!](https://donate.wikimedia.org/)
 
 {% include contactform.html %}
