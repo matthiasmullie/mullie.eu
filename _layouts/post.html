@@ -2,7 +2,9 @@
 layout: default
 ---
 
-{% include adsense_pagelevel.html %}
+{% if page.adsense or page.adsense == nil %}
+  {% include adsense_pagelevel.html %}
+{% endif %}
 
 <div class="entry-item detail">
   <div class="entry-header">
@@ -21,12 +23,17 @@ layout: default
     </div>
 
     <div class="entry-content">
-      {% capture adsense %}{% include adsense_responsive.html %}{% endcapture %}
+      {% if page.adsense or page.adsense == nil %}
+        {% capture adsense %}{% include adsense_responsive.html %}{% endcapture %}
+      {% endif %}
+
       {{ content | replace: "<!-- more -->", adsense }}
     </div>
   </div>
 
-  {% include adsense_leaderboard.html %}
+  {% if page.adsense or page.adsense == nil %}
+    {% include adsense_leaderboard.html %}
+  {% endif %}
 </div>
 
 {{! Show contribute link only for real blog posts (a page can also use post template) }}
