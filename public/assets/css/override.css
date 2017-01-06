@@ -187,12 +187,20 @@ h6.medium {
 }
 
 /*
+ * 2 ads (adsense & amazon) are added to DOM, but only 1 will be displayed,
+ * randomly. I'll hide both and only show 1 with JavaScript
+ */
+.ad {
+	display: none;
+}
+/*
  * Make ads stand out from content by letting them occupy full content width.
  */
-.adsense {
+.ad.margin {
 	margin: 15px -30px;
 	padding: 15px 30px;
 	background-color: #f9f9f9;
+	text-align: center;
 }
 
 
