@@ -3,11 +3,7 @@ layout: default
 ---
 
 {% if page.adsense or page.adsense == nil %}
-  {% capture adsense_pagelevel %}{% include adsense_pagelevel.html %}{% endcapture %}
-  {% capture amazon_pagelevel %}{% include amazon_pagelevel.html %}{% endcapture %}
-
-  <div class="ad adsense">{{ adsense_pagelevel }}</div>
-  <div class="ad amazon">{{ amazon_pagelevel }}</div>
+  <div class="ad adsense">{% include adsense_pagelevel.html %}</div>
 {% endif %}
 
 <div class="entry-item detail">
@@ -30,7 +26,6 @@ layout: default
       {% if page.adsense or page.adsense == nil %}
         {% capture ads %}
           <div class="ad adsense margin">{% include adsense_responsive.html %}</div>
-          <div class="ad amazon margin">{% include amazon_responsive.html %}</div>
         {% endcapture %}
       {% endif %}
 
@@ -40,7 +35,6 @@ layout: default
 
   {% if page.adsense or page.adsense == nil %}
     <div class="ad adsense margin">{% include adsense_leaderboard.html %}</div>
-    <div class="ad amazon margin">{% include amazon_leaderboard.html %}</div>
   {% endif %}
 </div>
 
@@ -87,14 +81,4 @@ layout: default
       </div>
     </div>
   </div>
-{% endif %}
-
-{% if page.adsense or page.adsense == nil %}
-  <script>
-      if (Math.random() > .5) {
-          $('.ad.adsense').show();
-      } else {
-          $('.ad.amazon').show();
-      }
-  </script>
 {% endif %}
