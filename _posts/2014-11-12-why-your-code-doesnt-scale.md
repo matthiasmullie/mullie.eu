@@ -152,17 +152,17 @@ Sharding will likely be the solution for write-heavy applications, replication f
 
 The magic bullet! Well, not really, but it can be incredibly helpful. Caching is storing the result of an expensive operation where it is known that the result will again be the same the next time. Like storing the result of a call to an external API into your database. Or storing the result of some expensive query or computation to memcached.
 
-If you have a CNS & store all pages in the database, there's no point in getting that navigation from your database on every single page request. It won't just change at any given time, so you can simply store a static copy of it in cache. Once a new page is added to the navigation, we can just purge/invalidate that cache so that the next time, we'll be fetching the updated navigation from storage. Which can then again be cached...
+If you have a CMS & store all pages in the database, there's no point in getting that navigation from your database on every single page request. It won't just change at any given time, so you can simply store a static copy of it in cache. Once a new page is added to the navigation, we can just purge/invalidate that cache so that the next time, we'll be fetching the updated navigation from storage. Which can then again be cached...
 
-Cache can come in many forms: a memcached or redis server, disk cache, temporary cache in memory... All that matters is that reading the result from it is faster than executing it again.
+Cache can come in many forms: a Memcached or Redis server, disk cache, temporary cache in memory... All that matters is that reading the result from it is faster than executing it again.
 
 Note that introducing caching will increase the complexity of your codebase. Not only do you now have to read & write data from & to multiple places, you also need to make sure they're in sync and data in your cache gets updated or invalidated when data in your storage changes.
 
 
 # Network
 
-Network requests are usually not really considered but can slow down your application drastically, given you don't carefully limit them. In a production environment, your database server, caching server & whatnot will very likely be on another network resource. If you want to read from your database, you will connect to it. Same for your cache server.
+Network requests are usually not really considered but can drastically slow down your application if you don't carefully limit them. In a production environment, your database server, caching server & whatnot will likely be on another network resource. If you want to read from your database, you will connect to it. Same for your cache server.
 
 Although probably very little, connecting to other servers takes time. Try to make as few database & cache requests as possible. That's especially important for cache requests, as they are often thought of as very cheap. Your cache server will be very quick to respond, but if you ask for hundreds of cached values, the time spent connecting to the cache server accumulates.
 
-If possible, you could attempt to request your data in batch. This means fetching multiple cache keys in once. Or fetching all columns from a table at once if you know you'll be querying for a particular column in function A and another in function B.
+If possible, you could attempt to request your data in bulk. This means fetching multiple cache keys in once. Or fetching all columns from a table at once if you know you'll be querying for a particular column in function A and another in function B.
