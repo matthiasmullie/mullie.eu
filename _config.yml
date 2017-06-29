@@ -1,4 +1,3 @@
-# Setup
 title:            Matthias Mullie
 tagline:          'Software engineer'
 description:      'Matthias Mullie, software engineer'
@@ -12,9 +11,11 @@ author:
   gplus:          https://plus.google.com/u/0/114103174273569238978
   twitter:        matthiasmullie
 
+markdown:         kramdown
+theme:            minima
 paginate:         5
+paginate_path:    "/page:num/"
 
-# Custom vars
 version:          1.0.0
 
 github:
@@ -23,7 +24,8 @@ github:
 permalink:        /:title/
 
 gems:
-  # Generate sitemap
+  - jekyll-feed
+  - jekyll-paginate
   - jekyll-sitemap
 
 # Titles of posts to be displayed in "top posts" widget

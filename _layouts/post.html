@@ -38,7 +38,7 @@ layout: default
   {% endif %}
 </div>
 
-{{! Show contribute link only for real blog posts (a page can also use post template) }}
+{% comment %}Show contribute link only for real blog posts (a page can also use post template) {% endcomment %}
 {% if page.id %}
   <div class="comment top-30">
     <p class="comment-text">

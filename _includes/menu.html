@@ -10,14 +10,12 @@
     `layout: page` in the front-matter. See readme for usage.
     {% endcomment %}
 
-    {% assign pages_list = site.pages | sort:"weight" %}
+    {% assign pages_list = site.pages | sort: "weight" %}
     {% for node in pages_list %}
-      {% if node.title != null %}
-        {% if node.layout != "default" and node.layout != "post" %}
-          <li>
-            <a href="{{ node.url }}"{% if page.url == node.url %} class="active"{% endif %}>{{ node.title }}</a>
-          </li>
-        {% endif %}
+      {% if node.type == null and node.title != null and node.weight >= 0 and node.layout != "default" %}
+        <li>
+          <a href="{{ node.url }}"{% if page.url == node.url %} class="active"{% endif %}>{{ node.title }}</a>
+        </li>
       {% endif %}
     {% endfor %}
   </ul>

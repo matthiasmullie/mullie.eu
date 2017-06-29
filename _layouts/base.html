@@ -6,10 +6,10 @@
 
 	<link rel="canonical" href="{{ site.url }}{{ page.url }}">
 
-	{{! Bootstrap core CSS }}
+	{% comment %}Bootstrap core CSS{% endcomment %}
 	<link href="{{ site.baseurl }}public/assets/css/bootstrap.css" rel="stylesheet">
 
-	{{! Custom styles for this template }}
+	{% comment %}Custom styles for this template{% endcomment %}
 	<link href="{{ site.baseurl }}public/assets/css/font-awesome.min.css" rel="stylesheet">
 	<link href="{{ site.baseurl }}public/assets/css/plugins.css" rel="stylesheet">
 	<link href="{{ site.baseurl }}public/assets/css/animate.css" rel="stylesheet">
@@ -18,10 +18,10 @@
 	<link href="{{ site.baseurl }}public/assets/css/color/envyus.css" rel="stylesheet">
 	<link href="{{ site.baseurl }}public/assets/css/syntax.css" rel="stylesheet">
 
-	{{! jQuery load }}
+	{% comment %}jQuery load{% endcomment %}
 	<script src="{{ site.baseurl }}public/assets/js/jquery.min.js"></script>
 
-	{{! HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries }}
+	{% comment %}HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries{% endcomment %}
 	<!--[if lt IE 9]>
 	<script src="{{ site.baseurl }}public/assets/js/html5shiv.min.js"></script>
 	<script src="{{ site.baseurl }}public/assets/js/respond.min.js"></script>
@@ -95,7 +95,7 @@
 											profile_image: false
 										});
 
-										{{! Add col-md-4 class to li elements being added by tweecool }}
+										{% comment %}Add col-md-4 class to li elements being added by tweecool{% endcomment %}
 										var interval = setInterval(function() {
 											var $li = jQuery('#last-tweet-footer li');
 											if ($li.length) {
