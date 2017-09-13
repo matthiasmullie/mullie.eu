@@ -9,7 +9,7 @@ weight: 0
 
     {% if post.image %}
       <div class="entry-header">
-        <img class="img-responsive" src="{{ site.baseurl }}public/posts/{{ post.image }}" alt="">
+        <img class="img-responsive" src="{{ site.baseurl }}/public/posts/{{ post.image }}" alt="">
         <a href="{{ post.url }}" class="image-mark"></a>
       </div>
     {% endif %}
@@ -50,9 +50,9 @@ weight: 0
   <ul>
     {% if paginator.previous_page %}
       {% if paginator.page == 2 %}
-        <li><a href="{{ site.baseurl }}" rel="prev"><i class="fa fa-caret-left"></i></a></li>
+        <li><a href="{{ site.baseurl }}/" rel="prev"><i class="fa fa-caret-left"></i></a></li>
       {% else %}
-        <li><a href="{{ site.baseurl }}page{{paginator.previous_page}}" rel="prev"><i class="fa fa-caret-left"></i></a></li>
+        <li><a href="{{ site.baseurl }}/page{{paginator.previous_page}}" rel="prev"><i class="fa fa-caret-left"></i></a></li>
       {% endif %}
     {% else %}
       <li><span class="inactive"><i class="fa fa-caret-left"></i></span></li>
@@ -69,7 +69,7 @@ weight: 0
     {% endfor %}
 
     {% if paginator.next_page %}
-      <li><a href="{{ site.baseurl }}page{{paginator.next_page}}" rel="next"><i class="fa fa-caret-right"></i></a></li>
+      <li><a href="{{ site.baseurl }}/page{{paginator.next_page}}" rel="next"><i class="fa fa-caret-right"></i></a></li>
     {% else %}
       <li><span class="inactive"><i class="fa fa-caret-right"></i></span></li>
     {% endif %}
