@@ -11,6 +11,7 @@ In content-heavy websites, it becomes increasingly important to provide capable 
 This article will solely focus on the most common text-based search (as opposed to e.g. geography- or time-based)
 
 <!-- more -->
+<!-- ads -->
 
 # MySQL is not a search engine
 
@@ -170,6 +171,8 @@ This won't scale though: if you're looking for search result 1000 to 1009, all q
 You may try to be a smart-ass and rather than off-loading those results to PHP, you make sure they return uniform columns, and try to UNIONize them in MySQL, making MySQL order the whole set of individual tables' results. While that would likely be an improvement over letting PHP do this, you'll eventually run into the same problems.
 
 Face it: you'll have to group the data into 1 search index.
+
+<!-- ads -->
 
 ## Search index
 

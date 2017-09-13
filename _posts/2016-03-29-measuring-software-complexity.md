@@ -14,6 +14,7 @@ People much smarter than me have researched this subject and there are good ways
 of measuring how complex a piece of code is.
 
 <!-- more -->
+<!-- ads -->
 
 **Measure twice, cut once**
 
@@ -91,6 +92,8 @@ a bit more complex:
 * there are more steps to reason about
 * there are more places where something could go wrong (e.g. `implode` argument
   order could change)
+
+<!-- ads -->
 
 # Maintainability index
 

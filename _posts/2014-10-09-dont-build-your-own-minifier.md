@@ -11,6 +11,7 @@ Every developer has likely at least considered writing their own framework or CM
 While working on [a CMS](http://www.fork-cms.com) we had started, we wanted to serve our CSS and JavaScript minified, automatically. We threw some regular expressions at those static files. Eventually, it became more complex, it grew into a project of its own.
 
 <!-- more -->
+<!-- ads -->
 
 # Minify
 
@@ -128,6 +129,8 @@ It's important to know the context you're operating in:
 * Same for regular expressions (which can easily be confused for comments!)
 
 This means going through the source code character by character, to see exactly when a comment (which we can remove completely) or string or regular expression (which should be preserved entirely) begins.
+
+<!-- ads -->
 
 ### ASI
 

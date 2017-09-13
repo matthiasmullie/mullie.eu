@@ -13,6 +13,7 @@ Though you probably won't use any of the below on a daily basis, you should defi
 If you know all about the stuff in the [basics tutorial](http://blog.mullie.eu/regular-expressions-basics/) already, dive in!
 
 <!-- more -->
+<!-- ads -->
 
 # Back references
 [PHP Docs](http://www.php.net/manual/en/regexp.reference.back-references.php)
@@ -155,6 +156,8 @@ array
       0 => string 'path/to/my/first/style.css' (length=26)
       1 => string 'path/to/my/second/style.css' (length=27)
 ```
+
+<!-- ads -->
 
 # Assertions
 [PHP Docs](http://www.php.net/manual/en/regexp.reference.assertions.php)

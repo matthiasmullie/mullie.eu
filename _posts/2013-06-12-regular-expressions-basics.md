@@ -13,6 +13,7 @@ In essence, a regular expression – or regex – is an instruction set to parse
 Regular expressions are most commonly PCRE-based, an instruction set derived from the regular expression implementation in Perl. I'll be discussing the PCRE implementation in PHP in particular. While in other programming languages the specific implementation may differ, most modern languages have PCRE ( **P**erl **C**ompatible **R**egular **E**xpressions) support and the concepts should and will largely be the same in the language of your choice.
 
 <!-- more -->
+<!-- ads -->
 
 # Introduction
 
@@ -340,6 +341,8 @@ A combination of a range and single characters is perfectly valid as well, as yo
 A character class can also be negated, forming a "match everything except for these characters"-instruction. A negative character class is built by preceding the character with a caret (`^`), like this: `[^0-9]`, which would match everything but a numerical character.
 
 1 more popular type of character class is the POSIX-notation. This is basically a range, defined by a more descriptive term, like `[:alpha:]` (equivalent to `[a-zA-Z]`), `[:lower:]` (equivalent to `[a-z]`) or `[:xdigit:]` (hexadecimal digits, equivalent to `[0-9A-F]`). Personally, I'm no big fan of this notation as I find it more confusing than just spelling out the range, but whatever floats your boat, I guess. Be sure to take a look at [the full list of POSIX-notation character classes](http://www.php.net/manual/en/regexp.reference.character-classes.php) if you're into it!
+
+<!-- ads -->
 
 # Greediness
 

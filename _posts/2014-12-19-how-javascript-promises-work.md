@@ -15,6 +15,7 @@ for awhile now.
 I love them!
 
 <!-- more -->
+<!-- ads -->
 
 
 # Intro
@@ -121,6 +122,8 @@ resolve handler. In our example, an error occurs in that next handler so it
 throws an exception, which triggers the next reject handler in the chain to be
 called.
 
+
+<!-- ads -->
 
 # Changing values
 

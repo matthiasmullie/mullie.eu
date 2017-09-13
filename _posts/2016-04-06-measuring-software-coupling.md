@@ -16,6 +16,7 @@ any of its dependencies.
 So what does coupling tell you about your classes?
 
 <!-- more -->
+<!-- ads -->
 
 
 # Afferent coupling
@@ -59,6 +60,8 @@ classes with a single responsibility.
 **The more dependencies a class has, the more likely it is to break when any of
 those change.**
 
+
+<!-- ads -->
 
 # Instability
 

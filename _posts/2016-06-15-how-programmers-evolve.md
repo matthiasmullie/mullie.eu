@@ -13,6 +13,7 @@ Then I calculated the difference in metrics between mine and previous commits,
 plotted the results, and looked at my personal progress. **Nothing!**
 
 <!-- more -->
+<!-- ads -->
 
 The chart below shows how my commits affected the maintainability index (which
 indicates complexity) of the projects I have worked on in the last couple of
@@ -64,6 +65,8 @@ features in so little time:
 
 Both of their impact didn't really change throughout the project, but they have
 wildly different *signatures*.
+
+<!-- ads -->
 
 # Programmer personalities?
 

@@ -12,6 +12,7 @@ remotely per se, they'll also apply in a traditional working environment. The
 remote aspect just forced us to rethink how we deal with time & communication.
 
 <!-- more -->
+<!-- ads -->
 
 
 # 1. Meetings != communication
@@ -49,6 +50,8 @@ Since I'm not a morning person, that's when I do tedious tasks like triaging
 email, following up on projects & reviewing trivial patches. Afternoons are
 dedicated to coding, for hours on end, perfect to get [in the zone](http://en.wikipedia.org/wiki/Flow_%28psychology%29)!
 
+
+<!-- ads -->
 
 # 4. Focus on work, not hours
 

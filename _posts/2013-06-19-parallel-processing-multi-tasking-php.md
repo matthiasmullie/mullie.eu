@@ -11,6 +11,7 @@ In PHP, there are multiple ways to process data asynchronously, although not one
 Although both multithreading and multiprocessing can be used to process code in parallel, it probably makes sense to first distinguish between the two.
 
 <!-- more -->
+<!-- ads -->
 
 # Thread
 
@@ -145,6 +146,8 @@ echo microtime(true) - $time;
 See [the blog post on async](http://hhvm.com/blog/7091/async-cooperative-multitasking-for-hack) for more elaborate info & examples of `async`.
 
 **Note that you have to be running HHVM instead of the Zend engine.**
+
+<!-- ads -->
 
 # Process
 

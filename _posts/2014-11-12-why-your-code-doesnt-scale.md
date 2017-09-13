@@ -14,6 +14,7 @@ Building scalable software means that you are prepared to accommodate growth. Th
 Obviously, you will need more infrastructure as you grow. You'll need more machines. You'll probably also need/want to introduce additional applications to help lighten the load, like cache servers, load balancers, ...
 
 <!-- more -->
+<!-- ads -->
 
 
 # Introduction
@@ -62,6 +63,8 @@ The problem with CPU-intensive applications is that if something takes an increa
 
 If your CPU-intensive work is not critical for the response (you don't need to immediately display the result of it), you should consider deferring the work to a job queue, to be scheduled for later execution.
 
+
+<!-- ads -->
 
 ## Memory
 
@@ -138,6 +141,8 @@ Let's not get ahead of ourselves here: sharding your database can be incredibly 
 
 For more technical details about sharding: Jurriaan Persyn wrote an [excellent article](http://www.jurriaanpersyn.com/archives/2009/02/12/database-sharding-at-netlog-with-mysql-and-php/) on how they sharded Netlog's database.
 
+
+<!-- ads -->
 
 ## Database replication
 

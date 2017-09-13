@@ -12,6 +12,7 @@ I also hate not understanding how things work. So I just try to figure them out.
 You should do the same!
 
 <!-- more -->
+<!-- ads -->
 
 # Don't ask how
 
@@ -35,6 +36,8 @@ and they're working on solving their own problems, you don't just want to
 interrupt their own thought process. If you do get stuck, by all means ask
 someone to help you out, but not before having looked into it for at least 20
 minutes.
+
+<!-- ads -->
 
 # Rubber ducking
 

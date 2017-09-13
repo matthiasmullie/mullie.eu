@@ -13,6 +13,7 @@ Latitude is the north-south axis with a minimum of -90 (south pole) and maximum 
 Longitude is the X-axis equivalent, running around the globe from east to west: from -180 to +180 degrees. The [Greenwich meridian](http://en.wikipedia.org/wiki/Prime_meridian) is 0 degrees longitude. Everything west and east from it is respectively negative and positive on the longitude scale, up until the middle of the Pacific Ocean, near the [International Date Line](http://en.wikipedia.org/wiki/International_Date_Line), where -180° longitude crosses over to 180°.
 
 <!-- more -->
+<!-- ads -->
 
 **Update**: I've created a small repository with all of the below code in a couple of neat little classes. If you're looking to calculate distance between multiple coordinates, or calculate a bounding box to find nearby coordinates in your database, it may make sense to [check it out](https://github.com/matthiasmullie/geo).
 
@@ -47,6 +48,8 @@ function distance($lat1, $lng1, $lat2, $lng2) {
 Please note that the earth is not exactly spherical: the earth's radius is slightly larger at the equator (~6378 km) than at the poles (~6356 km), so the exact distance we just calculated may be slightly off.
 
 If instead of bird's-eye distance, you're looking to calculate road travel distance between 2 points, you're probably best off using [Google's distance matrix API](https://developers.google.com/maps/documentation/distancematrix/).
+
+<!-- ads -->
 
 # Find nearby locations in database
 

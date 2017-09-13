@@ -12,6 +12,7 @@ that helped me cope with hundreds of thousands of geographic locations.
 Turns out drawing all of those on a map isn't that trivial...
 
 <!-- more -->
+<!-- ads -->
 
 It was about time I got around to tidying up & publishing that code. I'm not
 even sure it is still relevant nowadays, although I assume it still is. I think
@@ -78,6 +79,8 @@ a ton of additional calls. Even though the PHP clusterer can handle however many
 coordinates, it still takes some time to run. Requests would not be completed
 instantaneously, as you would like.
 
+
+<!-- ads -->
 
 # Cache...
 

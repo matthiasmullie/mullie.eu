@@ -25,11 +25,11 @@ layout: default
     <div class="entry-content">
       {% if page.adsense or page.adsense == nil %}
         {% capture ads %}
-          <div class="ad adsense margin">{% include adsense_responsive.html %}</div>
+          <div class="ad adsense margin">{% include adsense_content.html %}</div>
         {% endcapture %}
       {% endif %}
 
-      {{ content | replace: "<!-- more -->", ads }}
+      {{ content | replace: "<!-- more -->", "" | replace: "<!-- ads -->", ads }}
     </div>
   </div>
 
