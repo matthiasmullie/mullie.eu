@@ -13,7 +13,7 @@ A myriad of features may prompt the need to aggregate your data, like showing an
 
 # What's the problem with a large dataset?
 
-In moderately sized datasets, you could just construct a query using [MySQL's aggregate functions](http://dev.mysql.com/doc/refman/5.7/en/group-by-functions.html), like:
+In moderately sized datasets, you could just construct a query using [MySQL's aggregate functions](https://dev.mysql.com/doc/refman/5.7/en/group-by-functions.html), like:
 
 ```sql
 SELECT COUNT(*)

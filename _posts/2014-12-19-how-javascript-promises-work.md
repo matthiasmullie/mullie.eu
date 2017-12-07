@@ -8,7 +8,7 @@ tags: [ javascript, promises ]
 
 The world of JavaScript has had promises since long, in the form of libraries
 like [Q](https://github.com/kriskowal/q), [BlueBird](https://github.com/petkaantonov/bluebird)
-and many others, like [jQuery's deferred](http://api.jquery.com/category/deferred-object/).
+and many others, like [jQuery's deferred](https://api.jquery.com/category/deferred-object/).
 And it's been [native in JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise)
 for awhile now.
 

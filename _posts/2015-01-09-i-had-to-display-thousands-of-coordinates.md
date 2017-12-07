@@ -17,7 +17,7 @@ Turns out drawing all of those on a map isn't that trivial...
 It was about time I got around to tidying up & publishing that code. I'm not
 even sure it is still relevant nowadays, although I assume it still is. I think
 it's been about 2 years ago since I worked on this, so if anything I say has
-drastically changed by now, please [let me know](http://www.mullie.eu/contact.html)!
+drastically changed by now, please [let me know](https://www.mullie.eu/contact)!
 
 
 # Problems

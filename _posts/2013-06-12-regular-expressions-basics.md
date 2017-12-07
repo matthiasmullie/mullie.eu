@@ -89,7 +89,7 @@ In regex-form, this would be: `echo preg_replace('/ba[rz]/', 'qux', 'foo bar baz
 In this example, we've just introduced new regular expression metacharacters: `[ ]`, which encloses character classes. This one just means that all characters inside are a valuable match. More on these concepts further down the post.
 
 # Delimiter
-[PHP Docs](http://www.php.net/manual/en/regexp.reference.delimiters.php)
+[PHP Docs](https://www.php.net/manual/en/regexp.reference.delimiters.php)
 
 Regular expressions must always be enclosed by 2 characters to denote the beginning and end of the expression. Pretty much any character *("A delimiter can be any non-alphanumeric, non-backslash, non-whitespace character")* can be used as a delimiter, as long as it's consistently both leading and terminating the regular expression, with no other (unescaped) occurrences of the character within the expression.
 
@@ -98,7 +98,7 @@ A few "special" delimiters worth knowing about are: `[ ]`, `( )`, `{ }` and `< >
 **Advice**: Let's all use the forward slash as a delimiter though, for uniformity's sake!
 
 # Meta-characters
-[PHP Docs](http://www.php.net/manual/en/regexp.reference.meta.php)
+[PHP Docs](https://www.php.net/manual/en/regexp.reference.meta.php)
 
 Meta characters are the actual instructions: the toolset allowing you to build regular expressions to parse complex data. A full list of available meta-characters:
 
@@ -213,7 +213,7 @@ Imagine we're presented some data in which we're looking for prices, basically a
 The above regular expression should match any of the following possibilities: *$99.99*, *$0.00*, *$ 15.00*, …, but not: *$99*, *0.00$* or *€0.00*.
 
 # Pattern modifiers
-[PHP Docs](http://www.php.net/manual/en/reference.pcre.pattern.modifiers.php)
+[PHP Docs](https://www.php.net/manual/en/reference.pcre.pattern.modifiers.php)
 
 Basically, pattern modifiers are the reason we do need delimiters in PHP's PCRE-implementation: the closing delimiter can be followed by one or multiple pattern modifiers. A pattern modifier will alter the way a certain regular expression will be interpreted once run. A simple example would be the i-modifier, stating that the alphabetic characters used in the regular expression should be evaluated caseless, which means that `/test/i` would not only match "test", but also "Test" or "tEsT".
 
@@ -326,7 +326,7 @@ The regular expression, when applied the `PCRE_DOTALL` modifier, looks like this
 Suppose we also want to be able to match the uppercase HTML paragraph tag `<P>`, we could also apply the `PCRE_CASELESS` modifier, which would cause the compiler to ignore the case mismatch between our regex "p" and the string P. This would turn our regular expression into: `preg_replace('/<p>.*?<\/p>/si', '', $html);`
 
 # Character classes
-[PHP Docs](http://www.php.net/manual/en/regexp.reference.character-classes.php)
+[PHP Docs](https://www.php.net/manual/en/regexp.reference.character-classes.php)
 
 Character classes define a series of specific characters to be matched and are enclosed by square brackets `[ ]`. Any character between the brackets is subject to match in the subject string.
 
@@ -340,7 +340,7 @@ A combination of a range and single characters is perfectly valid as well, as yo
 
 A character class can also be negated, forming a "match everything except for these characters"-instruction. A negative character class is built by preceding the character with a caret (`^`), like this: `[^0-9]`, which would match everything but a numerical character.
 
-1 more popular type of character class is the POSIX-notation. This is basically a range, defined by a more descriptive term, like `[:alpha:]` (equivalent to `[a-zA-Z]`), `[:lower:]` (equivalent to `[a-z]`) or `[:xdigit:]` (hexadecimal digits, equivalent to `[0-9A-F]`). Personally, I'm no big fan of this notation as I find it more confusing than just spelling out the range, but whatever floats your boat, I guess. Be sure to take a look at [the full list of POSIX-notation character classes](http://www.php.net/manual/en/regexp.reference.character-classes.php) if you're into it!
+1 more popular type of character class is the POSIX-notation. This is basically a range, defined by a more descriptive term, like `[:alpha:]` (equivalent to `[a-zA-Z]`), `[:lower:]` (equivalent to `[a-z]`) or `[:xdigit:]` (hexadecimal digits, equivalent to `[0-9A-F]`). Personally, I'm no big fan of this notation as I find it more confusing than just spelling out the range, but whatever floats your boat, I guess. Be sure to take a look at [the full list of POSIX-notation character classes](https://www.php.net/manual/en/regexp.reference.character-classes.php) if you're into it!
 
 <!-- ads -->
 
@@ -359,11 +359,11 @@ To actually tell the regular expression to keep the match as short as possible, 
 If we're looking to invert greediness for the entire regex – as opposed to only inverting a certain quantifier – we could do so by appending the U-modifier to the regex, like `/<.+>/sU`. **Note**: In a regular expression that has been made ungreedy by applying the U-modifier – making all quantifiers lazy by default – applying `?` to a certain quantifier makes that quantifier greedy again.
 
 # Subpatterns
-[PHP Docs](http://www.php.net/manual/en/regexp.reference.subpatterns.php)
+[PHP Docs](https://www.php.net/manual/en/regexp.reference.subpatterns.php)
 
 A regular expression often consists out of multiple patterns, each matching a specific part. If we look at a regular expression to match email addresses: `/[a-z0-9]+@[a-z0-9\.]+\.[a-z0-9]{2,3}/i`, we find 2 main patterns: the username (in front of the @) and the domain (after the @). Imagine we're looking to extract all domains of all email addresses in a certain subject string. We can encapsulate this pattern with parentheses, like: `/[a-z0-9]+@([a-z0-9\.]+\.[a-z0-9]{2,3})/i`. The behavior of the regex will remain unchanged but, along with the match of the complete regex, the match for this particular encapsulated subpattern will now also be captured.
 
-*Don't ever use this regular expression to match email addresses: it is too simplistic (for exemplary purposes, of course – It's not like I'm lazy) to completely match the specs detailed in the [different](http://tools.ietf.org/html/rfc5321) [RFCs](http://tools.ietf.org/html/rfc5322).*
+*Don't ever use this regular expression to match email addresses: it is too simplistic (for exemplary purposes, of course – It's not like I'm lazy) to completely match the specs detailed in the [different](https://tools.ietf.org/html/rfc5321) [RFCs](https://tools.ietf.org/html/rfc5322).*
 
 Important in such an isolated pattern is that it also enables alternation. Such alternative branches can be considered roughly equivalent to a character class: `/fac[et]/` (character class) matches exactly the same as `/fac(e|t)/` (subpattern with alternative branches). However, where a character class only represents 1 character, a subpattern with alternative branches can represent an alternation of certain exact sequences of characters. An example of this would be: `/(Mon|Tues|Wednes|Thurs|Fri|Satur|Sun)day/`, which matches exactly all days and nothing else.
 
@@ -374,9 +374,9 @@ Assume we want to capture all link URLs inside an HTML source. A good regex coul
 ```php
 $test = '
 <p>
-    <a href="http://www.mullie.eu">Matthias Mullie</a>
+    <a href="https://www.mullie.eu">Matthias Mullie</a>
     knows some
-    <a href="http://www.php.net">PHP</a>.
+    <a href="https://www.php.net">PHP</a>.
 </p>';
 if(preg_match_all('/href="(.*?)"/is', $test, $matches)) {
     var_dump($matches);
@@ -389,16 +389,16 @@ The result of the above code will look like this, where index 0 contains full re
 array
   0 =>
     array
-      0 => string 'href="http://www.mullie.eu"' (length=27)
-      1 => string 'href="http://www.php.net"' (length=25)
+      0 => string 'href="https://www.mullie.eu"' (length=27)
+      1 => string 'href="https://www.php.net"' (length=25)
   1 =>
     array
-      0 => string 'http://www.mullie.eu' (length=20)
-      1 => string 'http://www.php.net' (length=18)
+      0 => string 'https://www.mullie.eu' (length=20)
+      1 => string 'https://www.php.net' (length=18)
 ```
 
 # Escape sequences
-[PHP Docs](http://www.php.net/manual/en/regexp.reference.escape.php)
+[PHP Docs](https://www.php.net/manual/en/regexp.reference.escape.php)
 
 We've learned that, when we want to match a character that also doubles as meta-character, we need to escape it by prepending it with a backslash. To be honest, this depends on the context the character is used in: an opening square bracket (unless when it opens a POSIX-notation character class) or a dot does not have any special meaning inside a character class, so is not ambiguous and needs no escaping. As a result, `/[[.]/` is a perfectly valid expression matching either an opening square bracket or a dot. It doesn't hurt to escape them anyway though.
 
@@ -451,7 +451,7 @@ There's also a couple of regular characters that, when escaped, turn into someth
     </tr>
 </table>
 
-There's quite a few more obscure escape sequences, so you might want to take a look at [the full list of escape sequences](http://www.php.net/manual/en/regexp.reference.escape.php).
+There's quite a few more obscure escape sequences, so you might want to take a look at [the full list of escape sequences](https://www.php.net/manual/en/regexp.reference.escape.php).
 
 # PHP & PCRE escape madness
 

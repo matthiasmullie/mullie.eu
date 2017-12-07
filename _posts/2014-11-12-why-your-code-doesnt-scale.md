@@ -120,7 +120,7 @@ Regardless of the amount of rows (5 or 5 billion), We'll always just get the max
 
 While images & video will often consume plenty of storage, the biggest problem with storage is usually your database. As long as you know what machine you save your images/videos to, you can easily retrieve them.
 
-Most of the [top websites](http://www.alexa.com/topsites) deal with so much data that it hardly fits in one database. But distributing the data over multiple servers is easier said than done, as the data is often linked to each other.
+Most of the [top websites](https://www.alexa.com/topsites) deal with so much data that it hardly fits in one database. But distributing the data over multiple servers is easier said than done, as the data is often linked to each other.
 
 As your database grows, you might consider moving some problematic tables to their own dedicated server. Data in multiple tables often needs to be joined against one another, though, which is quite impossible if it's spread among multiple (physical or virtual) machines.
 

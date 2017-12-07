@@ -29,7 +29,7 @@ the discussion and the outcome.
 
 # 2. No meeting is urgent
 
-In addition, this kind of [asynchronous communication](http://zachholman.com/posts/how-github-works-asynchronous/)
+In addition, this kind of [asynchronous communication](https://zachholman.com/posts/how-github-works-asynchronous/)
 is useful because it allows everyone to contribute to the discussion at their
 own pace, without being interrupted in their work.
 
@@ -48,7 +48,7 @@ is sleeping anyway!
 
 Since I'm not a morning person, that's when I do tedious tasks like triaging
 email, following up on projects & reviewing trivial patches. Afternoons are
-dedicated to coding, for hours on end, perfect to get [in the zone](http://en.wikipedia.org/wiki/Flow_%28psychology%29)!
+dedicated to coding, for hours on end, perfect to get [in the zone](https://en.wikipedia.org/wiki/Flow_%28psychology%29)!
 
 
 <!-- ads -->

@@ -19,13 +19,13 @@ MySQL is a relational database, not a search engine. While it does provide some 
 
 * [Lucene](http://lucene.apache.org/core)
 * [Sphinx](http://sphinxsearch.com/)
-* [Elasticsearch](http://www.elasticsearch.org/): Lucene-based server
+* [Elasticsearch](https://www.elastic.co/): Lucene-based server
 * [Solr](http://lucene.apache.org/solr): Lucene-based server
 
-While the above options are far superior, it could definitely make sense to build a MySQL-based search engine. We built it because we wanted [Fork CMS](http://www.fork-cms.com/) to have a capable search on common, cheap, server architectures with only PHP & MySQL, without having to install additional software.
+While the above options are far superior, it could definitely make sense to build a MySQL-based search engine. We built it because we wanted [Fork CMS](https://www.fork-cms.com/) to have a capable search on common, cheap, server architectures with only PHP & MySQL, without having to install additional software.
 
 # Full-text search
-[MySQL Docs](http://dev.mysql.com/doc/refman/5.7/en/fulltext-search.html)
+[MySQL Docs](https://dev.mysql.com/doc/refman/5.7/en/fulltext-search.html)
 
 So how does one search for text in MySQL?
 
@@ -51,7 +51,7 @@ ORDER BY MATCH(column) AGAINST('word') DESC;
 ```
 
 ## In boolean mode
-[MySQL Docs](http://dev.mysql.com/doc/refman/5.7/en/fulltext-boolean.html)
+[MySQL Docs](https://dev.mysql.com/doc/refman/5.7/en/fulltext-boolean.html)
 
 By default, `MATCH` will search `IN NATURAL LANGUAGE MODE`, where each word in your `AGAINST` clause will evenly be checked against the column.
 More advanced searched can be obtained via `IN BOOLEAN MODE`, which enables possibilities like excluding a certain word, or not weighing all words equally.
@@ -138,7 +138,7 @@ By default, `ft_min_word_len` is 4, so words with less than 4 characters, can no
 
 *You can circumvent this by padding all words in the search index with (`ft_min_word_len` - 1) characters, then also padding the search terms with those same characters. I don't encourage this work-around: if lower-character words are of importance, you should lower `ft_min_word_len`! But you may not have that option on shared hosting...*
 
-Another common reason for words not being found is because they're on [MySQL's stopword list](http://dev.mysql.com/doc/refman/5.7/en/fulltext-stopwords.html). Common words like “the” or “and” are never indexed, much like Google does too.
+Another common reason for words not being found is because they're on [MySQL's stopword list](https://dev.mysql.com/doc/refman/5.7/en/fulltext-stopwords.html). Common words like “the” or “and” are never indexed, much like Google does too.
 
 # Scale
 

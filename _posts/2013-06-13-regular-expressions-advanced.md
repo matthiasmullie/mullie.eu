@@ -10,13 +10,13 @@ Regular expressions are powerful string-manipulation tools, though chances are y
 
 Though you probably won't use any of the below on a daily basis, you should definitely be aware of their existence. The exact syntax might've slipped your mind by the time you get to use some of these, but I guess you can always come back to refresh your memory once you need it, right?
 
-If you know all about the stuff in the [basics tutorial](http://blog.mullie.eu/regular-expressions-basics/) already, dive in!
+If you know all about the stuff in the [basics tutorial](https://www.mullie.eu/regular-expressions-basics/) already, dive in!
 
 <!-- more -->
 <!-- ads -->
 
 # Back references
-[PHP Docs](http://www.php.net/manual/en/regexp.reference.back-references.php)
+[PHP Docs](https://www.php.net/manual/en/regexp.reference.back-references.php)
 
 Say you're attempting to match XML tags, both the opening and closing tags. Obviously, you'll want to find the closing tag matching the opening tag, not the closing tag of another element.
 
@@ -24,12 +24,12 @@ The PCRE toolset provides you with: back references! Yet another escape sequence
 
 ## Example
 
-In the [basic tutorial](http://blog.mullie.eu/regular-expressions-basics/), we've already created a regex to find all link URLs inside an HTML source. The pattern we had created looked like `/href="(.*?)"/is`. We ignored that fact that HTML attribute are not always enclosed in double quotes though: single quotes are equally valid. This basically means that the opening enclosing character should be either `"` or `'`, and the closing character should match that opening character. The improved regex looks like: `/href=(['"])(.*?)\1/is`.
+In the [basic tutorial](https://www.mullie.eu/regular-expressions-basics/), we've already created a regex to find all link URLs inside an HTML source. The pattern we had created looked like `/href="(.*?)"/is`. We ignored that fact that HTML attribute are not always enclosed in double quotes though: single quotes are equally valid. This basically means that the opening enclosing character should be either `"` or `'`, and the closing character should match that opening character. The improved regex looks like: `/href=(['"])(.*?)\1/is`.
 
 **Caution**: because the PHP regular expression functions expect the regex to be tossed in as a string, do not forget to apply the regular string-escaping rules applicable in PHP. If the string is enclosed by single quotes, all single quotes within it should be escaped & we should also escape the regex' backslash. This example would finally look like this in PHP: `preg_match_all('/href=([\'"])(.*?)\\1/is', $test, $matches)`
 
 # Advanced subpatterns
-[PHP Docs](http://www.php.net/manual/en/regexp.reference.subpatterns.php)
+[PHP Docs](https://www.php.net/manual/en/regexp.reference.subpatterns.php)
 
 Subpatterns are really fun. They're like those tiny little "regular expressions inside a regular expression" and unlock so many neat features.
 
@@ -108,7 +108,7 @@ Now that we have descriptive keys mapped to our values (instead of indices), you
 Caution: by default, you're limited to using 1 particular name only once per regular expression. It is possible to enable support for multiple subpatterns having the same name though, by adding `(?J)` at the beginning of your regular expression, like: `/(?J)<(?P<something>[a-z][a-z0-9]*).*>(?P<something>.*)<\/\\1>/is`. This may come in handy in an alternation, where both alternate branches have a subpattern whose result you'd like to capture by the same name.
 
 # Conditional subpatterns
-[PHP Docs](http://www.php.net/manual/en/regexp.reference.conditional.php)
+[PHP Docs](https://www.php.net/manual/en/regexp.reference.conditional.php)
 
 Conditional subpatterns provide if-then(-else) constructions withing a regular expression: if a certain condition is matched, only then should a certain pattern be executed (and optionally, otherwise another pattern should be executed).
 
@@ -160,7 +160,7 @@ array
 <!-- ads -->
 
 # Assertions
-[PHP Docs](http://www.php.net/manual/en/regexp.reference.assertions.php)
+[PHP Docs](https://www.php.net/manual/en/regexp.reference.assertions.php)
 
 By now, we've got quite a serious toolbox to perform complex pattern matching. But all of the existing trickery will still result in sequential parsing of your regular expression. Some day, you'll just want to instruct "hey, I only want to match ABC, if it is preceded by XYZ, but I don't want XYZ to be part of this match", or "… it should not be followed by DEF."
 
@@ -212,7 +212,7 @@ array
 ```
 
 # Comments
-[PHP Docs](http://www.php.net/manual/en/regexp.reference.comments.php)
+[PHP Docs](https://www.php.net/manual/en/regexp.reference.comments.php)
 
 I very much encourage you to write documentation for your regular expressions. Regular expressions are sufficiently hard to create already, but they're even much harder to decipher without sufficient context.
 
@@ -233,7 +233,7 @@ Everything following the # will be regarded as a comment, up until the end of th
 
 # End
 
-If you just can't get enough, you might want to check out this presentation I uploaded on [SpeakerDeck](https://speakerdeck.com/matthiasmullie/regular-expressions-101/). It's nothing more than a compact version of the information in both the [basic](http://blog.mullie.eu/regular-expressions-basics/) and this advanced tutorial, albeit with some other examples.
+If you just can't get enough, you might want to check out this presentation I uploaded on [SpeakerDeck](https://speakerdeck.com/matthiasmullie/regular-expressions-101/). It's nothing more than a compact version of the information in both the [basic](https://www.mullie.eu/regular-expressions-basics/) and this advanced tutorial, albeit with some other examples.
 
 I guess by now you've learned to appreciate the power that regular expressions harness. You'll now always have your enhanced regex-knowledge to save your ass when dealing with complex structured data, but don't be blind for other solutions. Though the possibilities are endless, depending on your specific task, other solutions may be far superior, like a DOM/SAX-based parser for XML.
 

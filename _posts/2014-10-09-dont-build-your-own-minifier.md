@@ -8,7 +8,7 @@ tags: [ minify, php, js, css ]
 
 Every developer has likely at least considered writing their own framework or CMS. Until you start to realize just how much work it is and how much of your problems have actually been solved by someone else already. Then you throw in the towel and start using (and hopefully, contributing) to existing open source projects that suit your needs. Writing a minifier is very much alike.
 
-While working on [a CMS](http://www.fork-cms.com) we had started, we wanted to serve our CSS and JavaScript minified, automatically. We threw some regular expressions at those static files. Eventually, it became more complex, it grew into a project of its own.
+While working on [a CMS](https://www.fork-cms.com) we had started, we wanted to serve our CSS and JavaScript minified, automatically. We threw some regular expressions at those static files. Eventually, it became more complex, it grew into a project of its own.
 
 <!-- more -->
 <!-- ads -->
@@ -16,15 +16,15 @@ While working on [a CMS](http://www.fork-cms.com) we had started, we wanted to s
 # Minify
 
 [![Build status](https://api.travis-ci.org/matthiasmullie/minify.svg?branch=master)](https://travis-ci.org/matthiasmullie/minify)
-[![Code coverage](http://img.shields.io/coveralls/matthiasmullie/minify.svg)](https://coveralls.io/r/matthiasmullie/minify)
-[![Code quality](http://img.shields.io/scrutinizer/g/matthiasmullie/minify.svg)](https://scrutinizer-ci.com/g/matthiasmullie/minify)
-[![Latest version](http://img.shields.io/packagist/v/matthiasmullie/minify.svg)](https://packagist.org/packages/matthiasmullie/minify)
-[![Downloads total](http://img.shields.io/packagist/dt/matthiasmullie/minify.svg)](https://packagist.org/packages/matthiasmullie/minify)
-[![License](http://img.shields.io/packagist/l/matthiasmullie/minify.svg)](https://github.com/matthiasmullie/minify/blob/master/LICENSE)
+[![Code coverage](https://img.shields.io/coveralls/matthiasmullie/minify.svg)](https://coveralls.io/r/matthiasmullie/minify)
+[![Code quality](https://img.shields.io/scrutinizer/g/matthiasmullie/minify.svg)](https://scrutinizer-ci.com/g/matthiasmullie/minify)
+[![Latest version](https://img.shields.io/packagist/v/matthiasmullie/minify.svg)](https://packagist.org/packages/matthiasmullie/minify)
+[![Downloads total](https://img.shields.io/packagist/dt/matthiasmullie/minify.svg)](https://packagist.org/packages/matthiasmullie/minify)
+[![License](https://img.shields.io/packagist/l/matthiasmullie/minify.svg)](https://github.com/matthiasmullie/minify/blob/master/LICENSE)
 
 As you can see (look at the shiny buttons!), this PHP-based minifier is still around. Active, even: I've only recently given it some major updates.
 
-**You can try it out online on <http://www.minifier.org>.**
+**You can try it out online on <https://www.minifier.org>.**
 
 ## Features
 
@@ -134,7 +134,7 @@ This means going through the source code character by character, to see exactly 
 
 ### ASI
 
-Another ball-buster: [automatic semicolon insertion](http://en.wikipedia.org/wiki/Lexical_analysis#Semicolon_insertion). JavaScript doesn't require statements to be terminated with a semicolon. If it doesn't encounter a semicolon and whatever is on the next line doesn't make sense in the same statement, it will automatically recover as if there were a semicolon ending that previous line.
+Another ball-buster: [automatic semicolon insertion](https://en.wikipedia.org/wiki/Lexical_analysis#Semicolon_insertion). JavaScript doesn't require statements to be terminated with a semicolon. If it doesn't encounter a semicolon and whatever is on the next line doesn't make sense in the same statement, it will automatically recover as if there were a semicolon ending that previous line.
 
 When minifying the source code, it's all about getting rid of as much redundant code as possible, including newlines. Because of ASI, though, we can't reliably strip newlines: if the semicolon was omitted, joining both lines can cause the code to stop making sense. E.g.:
 

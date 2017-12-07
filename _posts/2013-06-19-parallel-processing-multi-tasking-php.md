@@ -20,7 +20,7 @@ To speed up the execution of multiple tasks, it makes sense to split the work ov
 Threads are part of the same process, and will usually share the same memory & file resources. Not properly accounted for, this can lead to unexpected results like race conditions or deadlocks. In PHP however, this will not be the case: memory is not shared, though it is still possible to affect data in another thread.
 
 ## pthreads
-[PHP Docs](http://php.net/manual/en/book.pthreads.php)
+[PHP Docs](https://php.net/manual/en/book.pthreads.php)
 
 The only multithreading solution in PHP is the pthreads extension. In it's most simple form, you'd write code like this to perform work asynchronously:
 
@@ -54,7 +54,7 @@ if ($thread->start()) {
 
 Results achieved via async processing in threading's most basic form, like this, can also be obtained via multiprocessing. All we do here is just splitting the work over 2 threads, to eventually, upon completion, process the second thread's result in the original thread. Threading really gains an edge over multiprocessing if it's necessary to transfer data between threads or to keep the execution of several steps in both threads in sync, via synchronized(), notify() and wait().
 
-**pthreads is a [PECL extension](http://pecl.php.net/package/pthreads), compatible with a ZTS (Zend Thread Safe) PHP 5.3 and up.** It's not a part of PHP core, so you'll have to `pecl install pthreads` it.
+**pthreads is a [PECL extension](https://pecl.php.net/package/pthreads), compatible with a ZTS (Zend Thread Safe) PHP 5.3 and up.** It's not a part of PHP core, so you'll have to `pecl install pthreads` it.
 
 For some advanced examples on how to use threading, check out the [GitHub page](https://github.com/krakjoe/pthreads/tree/master/examples).
 
@@ -89,9 +89,9 @@ list($result1, $result2) = $comboPromise->wait();
 **Amp/Thread is designed specifically for CLI applications. You'll need PHP5.5+ and pthreads installed.**
 
 ### hack's async
-[Docs](http://docs.hhvm.com/manual/en/hack.async.php)
+[Docs](https://docs.hhvm.com/manual/en/hack.async.php)
 
-If you're running [Facebook's HHVM](http://hhvm.com/), you can run [Hack](http://docs.hhvm.com/manual/en/hacklangref.php) code. Hack is an addition to plain old PHP: existing PHP will still run fine, but you can use additional Hack-specific features.
+If you're running [Facebook's HHVM](https://hhvm.com/), you can run [Hack](https://docs.hhvm.com/manual/en/hacklangref.php) code. Hack is an addition to plain old PHP: existing PHP will still run fine, but you can use additional Hack-specific features.
 
 One of those features is `async`. While it's not exactly multitasking, it still allows you to run separate blocks of code in parallel: while one is waiting on something that is not blocked on CPU (e.g. for an API response to come back), the other be executed already.
 
@@ -143,7 +143,7 @@ $resultCpu = $asyncCpu->getWaitHandle()->join();
 echo microtime(true) - $time;
 ```
 
-See [the blog post on async](http://hhvm.com/blog/7091/async-cooperative-multitasking-for-hack) for more elaborate info & examples of `async`.
+See [the blog post on async](https://hhvm.com/blog/7091/async-cooperative-multitasking-for-hack) for more elaborate info & examples of `async`.
 
 **Note that you have to be running HHVM instead of the Zend engine.**
 
@@ -154,7 +154,7 @@ See [the blog post on async](http://hhvm.com/blog/7091/async-cooperative-multita
 A process is 1 independent application run. While one PHP process can spawn a second process, both processes will be completely isolated and won't share any memory or handles, making it much harder to actually sync data between them (although, e.g. using external resources, not completely impossible.)
 
 ## pcntl_fork
-[PHP Docs](http://php.net/pcntl_fork)
+[PHP Docs](https://php.net/pcntl_fork)
 
 Forking a process will result in the request being cloned into an exact replica, though with it's own address space. Both the parent and the child (forked) process will be exactly the same up until the moment of the fork, e.g.: any variables up to that point will be exactly the same in both processes. After forking, changing a variable's value in one process doesn't affect the other process though.
 
@@ -211,7 +211,7 @@ For processing data in parallel, multiprocessing can be a perfectly valid soluti
 **Note that pcntl_fork will not work if PHP is being run as an Apache module, in which case this function will not exist!**
 
 ## popen
-[PHP Docs](http://php.net/popen)
+[PHP Docs](https://php.net/popen)
 
 While we've seen 2 strategies to split one request into 2 different execution paths (either via threading or forking), we could also just launch a new request. Here too, it'll be harder to communicate between parent and child processes.
 
@@ -293,7 +293,7 @@ This approach looks very similar to the `popen` solution. For `fopen`, this woul
  */
 
 // open child process
-$child = fopen('http://'.$_SERVER['HTTP_HOST'].'/child.php', 'r');
+$child = fopen('https://'.$_SERVER['HTTP_HOST'].'/child.php', 'r');
 
 /*
  * Do some work, while already doing other
