@@ -8,7 +8,6 @@ enforce_ssl:      www.mullie.eu
 
 author:
   name:           'Matthias Mullie'
-  gplus:          https://plus.google.com/u/0/114103174273569238978
   twitter:        matthiasmullie
 
 markdown:         kramdown
