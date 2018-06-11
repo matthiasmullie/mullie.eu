@@ -3,7 +3,15 @@
     <h3 class="heading">Ask me anything</h3>
   </div>
 
-  <form action="https://getsimpleform.com/messages?form_api_token=c900d9cf0042dbe6481faecc23e514fd" method="post" class="form">
+  <div id="submitsuccess" class="alert success bottom-30" role="alert" style="display: none;">
+    <p>Thank you for submitting your message!</p>
+  </div>
+
+  <div id="submiterror" class="alert error bottom-30" role="alert" style="display: none;">
+    <p>Something went wrong! Please contact me via the email address listed on <a href="https://github.com/matthiasmullie/">my GitHub profile</a>.</p>
+  </div>
+
+  <form id="contactform" action="#" method="post" class="form">
     <div class="row form-input">
       <div class="col-md-4 col-lg-6 field icon-field">
         <span class="icon"><i class="fa fa-user"></i></span>
@@ -20,3 +28,45 @@
     <button class="button color"><span>Submit</span></button>
   </form>
 </div>
+
+<script>
+  var action = 'https://getsimpleform.com/messages?form_api_token=c900d9cf0042dbe6481faecc23e514fd',
+    $form = $('#contactform');
+
+  $form.submit(function () {
+    // hide form & success/error messages while submitting
+    $('#submitsuccess, #submiterror').slideUp();
+    $form.slideUp();
+
+    // submit form
+    $.post(action, $form.serialize())
+      .then(
+        // success
+        null,
+        // failure
+        function(e) {
+          if (e.status === 0) {
+            // this is an expected error: the simpleform redirect will cause CORS conflicts...
+            // turn this one into a success...
+            return $.Deferred().resolve().promise();
+          }
+          return e;
+        }
+      )
+      .then(
+        function() {
+          // show form again, with fields blanked out, and show success message
+          $form.slideDown();
+          $form.find('input, textarea').val('');
+          $('#submitsuccess').slideDown();
+        },
+        function() {
+          // display form again and show error message
+          $form.slideDown();
+          $('#submiterror').slideDown();
+        }
+      );
+
+    return false;
+  });
+</script>
