@@ -33,7 +33,7 @@ Simple solutions could be to use `column LIKE '%word%'` or `column REGEXP '.*wor
 Apart from not providing too much options, they don't accurately utilise indexes and as a result will get you in trouble once your dataset grows.
 
 What you'll want to do is add a `FULLTEXT` index to the column you'll want to search, and build your query using `MATCH(column) AGAINST(word)`.
-In it's most simple form, this could look like:
+In its most simple form, this could look like:
 
 ```sql
 SELECT *
