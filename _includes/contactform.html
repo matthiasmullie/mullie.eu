@@ -30,29 +30,17 @@
 </div>
 
 <script>
-  var action = 'https://getsimpleform.com/messages?form_api_token=c900d9cf0042dbe6481faecc23e514fd',
-    $form = $('#contactform');
+  var $form = $('#contactform');
 
   $form.submit(function () {
+    var action = 'https://post-to-email.herokuapp.com/?SUBJECT=' + encodeURIComponent('[mullie.eu] Contact form') + '&SENDER=' + encodeURIComponent($form.find('[name=email]').val());
+
     // hide form & success/error messages while submitting
     $('#submitsuccess, #submiterror').slideUp();
     $form.slideUp();
 
     // submit form
     $.post(action, $form.serialize())
-      .then(
-        // success
-        null,
-        // failure
-        function(e) {
-          if (e.status === 0) {
-            // this is an expected error: the simpleform redirect will cause CORS conflicts...
-            // turn this one into a success...
-            return $.Deferred().resolve().promise();
-          }
-          return e;
-        }
-      )
       .then(
         function() {
           // show form again, with fields blanked out, and show success message
