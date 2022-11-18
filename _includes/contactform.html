@@ -33,7 +33,7 @@
   var $form = $('#contactform');
 
   $form.submit(function () {
-    var action = 'https://post-to-email.onrender.com/?SUBJECT=' + encodeURIComponent('[mullie.eu] Contact form') + '&SENDER=' + encodeURIComponent($form.find('[name=email]').val());
+    var action = 'https://post-to-email.onrender.com/?REDIRECT=&SUBJECT=' + encodeURIComponent('[mullie.eu] Contact form') + '&SENDER=' + encodeURIComponent($form.find('[name=email]').val());
 
     // hide form & success/error messages while submitting
     $('#submitsuccess, #submiterror').slideUp();
