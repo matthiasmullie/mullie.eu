@@ -215,3 +215,11 @@ input:focus, textarea:focus {
 #footer {
 	color: #ccc;
 }
+
+/*
+ * Contact form honeypot
+ */
+#contactform textarea[name="address"] {
+	position: absolute;
+	left: -999999999px;
+}
