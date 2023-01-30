@@ -18,7 +18,7 @@ paginate_path:    "/page:num/"
 version:          1.0.0
 
 github:
-  repo:           https://github.com/matthiasmullie/matthiasmullie.github.io
+  repo:           https://github.com/matthiasmullie/mullie.eu
 
 permalink:        /:title/
 
