@@ -368,9 +368,10 @@ include a link to the page they're struggling to understand)
 *Note: [post-to-email](https://github.com/matthiasmullie/post-to-email) is a general-purpose project
 and no such validation is built into the receiving end, so this would only be possible by cloning and
 altering the code.
-Or such validation could be done in JavaScript prior to actually sending the request, in which case
-you should already have implemented (some of) the above steps to ensure that bots can't simply read
-all form information in the first place, and already have to simulate actual interaction.* 
+Or [such validation could be done in JavaScript](https://github.com/matthiasmullie/post-to-email/blob/main/instructions/2-spam-validate-input.md)
+prior to actually sending the request, in which case you should already have implemented (some of)
+the above steps to ensure that bots can't simply read all form information in the first place, and
+already have to simulate actual interaction.* 
 
 
 # Use additional services
