@@ -331,11 +331,7 @@ If any bot is going to make it past this point, I will very much welcome their s
 # Validate input
 
 Another alternative, depending on what information your form requests, would be to validate the input.
-
-This only really works with content that is expected to follow a very strict format, and even then it's
-easy to end up with validation that is too tight and reject valid input, like users mistakenly adding a
-space after their input, or your failure to realize that in certain edge cases input may be different
-after all.
+This only really works with content that is expected to follow a very strict format, though.
 
 But moving on to an example: let's say I want to know a user's postal code, and I only intend to cater
 to Belgians.
@@ -343,8 +339,7 @@ To the best of my knowledge, all Belgian postal codes are a sequence of 4 digits
 something like this:
 
 ```html
-<script src="script.js"></script>
-<form action="?SUBJECT=Contact%20form">
+<form action="https://post-to-form.my-server.com/?SUBJECT=Contact%20form" method="post">
     <input type="email" name="SENDER" placeholder="Your email" required="required" />
     <input type="text" name="name" placeholder="Your name" required="required" />
     <input type="text" name="postal_code" placeholder="Your postal code" required="required" />
