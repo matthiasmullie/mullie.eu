@@ -82,36 +82,9 @@
 			<div class="footer-widgets">
 				<div class="container">
 					<div class="row">
-						<div class="col-md-9">
-							<div class="widget twitter border">
-								<h4 class="widget-title">Twitter</h4>
-								<div id="last-tweet-footer"></div>
-								<script src="{{ site.baseurl }}/public/assets/js/tweecool.min.js"></script>
-								<script>
-									jQuery(document).ready(function() {
-										jQuery('#last-tweet-footer').tweecool({
-											username: 'matthiasmullie',
-											limit: 3,
-											profile_image: false
-										});
-
-										{% comment %}Add col-md-4 class to li elements being added by tweecool{% endcomment %}
-										var interval = setInterval(function() {
-											var $li = jQuery('#last-tweet-footer li');
-											if ($li.length) {
-												clearInterval(interval);
-												$li.addClass('col-md-4');
-											}
-										}, 50);
-									});
-								</script>
-							</div>
-						</div>
-
-						<div class="col-md-3">
+						<div class="col-md-12">
 							<div class="widget footer-social">
-								<h4 class="widget-title">Connect</h4>
-								<ul class="list-unstyled social color bg text-sm-center">
+								<ul class="list-unstyled social color bg text-right">
 									{% include social.html %}
 								</ul>
 							</div>
