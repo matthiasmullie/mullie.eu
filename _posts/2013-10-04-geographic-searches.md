@@ -10,7 +10,7 @@ A 2-dimensional location on our earth can be represented via a coordinate system
 
 Latitude is the north-south axis with a minimum of -90 (south pole) and maximum of 90 degrees (north pole). The equator is zero degrees latitude.
 
-Longitude is the X-axis equivalent, running around the globe from east to west: from -180 to +180 degrees. The [Greenwich meridian](https://en.wikipedia.org/wiki/Prime_meridian) is 0 degrees longitude. Everything west and east from it is respectively negative and positive on the longitude scale, up until the middle of the Pacific Ocean, near the [International Date Line](http://en.wikipedia.org/wiki/International_Date_Line), where -180° longitude crosses over to 180°.
+Longitude is the X-axis equivalent, running around the globe from east to west: from -180 to +180 degrees. The [Greenwich meridian](https://en.wikipedia.org/wiki/Prime_meridian) is 0 degrees longitude. Everything west and east from it is respectively negative and positive on the longitude scale, up until the middle of the Pacific Ocean, near the [International Date Line](https://en.wikipedia.org/wiki/International_Date_Line), where -180° longitude crosses over to 180°.
 
 <!-- more -->
 <!-- ads -->
@@ -53,7 +53,7 @@ If instead of bird's-eye distance, you're looking to calculate road travel dista
 
 # Find nearby locations in database
 
-While there are far superior solutions (like [ElasticSearch](https://www.elastic.co/)) to perform geographic searches, you might find your data stuck in a relational database, like [MySQL](http://www.mysql.com). MySQL also has a [SPATIAL extension](http://dev.mysql.com/doc/refman/5.7/en/spatial-extensions.html) to facilitate geography-based operations (though I haven't actually used it much, I actually find it easier dealing with the raw data myself.)
+While there are far superior solutions (like [ElasticSearch](https://www.elastic.co/)) to perform geographic searches, you might find your data stuck in a relational database, like [MySQL](https://www.mysql.com). MySQL also has a [SPATIAL extension](http://dev.mysql.com/doc/refman/5.7/en/spatial-extensions.html) to facilitate geography-based operations (though I haven't actually used it much, I actually find it easier dealing with the raw data myself.)
 
 A common location- & distance-based search is a "find everything within a radius of X kilometres". There are multiple ways to do this. You could, for example, create a WHERE condition that mimics the aforementioned great-circle distance based formula to calculate the difference between every coordinate in your database, and the given point, to leave out all entries where the distance is greater than what you'd like. Once your database grows really large, you don't actually want to calculate the distance for every location in your database, though: it'll take some time to calculate all these differences & there is no way an index can be used.
 

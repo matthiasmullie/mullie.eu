@@ -17,10 +17,10 @@ This article will solely focus on the most common text-based search (as opposed 
 
 MySQL is a relational database, not a search engine. While it does provide some tools to search inside the data it holds, you're better of integrating a real search engine if you're looking for a full-fledged solution. Some of the most popular (open source) search engines are:
 
-* [Lucene](http://lucene.apache.org/core)
-* [Sphinx](http://sphinxsearch.com/)
+* [Lucene](https://lucene.apache.org/core)
+* [Sphinx](https://sphinxsearch.com/)
 * [Elasticsearch](https://www.elastic.co/): Lucene-based server
-* [Solr](http://lucene.apache.org/solr): Lucene-based server
+* [Solr](https://solr.apache.org/): Lucene-based server
 
 While the above options are far superior, it could definitely make sense to build a MySQL-based search engine. We built it because we wanted [Fork CMS](https://www.fork-cms.com/) to have a capable search on common, cheap, server architectures with only PHP & MySQL, without having to install additional software.
 

@@ -334,7 +334,7 @@ A simple example would be: `/fac[et]/`, which will match both "face" and "fact".
 
 When presented a range, like `[a-z]`, it will match anything between and including the given bounds, in this example the entire lowercase western alphabet.
 
-**Caution**: ranges are built upon the [ASCII table](http://www.asciitable.com/), meaning that for example `[A-z]` will not only include then entire upper- and all lowercase western alphabet, but also `[`, `\`, `]`, `^`, `_` and \`. To actually match every upper- and lowercase latin character, we can use a compound range like this: `[a-zA-Z]`.
+**Caution**: ranges are built upon the [ASCII table](https://www.asciitable.com/), meaning that for example `[A-z]` will not only include then entire upper- and all lowercase western alphabet, but also `[`, `\`, `]`, `^`, `_` and \`. To actually match every upper- and lowercase latin character, we can use a compound range like this: `[a-zA-Z]`.
 
 A combination of a range and single characters is perfectly valid as well, as you can see in this regular expression matching numbers, alphabetical characters and underscores: `/[0-9a-z_]/i`.
 

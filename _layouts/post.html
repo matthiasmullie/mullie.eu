@@ -89,7 +89,7 @@ layout: default
         <div class="row">
           <div class="col-md-6">
             {% if page.previous %}
-            <article itemscope itemtype="http://schema.org/BlogPosting">
+            <article itemscope itemtype="https://schema.org/BlogPosting">
               <meta itemprop="mainEntityOfPage" content="{{ site.url }}{{ page.previous.url }}">
               {% if page.previous.image %}
               <meta itemprop="image" content="{{ site.baseurl }}/public/posts/{{ page.previous.image }}">
@@ -112,7 +112,7 @@ layout: default
           </div>
           <div class="col-md-6">
             {% if page.next %}
-            <article itemscope itemtype="http://schema.org/BlogPosting">
+            <article itemscope itemtype="https://schema.org/BlogPosting">
               <meta itemprop="mainEntityOfPage" content="{{ site.url }}{{ page.next.url }}">
               {% if page.next.image %}
               <meta itemprop="image" content="{{ site.baseurl }}/public/posts/{{ page.next.image }}">

@@ -15,7 +15,7 @@ of fun. I'm sorry for ruining the game!
 
 My first job landed me in an agency with a team of terrific software engineers
 and designers, all very passionate about making the internet a better place.
-We open-sourced [Fork CMS](http://www.fork-cms.com/). Good times!
+We open-sourced [Fork CMS](https://www.fork-cms.com/). Good times!
 
 I was very happy to join [Wikipedia](https://www.wikipedia.org/) next. Not only
 did I learn a lot about scaling a big application, I also became part of one of
