@@ -224,3 +224,20 @@ input:focus, textarea:focus {
 	position: absolute;
 	left: -999999999px;
 }
+
+/*
+ * Sticky footer
+ */
+html, body, #sb-site, #wrap, .main-inner-content {
+	height: 100%;
+}
+.main-inner-content {
+	display: flex;
+	flex-direction: column;
+}
+#normal-page-content {
+	flex: 1 0 auto;
+}
+#footer {
+	flex-shrink: 0;
+}
