@@ -12,7 +12,6 @@ I also hate not understanding how things work. So I just try to figure them out.
 You should do the same!
 
 <!-- more -->
-<!-- ads -->
 
 # Don't ask how
 
@@ -29,6 +28,8 @@ else interfering? Or maybe your use case is just very different? Dig into it,
 try out a couple of things, RTFM and figure out why it's not working. You'll
 grow a much more thorough insight in the problem domain.
 
+<!-- ads -->
+
 # 20 minute rule
 
 We had this rule of thumb at a previous company. Other people's time is valuable
@@ -36,8 +37,6 @@ and they're working on solving their own problems, you don't just want to
 interrupt their own thought process. If you do get stuck, by all means ask
 someone to help you out, but not before having looked into it for at least 20
 minutes.
-
-<!-- ads -->
 
 # Rubber ducking
 

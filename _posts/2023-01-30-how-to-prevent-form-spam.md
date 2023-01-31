@@ -17,7 +17,6 @@ While there's no silver bullet against spam bots, it's easy enough to make it in
 for spammers to bother.
 
 <!-- more -->
-<!-- ads -->
 
 
 # Think like a spammer

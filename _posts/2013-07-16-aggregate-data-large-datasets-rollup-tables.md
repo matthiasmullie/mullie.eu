@@ -9,7 +9,6 @@ tags: [ scaling, mysql ]
 A myriad of features may prompt the need to aggregate your data, like showing an average score based on multiple values, or even simply showing the amount of entries that abide to a certain condition. Usually this is a trivial query, but this is often untrue when dealing with a huge dataset.
 
 <!-- more -->
-<!-- ads -->
 
 # What's the problem with a large dataset?
 
@@ -100,6 +99,8 @@ WHERE
     color = 'green'
 ```
 
+<!-- ads -->
+
 # Keeping rollup data in sync
 
 You'll always want the rollup table's totals to accurately reflect the data in the source data's table, and keeping them in sync is definitely the biggest challenge. For every new insert, update or delete in the primary table, an update to several rows in the rollup table may be needed. To achieve this, you'll need to add some additional logic to your application.
@@ -118,8 +119,6 @@ GROUP BY category, color
 This is the easiest approach to keep your data in sync where, no matter what you change to your source table's data, all rollup data will accurately be updated.
 
 The downside, however, is that you still perform this rather expensive query, that loops all entries in the source table. All reads will target the rollup table, but now every write will result in this hefty query. If you're in a write-heavy environment, this too may eventually lead to trouble.
-
-<!-- ads -->
 
 ## Per-entry update
 

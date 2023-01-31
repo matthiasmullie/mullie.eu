@@ -14,7 +14,6 @@ People much smarter than me have researched this subject and there are good ways
 of measuring how complex a piece of code is.
 
 <!-- more -->
-<!-- ads -->
 
 **Measure twice, cut once**
 
@@ -61,6 +60,8 @@ generic message is shown). It has a cyclomatic complexity of **2**.
 The more decision paths there are, the harder it becomes to reason about the
 logic & test it.
 
+<!-- ads -->
+
 # Halstead intelligent content
 
 Instead of decision paths, Halstead's measures are based on the vocabulary of
@@ -92,8 +93,6 @@ a bit more complex:
 * there are more steps to reason about
 * there are more places where something could go wrong (e.g. `implode` argument
   order could change)
-
-<!-- ads -->
 
 # Maintainability index
 

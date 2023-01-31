@@ -11,7 +11,6 @@ Every developer has likely at least considered writing their own framework or CM
 While working on [a CMS](https://www.fork-cms.com) we had started, we wanted to serve our CSS and JavaScript minified, automatically. We threw some regular expressions at those static files. Eventually, it became more complex, it grew into a project of its own.
 
 <!-- more -->
-<!-- ads -->
 
 # Minify
 
@@ -44,6 +43,8 @@ As you can see (look at the shiny buttons!), this PHP-based minifier is still ar
 # Lessons learned
 
 I didn't lure you to this post to boast about the features, so let's talk about some of the struggles!
+
+<!-- ads -->
 
 ## CSS
 

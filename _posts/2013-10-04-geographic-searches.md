@@ -13,7 +13,6 @@ Latitude is the north-south axis with a minimum of -90 (south pole) and maximum 
 Longitude is the X-axis equivalent, running around the globe from east to west: from -180 to +180 degrees. The [Greenwich meridian](https://en.wikipedia.org/wiki/Prime_meridian) is 0 degrees longitude. Everything west and east from it is respectively negative and positive on the longitude scale, up until the middle of the Pacific Ocean, near the [International Date Line](https://en.wikipedia.org/wiki/International_Date_Line), where -180° longitude crosses over to 180°.
 
 <!-- more -->
-<!-- ads -->
 
 **Update**: I've created a small repository with all of the below code in a couple of neat little classes. If you're looking to calculate distance between multiple coordinates, or calculate a bounding box to find nearby coordinates in your database, it may make sense to [check it out](https://github.com/matthiasmullie/geo).
 

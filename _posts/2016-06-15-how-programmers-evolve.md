@@ -66,8 +66,6 @@ features in so little time:
 Both of their impact didn't really change throughout the project, but they have
 wildly different *signatures*.
 
-<!-- ads -->
-
 # Programmer personalities?
 
 I have no idea what all of this means! The lack of progress suggests that we

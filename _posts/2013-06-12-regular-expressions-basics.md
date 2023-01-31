@@ -13,7 +13,6 @@ In essence, a regular expression – or regex – is an instruction set to parse
 Regular expressions are most commonly PCRE-based, an instruction set derived from the regular expression implementation in Perl. I'll be discussing the PCRE implementation in PHP in particular. While in other programming languages the specific implementation may differ, most modern languages have PCRE ( **P**erl **C**ompatible **R**egular **E**xpressions) support and the concepts should and will largely be the same in the language of your choice.
 
 <!-- more -->
-<!-- ads -->
 
 # Introduction
 
@@ -87,6 +86,8 @@ Imagine we want to replace both ‘bar' and ‘baz' however. Using the PHP nativ
 In regex-form, this would be: `echo preg_replace('/ba[rz]/', 'qux', 'foo bar baz');`
 
 In this example, we've just introduced new regular expression metacharacters: `[ ]`, which encloses character classes. This one just means that all characters inside are a valuable match. More on these concepts further down the post.
+
+<!-- ads -->
 
 # Delimiter
 [PHP Docs](https://www.php.net/manual/en/regexp.reference.delimiters.php)

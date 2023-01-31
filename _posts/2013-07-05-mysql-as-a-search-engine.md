@@ -11,7 +11,6 @@ In content-heavy websites, it becomes increasingly important to provide capable 
 This article will solely focus on the most common text-based search (as opposed to e.g. geography- or time-based)
 
 <!-- more -->
-<!-- ads -->
 
 # MySQL is not a search engine
 
@@ -23,6 +22,8 @@ MySQL is a relational database, not a search engine. While it does provide some 
 * [Solr](https://solr.apache.org/): Lucene-based server
 
 While the above options are far superior, it could definitely make sense to build a MySQL-based search engine. We built it because we wanted [Fork CMS](https://www.fork-cms.com/) to have a capable search on common, cheap, server architectures with only PHP & MySQL, without having to install additional software.
+
+<!-- ads -->
 
 # Full-text search
 [MySQL Docs](https://dev.mysql.com/doc/refman/5.7/en/fulltext-search.html)

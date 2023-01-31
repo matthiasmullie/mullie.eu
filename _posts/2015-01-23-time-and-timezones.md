@@ -17,7 +17,6 @@ location.
 Dealing with time isn't necessarily difficult, you just have to be consistent.
 
 <!-- more -->
-<!-- ads -->
 
 # Get the correct timezone
 
@@ -61,6 +60,8 @@ date_default_timezone_set('UTC');
 
 In UTC, Jesse's comment was at 12:30PM (12:30) & Alex replied at 12:35PM (12:35)
 
+<!-- ads -->
+
 ## Convert on output
 
 Now that we store consistent times, we still want to personalize it for our
@@ -78,8 +79,6 @@ $date->setTimezone(new DateTimeZone('Australia/Sydney'));
 $personalized = $date->format('Y-m-d H:i:s');
 echo $personalized; // outputs 2015-01-23 23:30:00
 ```
-
-<!-- ads -->
 
 ## ... and output only!
 

@@ -12,7 +12,6 @@ that helped me cope with hundreds of thousands of geographic locations.
 Turns out drawing all of those on a map isn't that trivial...
 
 <!-- more -->
-<!-- ads -->
 
 It was about time I got around to tidying up & publishing that code. I'm not
 even sure it is still relevant nowadays, although I assume it still is. I think
@@ -39,6 +38,8 @@ slow connections.
 As much as the JS clustering tools surprised me with their ability to process
 lots of markers, they still couldn't quite handle the amount I was feeding them.
 And then there was still problem #3.
+
+<!-- ads -->
 
 
 # Strategy

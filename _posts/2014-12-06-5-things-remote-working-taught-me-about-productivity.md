@@ -51,8 +51,6 @@ email, following up on projects & reviewing trivial patches. Afternoons are
 dedicated to coding, for hours on end, perfect to get [in the zone](https://en.wikipedia.org/wiki/Flow_%28psychology%29)!
 
 
-<!-- ads -->
-
 # 4. Focus on work, not hours
 
 In a creative endeavor like programming, there's no real tangible, measurable
