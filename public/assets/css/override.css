@@ -74,7 +74,7 @@
 }
 
 /*
- * Override butt ugly highlight style. & make big code blocks should take full
+ * Override butt ugly highlight style & make big code blocks should take full
  * content width.
  */
 div.highlighter-rouge pre {
@@ -83,6 +83,10 @@ div.highlighter-rouge pre {
 	background: #f5f5f5;
 	border: none;
 	border-radius: 0;
+	display: block;
+}
+.highlight {
+	padding: 0;
 	display: block;
 }
 
@@ -240,4 +244,40 @@ html, body, #sb-site, #wrap, .main-inner-content {
 }
 #footer {
 	flex-shrink: 0;
+}
+
+/*
+ * More spacing
+ */
+#content h1:not(:first-child), #content h2:not(:first-child), #content h3:not(:first-child), #content h4:not(:first-child), #content h5:not(:first-child), #content h6:not(:first-child) {
+	margin-top: 35px;
+}
+#content h1:not(:last-child), #content h2:not(:last-child), #content h3:not(:last-child), #content h4:not(:last-child), #content h5:not(:last-child), #content h6:not(:last-child) {
+	margin-bottom: 25px;
+}
+#content p:not(:last-child) {
+	margin-bottom: 20px;
+}
+#content ul:not(:last-child) {
+	margin-bottom: 15px;
+}
+#content li {
+	margin: 5px 0;
+}
+#content ul ul:not(:last-child), #content ol ul:not(:last-child), #content ul ol:not(:last-child), #content ol ol:not(:last-child) {
+	margin-bottom: 10px;
+}
+#content .highlighter-rouge:not(:last-child) {
+	margin-bottom: 30px;
+}
+body {
+	font-size: 14px;
+	line-height: 28px;
+}
+#header .header-social-link ul li a,
+.widget.footer-social li a {
+	line-height: 20px;
+}
+#sidebar .widget.top-post ul li .img-wrap .entry-info span i {
+	margin-right: 10px;
 }
