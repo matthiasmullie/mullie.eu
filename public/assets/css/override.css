@@ -161,6 +161,7 @@ h1.medium {
 h2.medium {
 	font-size: 25px;
 	line-height: 33px;
+	font-weight: 400;
 }
 h3.medium {
 	font-size: 23px;
