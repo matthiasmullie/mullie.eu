@@ -15,16 +15,13 @@ While working on [a CMS](https://www.fork-cms.com) we had started, we wanted to 
 
 # Minify
 
-[![Build status](https://api.travis-ci.org/matthiasmullie/minify.svg?branch=master)](https://travis-ci.org/matthiasmullie/minify)
-[![Code coverage](https://img.shields.io/coveralls/matthiasmullie/minify.svg)](https://coveralls.io/r/matthiasmullie/minify)
-[![Code quality](https://img.shields.io/scrutinizer/g/matthiasmullie/minify.svg)](https://scrutinizer-ci.com/g/matthiasmullie/minify)
-[![Latest version](https://img.shields.io/packagist/v/matthiasmullie/minify.svg)](https://packagist.org/packages/matthiasmullie/minify)
-[![Downloads total](https://img.shields.io/packagist/dt/matthiasmullie/minify.svg)](https://packagist.org/packages/matthiasmullie/minify)
-[![License](https://img.shields.io/packagist/l/matthiasmullie/minify.svg)](https://github.com/matthiasmullie/minify/blob/master/LICENSE)
+[![Build status](https://img.shields.io/github/actions/workflow/status/matthiasmullie/minify/test.yml?branch=master&style=flat-square)](https://github.com/matthiasmullie/minify/actions/workflows/test.yml)
+[![Code coverage](http://img.shields.io/codecov/c/gh/matthiasmullie/minify?style=flat-square)](https://codecov.io/gh/matthiasmullie/minify)
+[![Latest version](http://img.shields.io/packagist/v/matthiasmullie/minify?style=flat-square)](https://packagist.org/packages/matthiasmullie/minify)
+[![Downloads total](http://img.shields.io/packagist/dt/matthiasmullie/minify?style=flat-square)](https://packagist.org/packages/matthiasmullie/minify)
+[![License](http://img.shields.io/packagist/l/matthiasmullie/minify?style=flat-square)](https://github.com/matthiasmullie/minify/blob/master/LICENSE)
 
 As you can see (look at the shiny buttons!), this PHP-based minifier is still around. Active, even: I've only recently given it some major updates.
-
-**You can try it out online on <https://www.minifier.org>.**
 
 ## Features
 

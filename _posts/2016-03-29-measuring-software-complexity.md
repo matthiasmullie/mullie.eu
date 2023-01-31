@@ -101,7 +101,7 @@ A very long function can have a very low cyclomatic complexity, but still be
 very complex because it still does a lot of things. And if one of those is
 flawed, it can affect everything that follows.
 
-Just look at these metrics for [Minify](https://www.minifier.org). Even though in
+Just look at these metrics for [Minify](https://github.com/matthiasmullie/minify). Even though in
 terms of cyclomatic complexity, `stripWhitespace` (circled) scores low, it's
 still a pretty complex beast (just [look at the code](https://github.com/matthiasmullie/minify/blob/c17eb048daa44b43fa98bfa405147e77a040df76/src/JS.php#L245)!).
 
