@@ -281,3 +281,10 @@ body {
 #sidebar .widget.top-post ul li .img-wrap .entry-info span i {
 	margin-right: 10px;
 }
+
+/*
+ * Get rid of google auto ads
+ */
+.google-auto-placed {
+	display: none;
+}
