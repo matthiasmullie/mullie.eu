@@ -18,9 +18,9 @@ layout: base
 						{% for page in site.pages %}
 							{% if page.name == 'projects.html' %}
 								<div class="entry-item" style="margin-top: 20px">
-									<div class="entry-action col-xs-12 text-center">
+									<footer class="entry-action col-xs-12 text-center">
 										<a href="{{ page.url }}">More projects</a>
-									</div>
+									</footer>
 								</div>
 							{% endif %}
 						{% endfor %}
@@ -32,7 +32,7 @@ layout: base
 					{% include top_posts.html %}
 				</div>
 
-				<div class="widget top-post">
+				<div class="widget">
 					<h4 class="widget-title">Advertisement</h4>
 					{% include adsense_responsive.html %}
 				</div>

@@ -70,7 +70,6 @@
 .pagenavi ul li a.inactive,
 .pagenavi ul li span.inactive {
 	background-color: transparent;
-	color: inherit;
 }
 
 /*
@@ -80,7 +79,6 @@
 div.highlighter-rouge pre {
 	margin: 0 -30px 10px;
 	padding: 10px 30px;
-	background: #f5f5f5;
 	border: none;
 	border-radius: 0;
 	display: block;
@@ -89,12 +87,8 @@ div.highlighter-rouge pre {
 	padding: 0;
 	display: block;
 }
-
-/*
- * Default color for elements not styled in syntax.css
- */
-div.highlighter-rouge code {
-	color: #000;
+.highlight .highlight {
+	overflow: hidden;
 }
 
 /*
@@ -192,33 +186,19 @@ h6.medium {
 }
 
 /*
+ * And move header social icons further apart
+ */
+#header .header-social-link ul li {
+	margin: 0 5px;
+}
+
+/*
  * Make ads stand out from content by letting them occupy full content width.
  */
 .ad.margin {
 	margin: 15px -30px;
 	padding: 15px 30px;
-	background-color: #f9f9f9;
 	text-align: center;
-}
-
-
-/* Make text colors a bit darker, for more contrast */
-a, h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
-	color: #000;
-	font-weight: 400;
-}
-body {
-	color: #222;
-}
-input, textarea,
-input:focus, textarea:focus {
-	color: #222;
-}
-*::-moz-placeholder {
-	color: #444;
-}
-#footer {
-	color: #ccc;
 }
 
 /*
@@ -293,4 +273,41 @@ body {
  */
 .google-auto-placed {
 	display: none;
+}
+
+/*
+ * No underline below comment bubble; will have shadow instead
+ */
+.comment .comment-text {
+	border: none;
+}
+
+/*
+ * No border for page navigation
+ */
+#content-sidebar .pagenavi a {
+	border: none;
+}
+
+/*
+ * No border-top for widgets
+ */
+#content-sidebar #sidebar .widget {
+	border: none;
+}
+
+/*
+ * These have box shadow, but backgrounds of the element below are painted over it;
+ * need z-index to update placement
+ */
+#header,
+#footer {
+	z-index: 1;
+}
+
+/*
+ * Preserve whitespace below title in widget
+ */
+#sidebar .widget.top-post ul {
+	margin: 0;
 }

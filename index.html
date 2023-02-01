@@ -5,7 +5,7 @@ weight: 0
 ---
 
 {% for post in paginator.posts %}
-  <article itemscope itemtype="https://schema.org/BlogPosting" class="entry-item">
+  <article itemscope itemtype="https://schema.org/BlogPosting" class="entry-item detail">
     <meta itemprop="mainEntityOfPage" content="{{ site.url }}{{ post.url }}">
     {% if post.image %}
     <meta itemprop="image" content="{{ site.baseurl }}/public/posts/{{ post.image }}">
@@ -29,12 +29,6 @@ weight: 0
 
     <div class="entry-detail">
       <header>
-        {% if post.image %}
-          <div class="entry-icon">
-            <div class="hexagon"></div>
-          </div>
-        {% endif %}
-
         <h2 itemprop="name" class="entry-title medium thin bottom-0">
           <a href="{{ post.url }}">{{ post.title }}</a>
         </h2>

@@ -27,10 +27,6 @@ layout: default
     </div>
     <div class="entry-detail">
       <header>
-        <div class="entry-icon">
-          <div class="hexagon"></div>
-        </div>
-
         <h2 class="entry-title medium thin bottom-0" itemprop="name">{{ page.title }}</h2>
 
         <div class="entry-info">
@@ -51,11 +47,11 @@ layout: default
         </div>
       </div>
     </div>
-
-    {% if page.adsense or page.adsense == nil %}
-      <div class="ad adsense margin">{% include adsense_leaderboard.html %}</div>
-    {% endif %}
   </div>
+
+  {% if page.adsense or page.adsense == nil %}
+    <div class="ad adsense margin">{% include adsense_leaderboard.html %}</div>
+  {% endif %}
 
   <footer>
     {% comment %}Show contribute link only for real blog posts (a page can also use post template) {% endcomment %}
