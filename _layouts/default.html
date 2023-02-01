@@ -11,14 +11,16 @@ layout: base
 
 			<div class="col-md-4" id="sidebar">
 				{% if page.name != 'projects.html' %}
-					<div class="widget projects">
+					<div class="widget projects" style="padding-bottom: 0">
 						<h4 class="widget-title">Projects</h4>
 						{% include projects.html %}
 
 						{% for page in site.pages %}
 							{% if page.name == 'projects.html' %}
-								<div class="col-xs-12 text-center">
-									<a href="{{ page.url }}">More projects&hellip;</a>
+								<div class="entry-item" style="margin-top: 20px">
+									<div class="entry-action col-xs-12 text-center">
+										<a href="{{ page.url }}">More projects</a>
+									</div>
 								</div>
 							{% endif %}
 						{% endfor %}

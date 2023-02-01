@@ -249,7 +249,12 @@ html, body, #sb-site, #wrap, .main-inner-content {
 /*
  * More spacing
  */
-#content h1:not(:first-child), #content h2:not(:first-child), #content h3:not(:first-child), #content h4:not(:first-child), #content h5:not(:first-child), #content h6:not(:first-child) {
+#content h1:not(:first-child):not([itemprop="name"]),
+#content h2:not(:first-child):not([itemprop="name"]),
+#content h3:not(:first-child):not([itemprop="name"]),
+#content h4:not(:first-child):not([itemprop="name"]),
+#content h5:not(:first-child):not([itemprop="name"]),
+#content h6:not(:first-child):not([itemprop="name"]) {
 	margin-top: 35px;
 }
 #content h1:not(:last-child), #content h2:not(:last-child), #content h3:not(:last-child), #content h4:not(:last-child), #content h5:not(:last-child), #content h6:not(:last-child) {
@@ -278,7 +283,8 @@ body {
 .widget.footer-social li a {
 	line-height: 20px;
 }
-#sidebar .widget.top-post ul li .img-wrap .entry-info span i {
+#sidebar .widget.top-post ul li .img-wrap .entry-info span i,
+.entry-item .entry-info span i {
 	margin-right: 10px;
 }
 
