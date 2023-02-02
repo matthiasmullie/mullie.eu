@@ -237,7 +237,12 @@ html, body, #sb-site, #wrap, .main-inner-content {
 #content h6:not(:first-child):not([itemprop="name"]) {
 	margin-top: 35px;
 }
-#content h1:not(:last-child), #content h2:not(:last-child), #content h3:not(:last-child), #content h4:not(:last-child), #content h5:not(:last-child), #content h6:not(:last-child) {
+#content h1:not(:last-child),
+#content h2:not(:last-child),
+#content h3:not(:last-child),
+#content h4:not(:last-child),
+#content h5:not(:last-child),
+#content h6:not(:last-child) {
 	margin-bottom: 25px;
 }
 #content p:not(:last-child) {
