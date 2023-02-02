@@ -283,9 +283,10 @@ body {
 }
 
 /*
- * No border for page navigation
+ * No border for page navigation or hoevered links
  */
-#content-sidebar .pagenavi a {
+#content-sidebar .pagenavi a,
+#content-sidebar *:not(h1, h2, h3, h4, h5, h6, footer) > a {
 	border: none;
 }
 
