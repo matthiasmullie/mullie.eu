@@ -2,10 +2,6 @@
 layout: default
 ---
 
-{% if page.adsense %}
-  <div class="ad adsense">{% include adsense_pagelevel.html %}</div>
-{% endif %}
-
 <article itemprop="mainEntity" itemscope itemtype="https://schema.org/Article">
   <meta itemprop="mainEntityOfPage" content="{{ site.url }}{{ page.url }}">
   {% if page.image %}
@@ -36,22 +32,12 @@ layout: default
       </header>
 
       <div class="entry-content">
-        {% if page.adsense or page.adsense == nil %}
-          {% capture ads %}
-            <div class="ad adsense margin">{% include adsense_content.html %}</div>
-          {% endcapture %}
-        {% endif %}
-
         <div itemprop="articleBody">
-          {{ content | replace: "<!-- more -->", "" | replace: "<!-- ads -->", ads }}
+          {{ content | replace: "<!-- more -->", "" | replace: "<!-- ads -->", "" }}
         </div>
       </div>
     </div>
   </div>
-
-  {% if page.adsense or page.adsense == nil %}
-    <div class="ad adsense margin">{% include adsense_leaderboard.html %}</div>
-  {% endif %}
 
   <footer>
     {% comment %}Show contribute link only for real blog posts (a page can also use post template) {% endcomment %}
