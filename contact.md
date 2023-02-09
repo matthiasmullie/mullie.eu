@@ -1,6 +1,6 @@
 ---
 layout: contact
-title: Me/Contact
+title: Me / Contact
 weight: 9
 ---
 

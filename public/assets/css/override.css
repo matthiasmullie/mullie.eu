@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css?family=Montserrat:400,700");
+
 /*
  * Original template logo was 34px high; current logo 74px.
  * This takes away 20px of the padding around the logo, but adds it back to all
@@ -111,6 +113,7 @@ div.highlighter-rouge pre {
  * height. Also make for a bit more room between post title & next post image.
  */
 #sidebar .widget.top-post ul li .img-wrap .entry-info {
+	font-size: 11px;
 	padding: 5px 20px;
 }
 
@@ -316,4 +319,45 @@ body {
  */
 #sidebar .widget.top-post ul {
 	margin: 0;
+}
+
+/*
+ * Typography changes
+ */
+body, h1, h2, h3, h4, h5, h6 {
+	font-family: Montserrat, sans-serif;
+}
+.entry-item .entry-action a,
+#header .header-left-menu ul li a,
+#sidebar .widget .widget-title,
+.entry-detail .entry-title,
+.button {
+	text-transform: uppercase;
+}
+h1, h2, h3, h4, h5, h6,
+#header .header-left-menu ul li a,
+#sidebar .widget .widget-title,
+.entry-detail .entry-title,
+.button {
+	font-weight: bold;
+}
+article .entry-detail .entry-title {
+	font-size: 30px;
+}
+
+/*
+ * Center and flip direction of projects data
+ */
+.widget.projects .row {
+	display: flex;
+	flex-direction: row-reverse;
+	align-items: center;
+}
+
+/*
+ * Re-align widgets title
+ */
+#sidebar .widget .widget-title {
+	text-align: center;
+	padding-bottom: 10px;
 }
