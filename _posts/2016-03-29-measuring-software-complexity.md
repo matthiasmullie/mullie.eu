@@ -104,7 +104,7 @@ Just look at these metrics for [Minify](https://github.com/matthiasmullie/minify
 terms of cyclomatic complexity, `stripWhitespace` (circled) scores low, it's
 still a pretty complex beast (just [look at the code](https://github.com/matthiasmullie/minify/blob/c17eb048daa44b43fa98bfa405147e77a040df76/src/JS.php#L245)!).
 
-[![Minify complexity metrics]({{ site.baseurl }}/public/posts/complexity-metrics.png)](https://www.cauditor.org/matthiasmullie/minify/c17eb048daa44b43fa98bfa405147e77a040df76/metrics)
+[![Minify complexity metrics]({{ site.baseurl }}public/posts/complexity-metrics.png)](https://www.cauditor.org/matthiasmullie/minify/c17eb048daa44b43fa98bfa405147e77a040df76/metrics)
 
 On the other hand, a function with a huge `switch` statement could have little
 intelligent content, but a very big cyclomatic complexity.

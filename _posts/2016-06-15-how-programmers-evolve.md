@@ -22,7 +22,7 @@ years.
 
 Commits without impact on the code (e.g. documentation, typo fixes) are ignored.
 
-![My progress on the maintainability index metric]({{ site.baseurl }}/public/posts/metrics-me.png)
+![My progress on the maintainability index metric]({{ site.baseurl }}public/posts/metrics-me.png)
 
 *The spike is from when I merged multiple existing small projects together, in 1
 commit.*
@@ -56,12 +56,12 @@ One of them is very knowledgeable and built a lot of our application's
 architecture. His code is usually robust and follows best practices. Here's how
 his commits impacted the project's maintainability index:
 
-![A colleague's progress on the maintainability index metric]({{ site.baseurl }}/public/posts/metrics-good.png)
+![A colleague's progress on the maintainability index metric]({{ site.baseurl }}public/posts/metrics-good.png)
 
 Another friend is a force of nature. He cranks out so much code and so many
 features in so little time:
 
-![Another colleague's progress on the maintainability index metric]({{ site.baseurl }}/public/posts/metrics-bad.png)
+![Another colleague's progress on the maintainability index metric]({{ site.baseurl }}public/posts/metrics-bad.png)
 
 Both of their impact didn't really change throughout the project, but they have
 wildly different *signatures*.

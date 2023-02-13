@@ -229,7 +229,8 @@
 	#header .header-left-menu ul li a:hover,
 	.pricing-item.featured .pricing-heading h4,
 	.pricing-item.featured .pricing-detail .price,
-	.pricing-item.featured .pricing-action a {
+	.pricing-item.featured .pricing-action a,
+	.site-menu .active {
 		color: #FC7E3F;
 	}
 	#header .header-left-menu ul ul,

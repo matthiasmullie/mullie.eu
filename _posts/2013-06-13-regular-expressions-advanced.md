@@ -10,7 +10,7 @@ Regular expressions are powerful string-manipulation tools, though chances are y
 
 Though you probably won't use any of the below on a daily basis, you should definitely be aware of their existence. The exact syntax might've slipped your mind by the time you get to use some of these, but I guess you can always come back to refresh your memory once you need it, right?
 
-If you know all about the stuff in the [basics tutorial](https://www.mullie.eu/regular-expressions-basics/) already, dive in!
+If you know all about the stuff in the [basics tutorial](/regular-expressions-basics/) already, dive in!
 
 <!-- more -->
 <!-- ads -->
@@ -24,7 +24,7 @@ The PCRE toolset provides you with: back references! Yet another escape sequence
 
 ## Example
 
-In the [basic tutorial](https://www.mullie.eu/regular-expressions-basics/), we've already created a regex to find all link URLs inside an HTML source. The pattern we had created looked like `/href="(.*?)"/is`. We ignored that fact that HTML attribute are not always enclosed in double quotes though: single quotes are equally valid. This basically means that the opening enclosing character should be either `"` or `'`, and the closing character should match that opening character. The improved regex looks like: `/href=(['"])(.*?)\1/is`.
+In the [basic tutorial](/regular-expressions-basics/), we've already created a regex to find all link URLs inside an HTML source. The pattern we had created looked like `/href="(.*?)"/is`. We ignored that fact that HTML attribute are not always enclosed in double quotes though: single quotes are equally valid. This basically means that the opening enclosing character should be either `"` or `'`, and the closing character should match that opening character. The improved regex looks like: `/href=(['"])(.*?)\1/is`.
 
 **Caution**: because the PHP regular expression functions expect the regex to be tossed in as a string, do not forget to apply the regular string-escaping rules applicable in PHP. If the string is enclosed by single quotes, all single quotes within it should be escaped & we should also escape the regex' backslash. This example would finally look like this in PHP: `preg_match_all('/href=([\'"])(.*?)\\1/is', $test, $matches)`
 
@@ -233,7 +233,7 @@ Everything following the # will be regarded as a comment, up until the end of th
 
 # End
 
-If you just can't get enough, you might want to check out this presentation I uploaded on [SpeakerDeck](https://speakerdeck.com/matthiasmullie/regular-expressions-101/). It's nothing more than a compact version of the information in both the [basic](https://www.mullie.eu/regular-expressions-basics/) and this advanced tutorial, albeit with some other examples.
+If you just can't get enough, you might want to check out this presentation I uploaded on [SpeakerDeck](https://speakerdeck.com/matthiasmullie/regular-expressions-101/). It's nothing more than a compact version of the information in both the [basic](/regular-expressions-basics/) and this advanced tutorial, albeit with some other examples.
 
 I guess by now you've learned to appreciate the power that regular expressions harness. You'll now always have your enhanced regex-knowledge to save your ass when dealing with complex structured data, but don't be blind for other solutions. Though the possibilities are endless, depending on your specific task, other solutions may be far superior, like a DOM/SAX-based parser for XML.
 

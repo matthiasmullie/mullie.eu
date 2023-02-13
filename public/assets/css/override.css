@@ -361,3 +361,12 @@ article .entry-detail .entry-title {
 	text-align: center;
 	padding-bottom: 10px;
 }
+
+/*
+ * Make buttons bold
+ */
+.pagenavi ul li a, .pagenavi ul li span,
+.button {
+	font-weight: bold;
+	text-transform: uppercase;
+}
