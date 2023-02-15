@@ -2,7 +2,7 @@ title:            Matthias Mullie
 tagline:          'Software engineer'
 description:      'Matthias Mullie, software engineer'
 url:              https://www.mullie.eu
-baseurl:          "/"
+baseurl:          ""
 image:            public/logo_300.png
 enforce_ssl:      www.mullie.eu
 
