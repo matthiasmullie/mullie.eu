@@ -88,9 +88,22 @@ div.highlighter-rouge pre {
 .highlight {
 	padding: 0;
 	display: block;
+	position: relative;
 }
 .highlight .highlight {
-	overflow: hidden;
+	max-height: 404px;
+	overflow-x: hidden;
+	overflow-y: auto;
+}
+.highlight .code-expand {
+	position: absolute;
+	right: 0;
+	bottom: 10px;
+	font-size: 20px;
+	line-height: 20px;
+	padding: 15px;
+	z-index: 1;
+	border: none !important;
 }
 
 /*
@@ -369,4 +382,11 @@ article .entry-detail .entry-title {
 .button {
 	font-weight: bold;
 	text-transform: uppercase;
+}
+
+/*
+ * No border when links are hovered (they'll change colors already)
+ */
+#content-sidebar *:not(h1, h2, h3, h4, h5, h6, footer) > a:hover {
+	border-bottom: none;
 }

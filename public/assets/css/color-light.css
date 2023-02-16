@@ -127,7 +127,8 @@
 	.product-item .product-link .sale,
 	.product-item.white h4,
 	.product-item.white h4 a,
-	.timeline.quick-point .hexagon-container .hexagon i {
+	.timeline.quick-point .hexagon-container .hexagon i,
+	.highlight .code-expand:hover {
 		color: #fff;
 	}
 	.section.bottom-triangle:before {
@@ -150,7 +151,8 @@
 		border-left: solid 7.0711px #fff;
 	}
 	.comment .comment-text,
-	.timeline > li .timeline-item:before {
+	.timeline > li .timeline-item:before,
+	.highlight .code-expand {
 		background: #fff;
 	}
 	.comment .comment-text:before,
@@ -192,7 +194,8 @@
 	table > tbody > tr > th,
 	input, textarea,
 	input:focus, textarea:focus,
-	div.highlighter-rouge code {
+	div.highlighter-rouge code,
+	.highlight .code-expand {
 		color: #000;
 	}
 	.hltext {
@@ -384,7 +387,8 @@
 	input[type="button"]:focus,
 	input[type="reset"]:focus,
 	.header-search input[type="text"].header-search-input,
-	.back-to-top {
+	.back-to-top,
+	.highlight .code-expand:hover {
 		background: #595A5C;
 	}
 	#sidebar .widget {
@@ -410,7 +414,8 @@
 	select,
 	textarea,
 	button,
-	.comment .comment-text {
+	.comment .comment-text,
+	.highlight .code-expand {
 		box-shadow: rgba(0, 0, 0, 0.3) 0 10px 15px -10px;
 	}
 	.detail .ad.margin {

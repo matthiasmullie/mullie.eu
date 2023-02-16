@@ -43,4 +43,17 @@ jQuery(document).ready(function($){
 
     // make documentation links appear immediately after the title
     jQuery('h1 + p:has(> a:only-child), h2 + p:has(> a:only-child), h3 + p:has(> a:only-child)').prev().addBack().css('display', 'inline-block');
+
+    // add button to expand overflowing code snippets
+    jQuery('.highlight .highlight').each(function(i, element) {
+        if (element.scrollHeight > element.clientHeight) {
+            var $button = jQuery('<a href="#" class="code-expand"><i class="fa fa-expand"></i></a>');
+            $button.click(function (e) {
+                e.preventDefault();
+                jQuery(element).css('max-height', 'none');
+                $button.remove();
+            })
+            jQuery(element).parent().prepend($button);
+        }
+    })
 });
