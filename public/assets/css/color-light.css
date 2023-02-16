@@ -24,6 +24,7 @@
 	.product-item .product-link a,
 	.product-item .product-link span,
 	.timeline.quick-point .timeline-point,
+	.pagenavi ul li a,
 	#header,
 	#footer {
 		background-color: #fff;
@@ -309,7 +310,6 @@
 	.entry-item .entry-action a,
 	.member-item-alt .member-content .member-social li a,
 	.accordion.toggle .accordion-item .accordion-body,
-	.pagenavi ul li a,
 	.ad.margin,
 	div.highlighter-rouge pre {
 		background-color: #EFF2F7;
@@ -406,7 +406,7 @@
 	/* Box shadow */
 	#header,
 	#footer {
-		box-shadow: rgba(0, 0, 0, 0.3) 0 0 10px 0;
+		box-shadow: rgba(0, 0, 0, 0.1) 0 0 10px 0;
 	}
 	.detail,
 	#content-sidebar .widget,
@@ -415,7 +415,8 @@
 	textarea,
 	button,
 	.comment .comment-text,
-	.highlight .code-expand {
+	.highlight .code-expand,
+	.pagenavi ul li a {
 		box-shadow: rgba(0, 0, 0, 0.3) 0 10px 15px -10px;
 	}
 	.detail .ad.margin {

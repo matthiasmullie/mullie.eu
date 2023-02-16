@@ -165,33 +165,31 @@ td, th {
 }
 
 /*
- * Title have a default & a "large" style in style.css. There's a huge
- * difference between both, though - I want something in between!
+ * Alternative article title sizes
  */
-h1.medium {
-	font-size: 28px;
-	line-height: 36px;
-}
-h2.medium {
-	font-size: 25px;
-	line-height: 33px;
-	font-weight: 400;
-}
-h3.medium {
-	font-size: 23px;
-	line-height: 30px;
-}
-h4.medium {
-	font-size: 20px;
+.entry-content h1 {
+	font-size: 22px;
 	line-height: 28px;
 }
-h5.medium {
-	font-size: 18px;
-	line-height: 24px;
+.entry-content h2 {
+	font-size: 19px;
+	line-height: 25px;
 }
-h6.medium {
+.entry-content h3 {
+	font-size: 17px;
+	line-height: 23px;
+}
+.entry-content h4 {
 	font-size: 15px;
-	line-height: 18px;
+	line-height: 21px;
+}
+.entry-content h5 {
+	font-size: 14px;
+	line-height: 20px;
+}
+.entry-content h6 {
+	font-size: 13px;
+	line-height: 19px;
 }
 
 /*
@@ -389,4 +387,11 @@ article .entry-detail .entry-title {
  */
 #content-sidebar *:not(h1, h2, h3, h4, h5, h6, footer) > a:hover {
 	border-bottom: none;
+}
+
+/*
+ * Smaller footer
+ */
+#footer .footer-widgets {
+	padding: 20px 0;
 }
