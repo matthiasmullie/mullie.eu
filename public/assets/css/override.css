@@ -97,7 +97,7 @@ div.highlighter-rouge pre {
 }
 .highlight .code-expand {
 	position: absolute;
-	right: 0;
+	right: -20px;
 	bottom: 10px;
 	font-size: 20px;
 	line-height: 20px;
