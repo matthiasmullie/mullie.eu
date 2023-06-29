@@ -24,7 +24,7 @@
 						<div class="img-wrap-mask"></div>
 						<div class="entry-info">
 							<span><i class="fa fa-calendar"></i><time itemprop="datePublished" content="{{ page.date | date: '%m-%d-%Y' }}">{{ post.date | date_to_string }}</time></span>
-							<span><i class="fa fa-tags"></i>{{ post.tags | array_to_sentence_string }}</span>
+							<span><i class="fa fa-tags"></i>{% include tags.html tags=post.tags %}</span>
 						</div>
 					</div>
 					<h4 itemprop="name" class="thin top-20"><a href="{{ post.url }}">{{ post.title }}</a></h4>

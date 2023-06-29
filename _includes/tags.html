@@ -1,0 +1,6 @@
+{% assign links = '' | split: '' %}
+{% for tag in include.tags %}
+    {% capture link %}<a href="{{ site.baseurl }}/tag/{{ tag | slugify }}/">{{ tag }}</a>{% endcapture %}
+    {% assign links = links | push: link %}
+{% endfor %}
+{{ links | array_to_sentence_string }}

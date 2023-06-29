@@ -25,7 +25,16 @@ permalink:        /:title/
 gems:
   - jekyll-feed
   - jekyll-paginate
+  - jekyll-archives
   - jekyll-sitemap
+
+jekyll-archives:
+  enabled:
+    - tags
+  layouts:
+    tag: tag
+  parmalinks:
+    tag: '/tag/:name'
 
 # Titles of posts to be displayed in "top posts" widget
 top_posts:       ["Geographic searches within a certain distance", "Regular expressions for pros", "Measuring software complexity"]

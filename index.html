@@ -5,53 +5,7 @@ weight: 0
 ---
 
 {% for post in paginator.posts %}
-  <article itemscope itemtype="https://schema.org/BlogPosting" class="entry-item detail">
-    <meta itemprop="mainEntityOfPage" content="{{ site.url }}{{ post.url }}">
-    {% if post.image %}
-    <meta itemprop="image" content="{{ site.baseurl }}/public/posts/{{ post.image }}">
-    <meta itemprop="thumbnailUrl" content="{{ site.baseurl }}/public/posts/{{ post.image }}">
-    {% endif %}
-    <meta itemprop="description" content="{% if post.description %}{{ post.description | strip_html }}{% else %}{{ site.description | strip_html }}{% endif %}">
-    <meta itemprop="url" content="{{ site.url }}{{ post.url }}">
-    <meta itemprop="headline" content="{{ post.title }}">
-    <meta itemprop="author" content="{{ site.author.name }}">
-    <div itemprop="publisher" itemscope itemtype="https://schema.org/Organization" style="display: none">
-      <meta itemprop="name" content="{{ site.title }}">
-      <meta itemprop="logo" content="{{ site.url }}{{ site.image }}">
-    </div>
-
-    {% if post.image %}
-      <div class="entry-header">
-        <img class="img-responsive" src="{{ site.baseurl }}/public/posts/{{ post.image }}" alt="">
-        <a href="{{ post.url }}" class="image-mark"></a>
-      </div>
-    {% endif %}
-
-    <div class="entry-detail">
-      <header>
-        <h2 itemprop="name" class="entry-title bottom-0">
-          <a href="{{ post.url }}">{{ post.title }}</a>
-        </h2>
-
-        <div class="entry-info">
-          <span><i class="fa fa-calendar"></i><time itemprop="datePublished" content="{{ page.date | date: '%m-%d-%Y' }}">{{ post.date | date_to_string }}</time></span>
-          <span><i class="fa fa-tags"></i>{{ post.tags | array_to_sentence_string }}</span>
-        </div>
-      </header>
-
-      <div class="entry-summary text-left">
-        {% if post.content contains "<!-- more -->" %}
-          {{ post.content | split: "<!-- more -->" | first }}
-        {% else %}
-          {{ post.content | strip_html | truncatewords: 100 }}
-        {% endif %}
-      </div>
-
-      <footer class="entry-action top-30">
-        <a href="{{ post.url }}">Read more</a>
-      </footer>
-    </div>
-  </article>
+  {% include post-listing.html post=post %}
 {% endfor %}
 
 <div class="pagenavi text-center">

@@ -27,7 +27,7 @@ layout: default
 
         <div class="entry-info">
           <span><i class="fa fa-calendar"></i><time itemprop="datePublished" content="{{ page.date | date: '%m-%d-%Y' }}">{{ page.date | date_to_string }}</time></span>
-          <span><i class="fa fa-tags"></i>{{ page.tags | array_to_sentence_string }}</span>
+          <span><i class="fa fa-tags"></i>{% include tags.html tags=page.tags %}</span>
         </div>
       </header>
 

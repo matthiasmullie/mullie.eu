@@ -1,0 +1,41 @@
+---
+layout: default
+title: Tag
+weight: -1
+---
+
+<h1 class="bottom-20">{{ page.type | capitalize }}: {{ page.title }}</h1>
+
+{% for post in page.posts %}
+    {% include post-listing.html post=post %}
+{% endfor %}
+
+<div class="pagenavi text-center">
+    <ul>
+        {% if page.previous_page %}
+            {% if page.page == 2 %}
+                <li><a href="{{ site.baseurl }}/" rel="prev"><i class="fa fa-caret-left"></i></a></li>
+            {% else %}
+                <li><a href="{{ site.baseurl }}/page{{page.previous_page}}" rel="prev"><i class="fa fa-caret-left"></i></a></li>
+            {% endif %}
+        {% else %}
+            <li><span class="inactive"><i class="fa fa-caret-left"></i></span></li>
+        {% endif %}
+
+        {% for page in (1..page.total_pages) %}
+            {% if page == page.page %}
+                <li><span>{{ page }}</span></li>
+            {% elsif page == 1 %}
+                <li><a href="{{ 'index.html' | prepend: site.baseurl | replace: '//', '/' | replace: 'index.html', '' }}">{{ page }}</a></li>
+            {% else %}
+                <li><a href="{{ site.paginate_path | prepend: site.baseurl | replace: '//', '/' | replace: ':num', page }}">{{ page }}</a></li>
+            {% endif %}
+        {% endfor %}
+
+        {% if page.next_page %}
+            <li><a href="{{ site.baseurl }}/page{{page.next_page}}" rel="next"><i class="fa fa-caret-right"></i></a></li>
+        {% else %}
+            <li><span class="inactive"><i class="fa fa-caret-right"></i></span></li>
+        {% endif %}
+    </ul>
+</div>
