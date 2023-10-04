@@ -395,3 +395,10 @@ article .entry-detail .entry-title {
 #footer .footer-widgets {
 	padding: 20px 0;
 }
+
+/*
+ * Map
+ */
+#map {
+	height: 800px;
+}

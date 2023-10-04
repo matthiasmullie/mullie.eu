@@ -10,6 +10,9 @@ author:
   name:           'Matthias Mullie'
   twitter:        matthiasmullie
 
+maps:
+  key:            AIzaSyCMyqg73kxoedXBjkQC0OGOLA7uQ9pf4W4
+
 markdown:         kramdown
 theme:            minima
 paginate:         5
