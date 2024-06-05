@@ -416,7 +416,7 @@ have implemented additional heuristics to confirm that you're a human without to
 
 Note that some bots are able to solve certain captcha implementations already, so this too is not
 necessarily a silver bullet.
-Nothing will ever be: bots adapt and all that we can do is add more hurdles for them to just over,
+Nothing will ever be: bots adapt and all that we can do is add more hurdles for them to jump over,
 ideally without too much impact on actual human users.
 
 If you want to pursue implementing captchas in your form, you may want to look into
