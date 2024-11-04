@@ -70,13 +70,19 @@
 {% assign maspalomas = '' | split: '' | push: 27.7470892 | push: -15.5971816 %}
 {% assign valkenburg = '' | split: '' | push: 50.880087 | push: 5.830418 %}
 {% assign prague = '' | split: '' | push: 50.078247 | push: 14.4281572 %}
+{% assign poperinge = '' | split: '' | push: 50.841410 | push: 2.728570 %}
+{% assign heers = '' | split: '' | push: 50.7472468 | push: 5.304934 %}
+{% assign cologne = '' | split: '' | push: 50.938669 | push: 6.890871 %}
 {% assign badenbaden = '' | split: '' | push: 48.7626753 | push: 8.2421959 %}
 {% assign serfaus = '' | split: '' | push: 47.0372502 | push: 10.6089763 %}
-{% assign heers = '' | split: '' | push: 50.7472468 | push: 5.304934 %}
+{% assign mechelen = '' | split: '' | push: 51.025880 | push: 4.473730 %}
+{% assign vosges = '' | split: '' | push: 48.064264 | push: 7.0216043 %}
+{% assign istanbul = '' | split: '' | push: 40.978190 | push: 28.868060 %}
+{% assign luxembourg = '' | split: '' | push: 49.602420 | push: 6.127740 %}
 
 {% assign home = '' | split: '' | push: 50.809488 | push: 3.324494 %}
 
-{% assign coordinates = "" | split: "|" | push: ardeche | push: paris | push: chamonix | push: vannes | push: luxemburg | push: bardolino | push: venice | push: leeuwarden | push: lapineda | push: leuven | push: dehaan | push: vielsalm | push: mouzaive | push: vossemeren | push: berlin | push: columbia | push: phoenix | push: sanfrancisco | push: paphos | push: amsterdam | push: yosemite | push: nyc | push: zurich | push: cannes | push: nice | push: monaco | push: lasvegas | push: lyon | push: mexico | push: teotihuacan | push: lisbon | push: dublin | push: vancouver | push: whistler | push: dubrovnik | push: split | push: plitvice | push: london | push: munich | push: seattle | push: hazyview | push: kruger | push: swaziland | push: saintlucia | push: durban | push: capetown | push: montreal | push: grandcanyon | push: budapest | push: florence | push: rome | push: wingene | push: maastricht | push: saintpaul | push: strasbourg | push: stockholm | push: zion | push: loscristianos | push: atlanta | push: epernay | push: pairidaiza | push: genk | push: aubagne | push: rotterdam | push: nieuwpoort | push: larochelle | push: lacdeleaudheure | push: athens | push: copenhagen | push: maspalomas | push: valkenburg | push: prague | push: badenbaden | push: serfaus | push: heers | push: home %}
+{% assign coordinates = "" | split: "|" | push: ardeche | push: paris | push: chamonix | push: vannes | push: luxemburg | push: bardolino | push: venice | push: leeuwarden | push: lapineda | push: leuven | push: dehaan | push: vielsalm | push: mouzaive | push: vossemeren | push: berlin | push: columbia | push: phoenix | push: sanfrancisco | push: paphos | push: amsterdam | push: yosemite | push: nyc | push: zurich | push: cannes | push: nice | push: monaco | push: lasvegas | push: lyon | push: mexico | push: teotihuacan | push: lisbon | push: dublin | push: vancouver | push: whistler | push: dubrovnik | push: split | push: plitvice | push: london | push: munich | push: seattle | push: hazyview | push: kruger | push: swaziland | push: saintlucia | push: durban | push: capetown | push: montreal | push: grandcanyon | push: budapest | push: florence | push: rome | push: wingene | push: maastricht | push: saintpaul | push: strasbourg | push: stockholm | push: zion | push: loscristianos | push: atlanta | push: epernay | push: pairidaiza | push: genk | push: aubagne | push: rotterdam | push: nieuwpoort | push: larochelle | push: lacdeleaudheure | push: athens | push: copenhagen | push: maspalomas | push: valkenburg | push: prague | push: poperinge | push: heers | push: cologne | push: badenbaden | push: serfaus | push: mechelen | push: vosges | push: istanbul | push: luxembourg | push: home %}
 <div id="map" data-markers="{{ coordinates | jsonify | replace: '"', '&quot;' }}" data-center="[20, 0]" data-zoom="3"></div>
 <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
 <script src="{{ site.baseurl }}/public/assets/js/map.js"></script>
