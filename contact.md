@@ -23,9 +23,10 @@ We open-sourced [Fork CMS](https://www.fork-cms.com/) and had a great time!
 
 I was very happy to join [Wikipedia](https://www.wikipedia.org/) next, where I've
 implemented many new features with work ranging across the stack *(a selection:
-notifications, discussion board, structured (meta)data for multimedia & media search.)*
-Not only did I learn a lot about scaling a big application, I also became part
-of one of the best initiatives on the internet.
+notifications, discussion board, structured (meta)data for multimedia, media search,
+semantic search, and loads of experiments.)*
+Not only did I learn a lot about scaling a big application and thoughtful software
+architecture, I also became part of one of the best initiatives on the internet.
 Wikipedia means a lot to the world, [don't forget to donate!](https://donate.wikimedia.org/)
 
 {% include contactform.html %}
